@@ -34,6 +34,7 @@ Basics
 ------
 
 [Git: The simple guide](http://rogerdudler.github.io/git-guide/) This one does a great job of describing the various tasks in Git.
+
 [Git in 5 minutes](http://classic.scottr.org/presentations/git-in-5-minutes/)
 
 [Pushing and Pulling](http://gitready.com/beginner/2009/01/21/pushing-and-pulling.html) Has a very nice visual reference for what's happening with the commands.
