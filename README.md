@@ -28,14 +28,18 @@ Don't let the complexity of all the commands fool you. A lot of what we'll be do
 
 Also of note, there's several different guides because they approach Git in different ways, some of which may jive with your brain better. Don't think that you need to fully understand all the commands, only the general workflow and tasks. Ask questions if need be!
 
-====Basics====
+Basics
+=========
+
 [Git: The simple guide](http://rogerdudler.github.io/git-guide/) This one does a great job of describing the various tasks in Git.
 [Git in 5 minutes](http://classic.scottr.org/presentations/git-in-5-minutes/)
 
 [Pushing and Pulling](http://gitready.com/beginner/2009/01/21/pushing-and-pulling.html) Has a very nice visual reference for what's happening with the commands.
 
 
-====More advanced stuff=====
+More advanced git stuff
+=======================
+
 [Getting Started with Git](http://git-scm.com/book/en/Getting-Started), which is much more comprehensive, and a pretty good resource for advanced use. Kelson, you'll want to read this.
 
 [Interactive Git Cheatsheet](http://ndpsoftware.com/git-cheatsheet.html). Very cool for figuring out what goes from where to where. 
