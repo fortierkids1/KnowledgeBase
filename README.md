@@ -32,6 +32,7 @@ Also of note, there's several different guides because they approach Git in diff
 
 Basics
 ------
+[Using GitHub](https://learn.sparkfun.com/tutorials/using-github/) Very good general overview, particularly for using the GitHub for Windows application. 
 
 [Git: The simple guide](http://rogerdudler.github.io/git-guide/) This one does a great job of describing the various tasks in Git.
 
