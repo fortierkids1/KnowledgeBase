@@ -7,10 +7,6 @@ I'm setting this up as a handy way to quickly test out git features in a safe en
 
 There's not much here quite yet, but feel free to check out the available resources. 
 
-Tutorials
-=========
-(still pending)
-
 
 Relevant Links
 ==============
@@ -47,3 +43,27 @@ More advanced git stuff
 [Getting Started with Git](http://git-scm.com/book/en/Getting-Started), which is much more comprehensive, and a pretty good resource for advanced use. Kelson, you'll want to read this.
 
 [Interactive Git Cheatsheet](http://ndpsoftware.com/git-cheatsheet.html). Very cool for figuring out what goes from where to where. 
+
+
+Python Tutorials
+=============================
+
+This stuff is intended for Jacob T, who will be working with this. 
+
+
+Board Communication
+----------------
+
+[Twisted](https://twistedmatrix.com/trac/) Network protocol library for Python. There's a chance we may use this for communication, depending on simplicity.
+We might still use I2C, assuming that the OS supports running it in slave mode. Not finding a lot of documentation at the moment. 
+
+SimpleCV
+--------
+[Pycon Discussion](http://simplecv.org/news/2013/03/simplecv-talk-pycon) Long, excellent talk, gives a very good basis for what we'll be doing.
+
+[SimpleCV tutorials](http://tutorial.simplecv.org/en/latest/) Enough said. 
+
+While going through these, you'll hear "histogram" mentioned a lot. This [photography discussion](http://www.luminous-landscape.com/tutorials/understanding-series/understanding-histograms.shtml) has a very good explanation of what they are, and how to read them. After that, what the manipulations of them makes a lot more sense.
+
+
+
