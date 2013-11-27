@@ -66,4 +66,4 @@ SimpleCV
 While going through these, you'll hear "histogram" mentioned a lot. This [photography discussion](http://www.luminous-landscape.com/tutorials/understanding-series/understanding-histograms.shtml) has a very good explanation of what they are, and how to read them. After that, what the manipulations of them makes a lot more sense.
 
 
-
+-----
