@@ -8,16 +8,16 @@ I'm setting this up as a handy way to quickly test out git features in a safe en
 There's not much here quite yet, but feel free to check out the available resources. 
 
 
-Relevant Links
+Learning Java
 ==============
-
-[Github plugin for Eclipse](http://eclipse.github.com/)
-
-[Github Plugin for NetBeans](https://netbeans.org/kb/73/ide/git.html)
 
 [FRC Java Center](http://first.wpi.edu/FRC/frcjava.html)
 
 [Getting Started with Java for FRC](http://first.wpi.edu/Images/CMS/First/Getting_Started_with_Java_for_FRC.pdf)
+
+[WPLib Getting Started](http://wpilib.screenstepslive.com/s/3120/m/7885/l/79405-installing-the-java-development-tools) Walks you through programming your first robot.
+
+
 
 Learning Git and Github
 =======================
@@ -25,6 +25,11 @@ Learning Git and Github
 Don't let the complexity of all the commands fool you. A lot of what we'll be doing with Git is built in to the IDE, or the [Github for Windows](http://windows.github.com/) application. The important thing is to get the general feel for what the commands are called, and what they do.
 
 Also of note, there's several different guides because they approach Git in different ways, some of which may jive with your brain better. Don't think that you need to fully understand all the commands, only the general workflow and tasks. Ask questions if need be!
+
+[Github plugin for Eclipse](http://eclipse.github.com/)
+
+[Github Plugin for NetBeans](https://netbeans.org/kb/73/ide/git.html)
+
 
 Basics
 ------
