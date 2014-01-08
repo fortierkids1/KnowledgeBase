@@ -11,12 +11,13 @@ There's not much here quite yet, but feel free to check out the available resour
 Learning Java
 ==============
 
-[FRC Java Center](http://first.wpi.edu/FRC/frcjava.html)
+[WPLib Getting Started](http://wpilib.screenstepslive.com/s/3120/m/7885/l/79405-installing-the-java-development-tools) Walks you through programming your first robot anbd setting up neatbeans.
 
 [Getting Started with Java for FRC](http://first.wpi.edu/Images/CMS/First/Getting_Started_with_Java_for_FRC.pdf)
 
-[WPLib Getting Started](http://wpilib.screenstepslive.com/s/3120/m/7885/l/79405-installing-the-java-development-tools) Walks you through programming your first robot.
+[FRC Java Center](http://first.wpi.edu/FRC/frcjava.html)
 
+[Mean Machines' GitHub](https://github.com/tmm2471) has some very cool example code, as well as cad models for some components.
 
 
 Learning Git and Github
@@ -52,9 +53,6 @@ More advanced git stuff
 
 Python Tutorials
 =============================
-
-This stuff is intended for Jacob T, who will be working with this. 
-
 
 Board Communication
 ----------------
