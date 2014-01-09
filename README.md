@@ -20,6 +20,48 @@ Learning Java
 [Mean Machines' GitHub](https://github.com/tmm2471) has some very cool example code, as well as cad models for some components.
 
 
+Interfacing with Sensors
+------------------------
+Many of these are discussed with basic sample code in the [WPILib Users's Guide](http://first.wpi.edu/Images/CMS/First/WPILibUsersGuide.pdf). That's a very helpful starting point, and then additional documention is listed at their [primary documentation site](http://wpilib.screenstepslive.com/s/3120/m/7912/l/85672-what-is-wpilib).
+
+Distance Sensors/Sonar
+
+Switches
+
+Quadrature Encoders
+
+I2C
+
+Analog Sensors
+
+Absolute Encoders
+
+Geartooth library
+
+
+Interfacing with motors and actuators
+-------------------------------------
+
+PID Controllers
+
+Servo/PWM Outputs
+
+
+Other useful libraries and tools
+--------------------------------
+DriverStation
+
+Network Communication
+
+CAN Bus
+
+Read Team color from the Control Center
+
+State Machines
+
+Threaded processing
+
+
 Learning Git and Github
 =======================
 
@@ -68,5 +110,5 @@ SimpleCV
 
 While going through these, you'll hear "histogram" mentioned a lot. This [photography discussion](http://www.luminous-landscape.com/tutorials/understanding-series/understanding-histograms.shtml) has a very good explanation of what they are, and how to read them. After that, what the manipulations of them makes a lot more sense.
 
+[Processing Vision Targets](http://wpilib.screenstepslive.com/s/3120/m/8731) is 2014 specific tutorial on how to process targets. There's some additional resources from their [Vision Processing](http://wpilib.screenstepslive.com/s/3120/m/8731) sections, but those are largely oriented towards implimenting vision control in Java or LabView.
 
------
