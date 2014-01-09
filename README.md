@@ -9,8 +9,7 @@ There's not much here quite yet, but feel free to check out the available resour
 
 
 Learning Java
-==============
-
+---
 [WPLib Getting Started](http://wpilib.screenstepslive.com/s/3120/m/7885/l/79405-installing-the-java-development-tools) Walks you through programming your first robot anbd setting up neatbeans.
 
 [Getting Started with Java for FRC](http://first.wpi.edu/Images/CMS/First/Getting_Started_with_Java_for_FRC.pdf)
