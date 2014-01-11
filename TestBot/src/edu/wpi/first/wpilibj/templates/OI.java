@@ -2,19 +2,34 @@
 package edu.wpi.first.wpilibj.templates;
 
 import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.buttons.Button;
-import edu.wpi.first.wpilibj.buttons.DigitalIOButton;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import edu.wpi.first.wpilibj.templates.commands.DownShift;
+import edu.wpi.first.wpilibj.templates.commands.UpShift;
+
+
 
 /**
  * This class is the glue that binds the controls on the physical operator
  * interface to the commands and command groups that allow control of the robot.
  */
 public class OI {
-    Joystick main = new Joystick(1);
-    Button function = new JoystickButton(main,1);
-    Button shiftUp = new JoystickButton(main,2);
-    Button shiftDown = new JoystickButton(main,3);
+    
+    public static Joystick controller;
+    public static JoystickButton function;
+    public static JoystickButton shiftUp;
+    public static JoystickButton shiftDown;
+    
+      
+    public OI(){
+       controller = new Joystick(1);
+       
+       function = new JoystickButton(controller,1);
+       shiftUp = new JoystickButton(controller,2);
+       shiftDown = new JoystickButton(controller,3);
+       
+       shiftUp.whenPressed(new UpShift());
+       shiftDown.whenPressed(new DownShift());
+}
     // CREATING BUTTONS
     // One type of button is a joystick button which is any button on a joystick.
     // You create one by telling it which joystick it's on and which button
