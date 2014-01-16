@@ -12,7 +12,10 @@ import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+import edu.wpi.first.wpilibj.templates.commands.AutonomousCommand;
+import edu.wpi.first.wpilibj.templates.commands.SensorInput;
 import edu.wpi.first.wpilibj.templates.subsystems.DriveSystem;
+import edu.wpi.first.wpilibj.templates.subsystems.PotSensor;
 
 
 /**
@@ -24,11 +27,12 @@ import edu.wpi.first.wpilibj.templates.subsystems.DriveSystem;
  */
 public class Robot extends IterativeRobot {
 
-    Command teleOpCommand;
     //teleOpCommand = new Command TeleOpCommand();
     
     public static OI oi;
     public static DriveSystem drivesystem;
+    public static AutonomousCommand autonomouscommand;
+    public static PotSensor potsensor;
     
 
     /**
@@ -40,6 +44,8 @@ public class Robot extends IterativeRobot {
         RobotMap.init();
         drivesystem = new DriveSystem();
         oi = new OI();
+        autonomouscommand = new AutonomousCommand();
+        potsensor = new PotSensor();
 
         // Initialize all subsystems
         
@@ -56,6 +62,7 @@ public class Robot extends IterativeRobot {
      */
     public void autonomousPeriodic() {
         Scheduler.getInstance().run();
+        
     }
 
     public void teleopInit() {
@@ -71,7 +78,7 @@ public class Robot extends IterativeRobot {
      * This function is called periodically during operator control
      */
     public void teleopPeriodic() {
-        //Scheduler.getInstance().run();
+        Scheduler.getInstance().run();
         //RobotMap.leftMotor.set(OI.controller.getRawAxis(1));
         //RobotMap.rightMotor.set(OI.controller.getRawAxis(2));
         

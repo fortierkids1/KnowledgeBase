@@ -4,6 +4,7 @@ package edu.wpi.first.wpilibj.templates;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.templates.commands.DownShift;
+import edu.wpi.first.wpilibj.templates.commands.SensorInput;
 import edu.wpi.first.wpilibj.templates.commands.UpShift;
 
 
@@ -18,6 +19,7 @@ public class OI {
     public static JoystickButton function;
     public static JoystickButton shiftUp;
     public static JoystickButton shiftDown;
+    public static JoystickButton potCheck;
     
       
     public OI(){
@@ -26,9 +28,11 @@ public class OI {
        function = new JoystickButton(controller,1);
        shiftUp = new JoystickButton(controller,2);
        shiftDown = new JoystickButton(controller,3);
+       potCheck = new JoystickButton(controller,4);
        
        shiftUp.whenPressed(new UpShift());
        shiftDown.whenPressed(new DownShift());
+       potCheck.whenPressed(new SensorInput());
 }
     // CREATING BUTTONS
     // One type of button is a joystick button which is any button on a joystick.

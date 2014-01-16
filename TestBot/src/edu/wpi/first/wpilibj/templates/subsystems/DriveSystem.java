@@ -31,13 +31,13 @@ public class DriveSystem extends Subsystem {
     
     public void joystickDrive(double a,double b){
         robotDriver.arcadeDrive(a,b);
-        System.out.println("Subsystem!");
+        
 }
     
     public void upShift(){
         upShiftCheck = OI.shiftUp.get();
         if(upShiftCheck==true){
-            RobotMap.upShifter.set(1);
+            RobotMap.upShifter.set(.5);
             Timer.delay(1);
             RobotMap.upShifter.set(0);
                   
@@ -47,7 +47,7 @@ public class DriveSystem extends Subsystem {
     public void downShift(){
        downShiftCheck = OI.shiftDown.get();
        if(downShiftCheck==true){
-           RobotMap.downShifter.set(1);
+           RobotMap.downShifter.set(.5);
            Timer.delay(1);
            RobotMap.downShifter.set(0);
        }

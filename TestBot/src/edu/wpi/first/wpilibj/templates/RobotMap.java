@@ -1,5 +1,6 @@
 package edu.wpi.first.wpilibj.templates;
 
+import edu.wpi.first.wpilibj.AnalogChannel;
 import edu.wpi.first.wpilibj.Jaguar;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.SpeedController;
@@ -19,6 +20,7 @@ public class RobotMap {
     public static SpeedController upShifter;
     public static SpeedController downShifter;
     public static RobotDrive robotDrive;
+    public static AnalogChannel potReader;
     
     public static void init() {
         leftMotor = new Victor(1,1);
@@ -26,6 +28,8 @@ public class RobotMap {
         upShifter = new Jaguar(1,2);
         downShifter = new Jaguar(1,3);
         robotDrive = new RobotDrive(leftMotor,rightMotor);
+        potReader = new AnalogChannel(1);
+        
         
     }
     

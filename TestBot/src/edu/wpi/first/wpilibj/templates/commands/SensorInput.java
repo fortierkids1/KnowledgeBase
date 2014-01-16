@@ -1,13 +1,21 @@
-
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package edu.wpi.first.wpilibj.templates.commands;
+
+import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.templates.Robot;
 
 /**
  *
- * @author bradmiller
+ * @author 128925
  */
-public class ExampleCommand extends CommandBase {
-
-    public ExampleCommand() {
+public class SensorInput extends Command {
+    
+    public SensorInput() {
+        requires(Robot.potsensor);
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     }
@@ -18,6 +26,7 @@ public class ExampleCommand extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+        Robot.potsensor.potCheck(true);
     }
 
     // Make this return true when this Command no longer needs to run execute()
