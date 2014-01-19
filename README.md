@@ -73,6 +73,17 @@ Also of note, there's several different guides because they approach Git in diff
 
 [Github Plugin for NetBeans](https://netbeans.org/kb/73/ide/git.html)
 
+Once you start using Github, you'll eventually hit a merge conflict, which is difficult to solve without a visual tool. [KDiff3](http://sourceforge.net/projects/kdiff3/files/kdiff3/0.9.97/) is a very good tool for this, and can be configured to open automatically whenever a problem arises. To do this, open your .gitconfig file and add something like the following:
+```INI
+[merge]
+    tool = kdiff3
+
+[mergetool "kdiff3"]
+    path = C:/YourPathToBinaryHere/KDiff3/kdiff3.exe
+    keepBackup = false
+    trustExitCode = false
+```
+
 
 Basics
 ------
