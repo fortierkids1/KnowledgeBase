@@ -15,6 +15,7 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.templates.commands.AutonomousCommand;
 import edu.wpi.first.wpilibj.templates.commands.SensorInput;
 import edu.wpi.first.wpilibj.templates.subsystems.DriveSystem;
+import edu.wpi.first.wpilibj.templates.subsystems.Lights;
 import edu.wpi.first.wpilibj.templates.subsystems.PotSensor;
 
 
@@ -33,6 +34,7 @@ public class Robot extends IterativeRobot {
     public static DriveSystem drivesystem;
     public static AutonomousCommand autonomouscommand;
     public static PotSensor potsensor;
+    public static Lights lights;
     
 
     /**
@@ -46,6 +48,7 @@ public class Robot extends IterativeRobot {
         oi = new OI();
         autonomouscommand = new AutonomousCommand();
         potsensor = new PotSensor();
+        lights = new Lights();
 
         // Initialize all subsystems
         
