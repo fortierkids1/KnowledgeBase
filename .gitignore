@@ -44,6 +44,6 @@ nbproject/private/*
 # git rm --cached
 
 *.suite
-*.mf
+
 private.xml
 project.xml
