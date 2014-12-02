@@ -7,6 +7,13 @@ I'm setting this up as a handy way to quickly test out git features in a safe en
 
 There's not much here quite yet, but feel free to check out the available resources. 
 
+Connecting to the robot (2014 Control system)
+-----------------------
+- Inside Netbeans, configure the FRC plugin to our team number. It's under Tool >> Options >> Miscellaneous >> FRC Configuration
+- Configure your Ethernet adapter to a Static IP. Your IP should be `10.28.11.10`. The last number can be anything other than 1 or 2. The Subnet mask should be `255.0.0.0`. Nothing else is critical. 
+- If you see additional problems communicating with the robot, then disable Firewall and Antivirus software.
+
+
 
 Learning Java
 ---
