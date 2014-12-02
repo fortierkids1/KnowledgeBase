@@ -18,6 +18,9 @@ Learning Java
 
 [Mean Machines' GitHub](https://github.com/tmm2471) has some very cool example code, as well as cad models for some components.
 
+Interfacing with Driver Station
+------------------------
+Reading match time, team color, and robot position [Interface with Driver Station](http://wpilib.screenstepslive.com/s/3120/m/7912/l/133045-driver-station-input-overview)
 
 Interfacing with Sensors
 ------------------------
