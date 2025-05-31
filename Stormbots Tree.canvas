@@ -44,6 +44,114 @@
       },
       "toNode": "a0cc01b271cf2327",
       "toSide": "left"
+    },
+    {
+      "fromNode": "bf2cd469307b1a66",
+      "fromSide": "right",
+      "id": "dfaa486ebe850bbc",
+      "styleAttributes": {
+      },
+      "toNode": "357ebf4119ecc825",
+      "toSide": "left"
+    },
+    {
+      "fromNode": "7fa6ed6497a335b4",
+      "fromSide": "right",
+      "id": "fc8893bc45df4fa0",
+      "styleAttributes": {
+      },
+      "toNode": "357ebf4119ecc825",
+      "toSide": "left"
+    },
+    {
+      "fromNode": "44cef5adf8ef166e",
+      "fromSide": "right",
+      "id": "63cae833e6b3b782",
+      "styleAttributes": {
+      },
+      "toNode": "f5e56e40345e2fde",
+      "toSide": "left"
+    },
+    {
+      "fromNode": "d3fa835ee207becb",
+      "fromSide": "right",
+      "id": "88984ae7ea073ec8",
+      "styleAttributes": {
+      },
+      "toNode": "a0cc01b271cf2327",
+      "toSide": "left"
+    },
+    {
+      "fromNode": "cb76dbcbce06d853",
+      "fromSide": "right",
+      "id": "270f1d0f4e2dddfa",
+      "styleAttributes": {
+      },
+      "toNode": "d3fa835ee207becb",
+      "toSide": "left"
+    },
+    {
+      "fromNode": "0132e41e73fd3635",
+      "fromSide": "right",
+      "id": "a01f48a9d9f42ea1",
+      "styleAttributes": {
+      },
+      "toNode": "cf0c72a1f32c5883",
+      "toSide": "left"
+    },
+    {
+      "fromNode": "04fcd5f84dc2cedf",
+      "fromSide": "right",
+      "id": "75c2bd29700554ad",
+      "styleAttributes": {
+      },
+      "toNode": "cf0c72a1f32c5883",
+      "toSide": "left"
+    },
+    {
+      "fromNode": "d3fa835ee207becb",
+      "fromSide": "right",
+      "id": "fb81a9a789c97885",
+      "styleAttributes": {
+      },
+      "toNode": "cf0c72a1f32c5883",
+      "toSide": "left"
+    },
+    {
+      "fromNode": "5657d366613722e7",
+      "fromSide": "right",
+      "id": "e9d95b79f52eaa76",
+      "styleAttributes": {
+      },
+      "toNode": "ccc2084ea7272471",
+      "toSide": "left"
+    },
+    {
+      "fromNode": "cf0c72a1f32c5883",
+      "fromSide": "right",
+      "id": "59f5473a10aa1829",
+      "styleAttributes": {
+      },
+      "toNode": "f88fa501d700ebc3",
+      "toSide": "left"
+    },
+    {
+      "fromNode": "ccc2084ea7272471",
+      "fromSide": "right",
+      "id": "1164c7d51fe6b8b4",
+      "styleAttributes": {
+      },
+      "toNode": "f88fa501d700ebc3",
+      "toSide": "left"
+    },
+    {
+      "fromNode": "d639098f45a861a4",
+      "fromSide": "right",
+      "id": "15351ad7b286f9e3",
+      "styleAttributes": {
+      },
+      "toNode": "59fc9804d564ed46",
+      "toSide": "left"
     }
   ],
   "metadata": {
@@ -53,22 +161,13 @@
   },
   "nodes": [
     {
-      "file": "Pasted image 20250526101531.png",
-      "height": 1327,
-      "id": "9536f4918b654c17",
-      "type": "file",
-      "width": 1851,
-      "x": -2080,
-      "y": -760
-    },
-    {
-      "file": "Motion Profiles.md",
-      "height": 400,
-      "id": "d3fa835ee207becb",
-      "type": "file",
-      "width": 400,
-      "x": 280,
-      "y": -760
+      "height": 880,
+      "id": "c20e0e273c2e8658",
+      "label": "Specialized Dependencies",
+      "type": "group",
+      "width": 3280,
+      "x": 0,
+      "y": 2240
     },
     {
       "file": "Swerve Basics.md",
@@ -94,8 +193,73 @@
       "id": "7fa6ed6497a335b4",
       "type": "file",
       "width": 400,
-      "x": 1160,
-      "y": 560
+      "x": 1000,
+      "y": 520
+    },
+    {
+      "file": "Pasted image 20250526101531.png",
+      "height": 1327,
+      "id": "9536f4918b654c17",
+      "type": "file",
+      "width": 1851,
+      "x": -2800,
+      "y": -1480
+    },
+    {
+      "file": "Motion Profiles.md",
+      "height": 400,
+      "id": "d3fa835ee207becb",
+      "type": "file",
+      "width": 400,
+      "x": 320,
+      "y": -960
+    },
+    {
+      "height": 180,
+      "id": "cb76dbcbce06d853",
+      "styleAttributes": {
+      },
+      "text": "## SuperStructure\n\nOne of \n- [[SuperStructure Arm]]\n- [[SuperStructure Elevator]]\n",
+      "type": "text",
+      "width": 380,
+      "x": -320,
+      "y": -850
+    },
+    {
+      "file": "Level 1/SuperStructure Rollers.md",
+      "height": 140,
+      "id": "0132e41e73fd3635",
+      "type": "file",
+      "width": 400,
+      "x": 320,
+      "y": -1820
+    },
+    {
+      "file": "Level 1/PID.md",
+      "height": 140,
+      "id": "04fcd5f84dc2cedf",
+      "type": "file",
+      "width": 400,
+      "x": 320,
+      "y": -1620
+    },
+    {
+      "file": "Level 1/SuperStructure Intake.md",
+      "height": 150,
+      "id": "5657d366613722e7",
+      "type": "file",
+      "width": 400,
+      "x": 320,
+      "y": -2095
+    },
+    {
+      "file": "Forward Kinematics.md",
+      "height": 400,
+      "id": "d639098f45a861a4",
+      "type": "file",
+      "width": 400,
+      "x": 320,
+      "y": -2880
     },
     {
       "file": "PhotonVision Object Detection.md",
@@ -103,17 +267,17 @@
       "id": "3d2a9342121cd965",
       "type": "file",
       "width": 400,
-      "x": 1160,
-      "y": 1160
+      "x": 1000,
+      "y": 1040
     },
     {
-      "file": "PhotonVision Model Training.md",
+      "file": "Swerve Motion.md",
       "height": 400,
-      "id": "244fc653697fb41e",
+      "id": "a0cc01b271cf2327",
       "type": "file",
       "width": 400,
-      "x": 1840,
-      "y": 1640
+      "x": 1160,
+      "y": -960
     },
     {
       "file": "Swerve Bringup.md",
@@ -122,16 +286,97 @@
       "type": "file",
       "width": 400,
       "x": 1160,
-      "y": 40
+      "y": -420
     },
     {
-      "file": "Swerve Advanced.md",
+      "file": "PhotonVision Bringup.md",
       "height": 400,
-      "id": "a0cc01b271cf2327",
+      "id": "f5e56e40345e2fde",
+      "type": "file",
+      "width": 400,
+      "x": 1000,
+      "y": 1600
+    },
+    {
+      "file": "PhotonVision Model Training.md",
+      "height": 400,
+      "id": "244fc653697fb41e",
+      "type": "file",
+      "width": 400,
+      "x": 1600,
+      "y": 1040
+    },
+    {
+      "file": "SuperStructure Flywheel.md",
+      "height": 400,
+      "id": "cf0c72a1f32c5883",
       "type": "file",
       "width": 400,
       "x": 1160,
-      "y": -500
+      "y": -1680
+    },
+    {
+      "file": "PathPlanning Tools.md",
+      "height": 400,
+      "id": "8592eb9b6996c8d1",
+      "type": "file",
+      "width": 400,
+      "x": 340,
+      "y": 2460
+    },
+    {
+      "file": "System Identification.md",
+      "height": 400,
+      "id": "65bfbc0aadd3f7cb",
+      "type": "file",
+      "width": 400,
+      "x": 880,
+      "y": 2460
+    },
+    {
+      "file": "Lookup Tables.md",
+      "height": 400,
+      "id": "0fe782eaea7a9386",
+      "type": "file",
+      "width": 400,
+      "x": 1400,
+      "y": 2460
+    },
+    {
+      "file": "Swerve Odometry.md",
+      "height": 400,
+      "id": "357ebf4119ecc825",
+      "type": "file",
+      "width": 400,
+      "x": 1760,
+      "y": -96
+    },
+    {
+      "file": "Superstructure Indexer.md",
+      "height": 400,
+      "id": "ccc2084ea7272471",
+      "type": "file",
+      "width": 400,
+      "x": 1160,
+      "y": -2220
+    },
+    {
+      "file": "Superstructure Shooter.md",
+      "height": 400,
+      "id": "f88fa501d700ebc3",
+      "type": "file",
+      "width": 400,
+      "x": 1940,
+      "y": -1880
+    },
+    {
+      "file": "Inverse Kinematics.md",
+      "height": 400,
+      "id": "59fc9804d564ed46",
+      "type": "file",
+      "width": 400,
+      "x": 1160,
+      "y": -2880
     }
   ]
 }
