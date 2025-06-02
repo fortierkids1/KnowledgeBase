@@ -1,10 +1,10 @@
 Requires:
 [[Motor Control]]
 
-#### Completion Requirements
-- Create a velocity FF for a roller system that enables you to set the output in RPM
-- Create a gravity FF for a elevator system that holds the system in place without resisting external movement
-- Create a gravity FF for an arm system that holds the system in place without resisting external movement
+## Success Criteria
+- [ ] Create a velocity FF for a roller system that enables you to set the output in RPM
+- [ ] Create a gravity FF for a elevator system that holds the system in place without resisting external movement
+- [ ] Create a gravity FF for an arm system that holds the system in place without resisting external movement
 
 #### Synopsis
 Feedforwards model an expected motor output for a  system to hit specific target values. 

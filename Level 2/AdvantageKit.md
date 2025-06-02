@@ -1,6 +1,6 @@
-#### 
-- ??? Do we need or want this here? 
-- Need to find a way to actually use it efficiently in beneficial way
+## Success Criteria
+- [ ] ??? Do we need or want this here? 
+- [ ] Need to find a way to actually use it efficiently in beneficial way
 
 #### Goals
 - Understand how to set up Advantagekit

@@ -1,7 +1,7 @@
 ## Goals
 Understand how to efficiently communicate to and from a robot for diagnostics and control 
-## Success Criteria 
-
+## Success Criteria
+- [ ] 
 
 ## Lesson
 ###### Glass

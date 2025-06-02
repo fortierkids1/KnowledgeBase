@@ -1,8 +1,8 @@
-#### Requirements
-- Create a Singleton class
-- Use it in multiple places in your code
+## Success Criteria
+- [ ] Create a Singleton class
+- [ ] Use it in multiple places in your code
 
-#### Summary
+## Summary
 Coding structure that represents a unique entity, of which only one can assist. 
 
 Commonly used in WPILib to model physical harware 

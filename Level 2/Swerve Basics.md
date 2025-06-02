@@ -1,16 +1,10 @@
----
-files:
-  - "[[Swerve Bringup]]"
-  - "[[Swerve Motion]]"
-  - "[[Swerve Odometry]]"
----
 
-### Goals: 
+## Goals: 
 - Understand how swerve works
 - Teleop Interactions for existing swerve
 - Reading odometry
 - Reset/Initialize odometry 
 
-Requirements
+## Success Criteria
 - Use an existing Swerve configuration
 - 

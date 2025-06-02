@@ -1,4 +1,5 @@
-Set up a mock project  with a nominal, standard code structure
+## Success Criteria
+- [ ] Set up a mock project  with a nominal, standard code structure
 
 
 Project should have a subsystem that

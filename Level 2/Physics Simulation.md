@@ -1,4 +1,4 @@
-
+## Success Criteria
 - Create a standard Arm or Elevator
 - Model the system as a Mechanism2D
 - Create a Physics model class

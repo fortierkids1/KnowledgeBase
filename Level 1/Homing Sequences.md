@@ -2,11 +2,11 @@
 [[SuperStructure Arm]]
 [[SuperStructure Elevator]]
 And will generally be done after most requirements for those systems
-#### Completion Requirements
-- Home a subsystem using a Command-oriented method
-- Home a subsystem using a state-based method
-- Make a non-homed system refuse non-homing command operations
-- Document the "expected startup configuration" of your robot, and how the homing sequence resolves potential issues.
+## Success Criteria
+- [ ] Home a subsystem using a Command-oriented method
+- [ ] Home a subsystem using a state-based method
+- [ ] Make a non-homed system refuse non-homing command operations
+- [ ] Document the "expected startup configuration" of your robot, and how the homing sequence resolves potential issues.
 #### Lesson Plan
 - Configure encoders and other system configurations
 - Construct a Command that homes the system

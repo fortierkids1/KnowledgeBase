@@ -1,6 +1,6 @@
 
-#### Completion Requirements
-- 
+## Success Criteria
+- [ ] 
 
 #### Learning objectives
 - Support command+trigger subsystem interfaces

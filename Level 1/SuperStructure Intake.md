@@ -1,7 +1,3 @@
----
-files:
-  - "[[Superstructure Indexer]]"
----
 
 Requires:
 [[SuperStructure Rollers]]
@@ -15,10 +11,10 @@ Requires as needed:
 [[SuperStructure Elevator]]
 [[SuperStructure Arm]]
 
-#### Completion requirements
-- Create an "over the bumper" intake system
-- Add a controller button to engage the intake process. It must retract when released
-- The button must automatically stop and retract the intake when a game piece is retracted
+## Success Criteria
+- [ ] Create an "over the bumper" intake system
+- [ ] Add a controller button to engage the intake process. It must retract when released
+- [ ] The button must automatically stop and retract the intake when a game piece is retracted
 
 #### Synopsis
 Intake complexity can range from very simple rollers that capture a game piece, to complex actuated systems intertwined with other scoring mechanisms. 
