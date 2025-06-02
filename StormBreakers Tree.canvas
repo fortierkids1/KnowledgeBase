@@ -267,6 +267,42 @@
       },
       "toNode": "c5a6533ece0a8e0c",
       "toSide": "left"
+    },
+    {
+      "fromNode": "8b06beff1d680bba",
+      "fromSide": "right",
+      "id": "604d4be3603bf5e9",
+      "styleAttributes": {
+      },
+      "toNode": "127eaaa1140d4b12",
+      "toSide": "left"
+    },
+    {
+      "fromNode": "7a464cc02c36a1ae",
+      "fromSide": "right",
+      "id": "ed688d04ba117980",
+      "styleAttributes": {
+      },
+      "toNode": "f5fdc14e32e8e80b",
+      "toSide": "left"
+    },
+    {
+      "fromNode": "741a1d8064446dc4",
+      "fromSide": "right",
+      "id": "673409932995099c",
+      "styleAttributes": {
+      },
+      "toNode": "edd9fb4b82c41c42",
+      "toSide": "left"
+    },
+    {
+      "fromNode": "a8aa39e9a066166b",
+      "fromSide": "right",
+      "id": "a7fb64a1539dafab",
+      "styleAttributes": {
+      },
+      "toNode": "ebf424ba1ca4edff",
+      "toSide": "left"
     }
   ],
   "metadata": {
@@ -294,6 +330,15 @@
       "y": -2400
     },
     {
+      "height": 880,
+      "id": "e85bee8786241ca8",
+      "label": "Special Courses",
+      "type": "group",
+      "width": 4080,
+      "x": -2240,
+      "y": 2160
+    },
+    {
       "height": 4400,
       "id": "b1f70f17f7151b43",
       "label": "Capstone Topics",
@@ -301,132 +346,6 @@
       "width": 720,
       "x": 1920,
       "y": -2400
-    },
-    {
-      "height": 1280,
-      "id": "e85bee8786241ca8",
-      "label": "Special Courses",
-      "type": "group",
-      "width": 1920,
-      "x": -80,
-      "y": 2160
-    },
-    {
-      "file": "Level 1/Basics.md",
-      "height": 400,
-      "id": "f5fdc14e32e8e80b",
-      "type": "file",
-      "width": 400,
-      "x": -2080,
-      "y": -840
-    },
-    {
-      "file": "Level 1/Motor Control.md",
-      "height": 400,
-      "id": "77b0ad903304cd3d",
-      "type": "file",
-      "width": 400,
-      "x": -1200,
-      "y": -1640
-    },
-    {
-      "file": "Level 1/Commands.md",
-      "height": 400,
-      "id": "f739df0f46b49c97",
-      "type": "file",
-      "width": 400,
-      "x": -1200,
-      "y": -840
-    },
-    {
-      "file": "Level 1/Differential Drive.md",
-      "height": 400,
-      "id": "b1044c48fab582a7",
-      "type": "file",
-      "width": 400,
-      "x": 160,
-      "y": -2080
-    },
-    {
-      "file": "Level 1/Auto Differential.md",
-      "height": 400,
-      "id": "f55d4586901cd00f",
-      "type": "file",
-      "width": 400,
-      "x": 1000,
-      "y": -2080
-    },
-    {
-      "file": "Level 1/Gyro Sensing.md",
-      "height": 400,
-      "id": "4a87dce74a833996",
-      "type": "file",
-      "width": 400,
-      "x": 160,
-      "y": 720
-    },
-    {
-      "file": "Level 1/Vision Basics.md",
-      "height": 400,
-      "id": "9a40762c0f7eefa1",
-      "type": "file",
-      "width": 400,
-      "x": 160,
-      "y": 1280
-    },
-    {
-      "file": "Level 1/Gyro Driving.md",
-      "height": 400,
-      "id": "474905cd77ef301a",
-      "type": "file",
-      "width": 400,
-      "x": 2120,
-      "y": 720
-    },
-    {
-      "file": "Level 1/SuperStructure Rollers.md",
-      "height": 400,
-      "id": "c5a6533ece0a8e0c",
-      "type": "file",
-      "width": 400,
-      "x": 1000,
-      "y": -1440
-    },
-    {
-      "file": "Level 1/SuperStructure Elevator.md",
-      "height": 400,
-      "id": "343dddd73632643e",
-      "type": "file",
-      "width": 400,
-      "x": 1000,
-      "y": -960
-    },
-    {
-      "file": "Level 1/FeedForwards.md",
-      "height": 400,
-      "id": "5b6e3d856a2c11c8",
-      "type": "file",
-      "width": 400,
-      "x": 160,
-      "y": -1240
-    },
-    {
-      "file": "Level 1/Vision Assist Driving.md",
-      "height": 400,
-      "id": "26d2b69ebeb77abe",
-      "type": "file",
-      "width": 400,
-      "x": 2120,
-      "y": 1240
-    },
-    {
-      "file": "Level 1/Homing Sequences.md",
-      "height": 400,
-      "id": "05b53d1526ce4835",
-      "type": "file",
-      "width": 400,
-      "x": 160,
-      "y": 2320
     },
     {
       "file": "Level 1/SuperStructure Intake.md",
@@ -438,22 +357,121 @@
       "y": -960
     },
     {
-      "file": "Level 1/State Machines.md",
+      "file": "Level 1/Motor Control.md",
       "height": 400,
-      "id": "7eee36baa0e518a6",
+      "id": "77b0ad903304cd3d",
+      "type": "file",
+      "width": 400,
+      "x": -1320,
+      "y": -1640
+    },
+    {
+      "file": "Level 1/SuperStructure Elevator.md",
+      "height": 400,
+      "id": "343dddd73632643e",
       "type": "file",
       "width": 400,
       "x": 1000,
-      "y": 360
+      "y": -960
     },
     {
-      "file": "Level 1/Sensing Basics.md",
+      "file": "Level 1/Auto Differential.md",
       "height": 400,
-      "id": "8b06beff1d680bba",
+      "id": "f55d4586901cd00f",
+      "type": "file",
+      "width": 400,
+      "x": 1000,
+      "y": -2080
+    },
+    {
+      "file": "Level 1/Differential Drive.md",
+      "height": 400,
+      "id": "b1044c48fab582a7",
       "type": "file",
       "width": 400,
       "x": 160,
-      "y": 160
+      "y": -2080
+    },
+    {
+      "file": "Level 1/FeedForwards.md",
+      "height": 400,
+      "id": "5b6e3d856a2c11c8",
+      "type": "file",
+      "width": 400,
+      "x": 160,
+      "y": -1240
+    },
+    {
+      "file": "Level 0/Coding Basics.canvas",
+      "height": 400,
+      "id": "7a464cc02c36a1ae",
+      "type": "file",
+      "width": 400,
+      "x": -2760,
+      "y": -840
+    },
+    {
+      "file": "Level 1/SuperStructure Rollers.md",
+      "height": 400,
+      "id": "c5a6533ece0a8e0c",
+      "type": "file",
+      "width": 400,
+      "x": 1000,
+      "y": -1440
+    },
+    {
+      "file": "Level 1/Gyro Driving.md",
+      "height": 400,
+      "id": "474905cd77ef301a",
+      "type": "file",
+      "width": 400,
+      "x": 2120,
+      "y": 960
+    },
+    {
+      "file": "Level 1/Limelight Assist Driving.md",
+      "height": 400,
+      "id": "26d2b69ebeb77abe",
+      "type": "file",
+      "width": 400,
+      "x": 2120,
+      "y": 1480
+    },
+    {
+      "file": "Level 1/Encoder Basics.md",
+      "height": 400,
+      "id": "a8aa39e9a066166b",
+      "type": "file",
+      "width": 400,
+      "x": -1320,
+      "y": 360
+    },
+    {
+      "file": "Level 1/Triggers.md",
+      "height": 400,
+      "id": "d385afd6608b95e5",
+      "type": "file",
+      "width": 400,
+      "x": -640,
+      "y": 360
+    },
+    {
+      "file": "Hardware/Absolute Encoders.md",
+      "height": 400,
+      "id": "ebf424ba1ca4edff",
+      "type": "file",
+      "width": 400,
+      "x": -640,
+      "y": 960
+    },
+    {
+      "file": "Level 1/Limelight Basics.md",
+      "height": 400,
+      "id": "9a40762c0f7eefa1",
+      "type": "file",
+      "width": 400,
+      "x": 160,
+      "y": 1480
     },
     {
       "file": "Level 1/SuperStructure Arm.md",
@@ -465,6 +483,78 @@
       "y": -440
     },
     {
+      "file": "Level 1/State Machines.md",
+      "height": 400,
+      "id": "7eee36baa0e518a6",
+      "type": "file",
+      "width": 400,
+      "x": 1000,
+      "y": 120
+    },
+    {
+      "file": "Hardware/LaserCan.md",
+      "height": 400,
+      "id": "127eaaa1140d4b12",
+      "type": "file",
+      "width": 400,
+      "x": 800,
+      "y": 560
+    },
+    {
+      "file": "Git Basics.md",
+      "height": 400,
+      "id": "809496a857f23df6",
+      "type": "file",
+      "width": 400,
+      "x": -1200,
+      "y": 2400
+    },
+    {
+      "file": "Level 1/Homing Sequences.md",
+      "height": 400,
+      "id": "05b53d1526ce4835",
+      "type": "file",
+      "width": 400,
+      "x": 1000,
+      "y": 2400
+    },
+    {
+      "file": "Level 2/NetworkTables.md",
+      "height": 400,
+      "id": "741a1d8064446dc4",
+      "type": "file",
+      "width": 400,
+      "x": -640,
+      "y": 2400
+    },
+    {
+      "file": "Level 1/Basic Telemetry.md",
+      "height": 400,
+      "id": "edd9fb4b82c41c42",
+      "type": "file",
+      "width": 400,
+      "x": -80,
+      "y": 2400
+    },
+    {
+      "file": "Level 1/Robot Code Basics.md",
+      "height": 400,
+      "id": "f5fdc14e32e8e80b",
+      "type": "file",
+      "width": 400,
+      "x": -2080,
+      "y": -840
+    },
+    {
+      "file": "Level 1/Commands.md",
+      "height": 400,
+      "id": "f739df0f46b49c97",
+      "type": "file",
+      "width": 400,
+      "x": -1320,
+      "y": -840
+    },
+    {
       "file": "Level 1/PID.md",
       "height": 400,
       "id": "c6a8fbee833fbd11",
@@ -474,31 +564,22 @@
       "y": -560
     },
     {
-      "file": "NetworkTables.md",
+      "file": "Level 1/Sensing Basics.md",
       "height": 400,
-      "id": "741a1d8064446dc4",
+      "id": "8b06beff1d680bba",
       "type": "file",
       "width": 400,
-      "x": 680,
-      "y": 2320
+      "x": 160,
+      "y": 120
     },
     {
-      "file": "Level 1/Encoder Basics.md",
+      "file": "Level 1/Gyro Sensing.md",
       "height": 400,
-      "id": "a8aa39e9a066166b",
+      "id": "4a87dce74a833996",
       "type": "file",
       "width": 400,
-      "x": -1200,
-      "y": 360
-    },
-    {
-      "file": "Level 1/Triggers.md",
-      "height": 400,
-      "id": "d385afd6608b95e5",
-      "type": "file",
-      "width": 400,
-      "x": -640,
-      "y": 360
+      "x": 160,
+      "y": 960
     }
   ]
 }

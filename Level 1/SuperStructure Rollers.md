@@ -1,3 +1,7 @@
+---
+files:
+  - "[[SuperStructure Flywheel]]"
+---
 
 Requires:
 [[Motor Control]]

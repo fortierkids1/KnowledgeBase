@@ -1,3 +1,7 @@
+---
+files:
+  - "[[PhotonVision Model Training]]"
+---
 #### Goals
 - Add a Object detection pipeline
 - Detect a game piece using color detection

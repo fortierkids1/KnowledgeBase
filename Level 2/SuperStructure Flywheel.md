@@ -1,3 +1,7 @@
+---
+files:
+  - "[[Superstructure Shooter]]"
+---
 Superstructure component that holds a large amount of kinetic energy at a high velocity. Typically paired with shooters.
 
 #### Requirements

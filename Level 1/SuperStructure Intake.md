@@ -1,3 +1,7 @@
+---
+files:
+  - "[[Superstructure Indexer]]"
+---
 
 Requires:
 [[SuperStructure Rollers]]

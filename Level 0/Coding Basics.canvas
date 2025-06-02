@@ -1,0 +1,20 @@
+{
+  "edges": [
+  ],
+  "metadata": {
+    "frontmatter": {
+    },
+    "version": "1.0-1.0"
+  },
+  "nodes": [
+    {
+      "file": "Level 0/Coding Basics.md",
+      "height": 400,
+      "id": "16a782040eef6845",
+      "type": "file",
+      "width": 400,
+      "x": -240,
+      "y": -180
+    }
+  ]
+}

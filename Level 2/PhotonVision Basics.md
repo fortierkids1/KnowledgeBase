@@ -1,3 +1,9 @@
+---
+files:
+  - "[[PhotonVision Odometry]]"
+  - "[[PhotonVision Object Detection]]"
+  - "[[PhotonVision Bringup]]"
+---
 #### Goals
 Interact with the PhotoVision UI and basic code structures
 

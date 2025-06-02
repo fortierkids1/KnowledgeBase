@@ -4,24 +4,22 @@
     "type": "split",
     "children": [
       {
-        "id": "398bda464fb2cfe4",
+        "id": "ee6f712a6f2868bb",
         "type": "tabs",
         "children": [
           {
-            "id": "d3a3a4701792c312",
+            "id": "74b50dd7ae1c3add",
             "type": "leaf",
             "state": {
-              "type": "canvas",
+              "type": "markdown",
               "state": {
-                "file": "Stormbots Tree.canvas",
-                "viewState": {
-                  "x": 853.5948030601273,
-                  "y": -157.77088223966814,
-                  "zoom": -1.5204066364113706
-                }
+                "file": "TODO.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": false
               },
-              "icon": "lucide-layout-dashboard",
-              "title": "Stormbots Tree"
+              "icon": "lucide-file",
+              "title": "TODO"
             }
           }
         ]
@@ -204,6 +202,20 @@
               "icon": "git-pull-request",
               "title": "Source Control"
             }
+          },
+          {
+            "id": "7955ca25753c10b9",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "All properties"
+            }
           }
         ],
         "currentTab": 7
@@ -221,40 +233,48 @@
       "daily-notes:Open today's daily note": false,
       "templates:Insert template": false,
       "command-palette:Open command palette": false,
-      "obsidian-git:Open Git source control": false
+      "obsidian-git:Open Git source control": false,
+      "terminal:Open terminal": false
     }
   },
-  "active": "d3a3a4701792c312",
+  "active": "74b50dd7ae1c3add",
   "lastOpenFiles": [
-    "Superstructure Indexer.md",
-    "Stormbots Tree.canvas",
-    "Inverse Kinematics.md",
-    "Forward Kinematics.md",
-    "Superstructure Shooter.md",
-    "Lookup Tables.md",
-    "System Identification.md",
-    "Progress Tree.canvas",
-    "NetworkTables.md",
-    "SuperStructure Flywheel.md",
-    "Level 1/SuperStructure Elevator.md",
+    "INDEX.md",
+    "assets",
+    "StormBreakers Tree.canvas",
+    "TODO.md",
+    "Git Basics.md",
+    "Hardware/Rev Hardware Client.md",
     "PathPlanning Tools.md",
-    "PhotonVision Bringup.md",
-    "Swerve Odometry.md",
-    "Level 1/Auto Differential.md",
-    "Level 1/Basics.md",
-    "Swerve Motion.md",
-    "Swerve Bringup.md",
-    "PhotonVision Model Training.md",
-    "PhotonVision Object Detection.md",
-    "PhotonVision Odometry.md",
-    "PhotonVision Basics.md",
-    "Swerve Basics.md",
-    "Motion Profiles.md",
-    "Level 2",
-    "Level 1/Dropped+Moved Requirements.md",
+    "Level 1/Basic Telemetry.md",
+    "Field2d.md",
+    "Hardware/Absolute Encoders.md",
+    "Level 2/Code Structuring.md",
+    "Hardware",
+    "Level 2/Threading.md",
+    "Stormbots Tree.canvas",
+    "Level 2/Singletons.md",
+    "Level 1/SuperStructure Intake.md",
+    "Level 1/Sensing Basics.md",
+    "Hardware/LaserCan.md",
     "Pasted image 20250526101531.png",
-    "Level 1/Homing Sequences.md",
-    "Level 1/Commands.md",
+    "Level 0/Coding Basics.md",
+    "Level 1/Encoder Basics.md",
+    "Level 1/Robot Code Basics.md",
+    "Level 0/Coding Basics.canvas",
+    "Level 1/PID.md",
+    "_Templates/{{title}}.md",
+    "Level 1/FeedForwards.md",
+    "Level 2/System Identification.md",
+    "Level 2/Swerve Odometry.md",
+    "Level 2/Physics Simulation.md",
+    "Level 0",
+    "Level 2/Motion Profiles.md",
+    "Level 2/AdvantageKit.md",
+    "TestingTesting/Canva.canvas",
+    "_Templates",
+    "TestingTesting",
+    "Level 2",
     "Level 1"
   ]
 }

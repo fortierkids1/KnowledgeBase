@@ -1,5 +1,5 @@
 Requires:
-[[Basics]]
+[[Robot Code Basics]]
 
 ### Completion requirements
 - Configure a motor encoder
@@ -7,3 +7,9 @@ Requires:
 - Configure encoder range/units through gearing
 - Enable/Disable Soft Limits
 
+
+#### TODO
+- Absolute vs Relative encoders
+- Startup positioning
+- [[Homing]]
+- Slew Rate Limiting

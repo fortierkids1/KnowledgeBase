@@ -1,6 +1,6 @@
 requires 
 [[Auto Differential]]
-[[Vision Basics]]
+[[Limelight Basics]]
 
 #### Completion Requirements
 - Create a button that aims your chassis at a target

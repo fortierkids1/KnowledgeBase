@@ -1,7 +1,7 @@
 
 #### Part of
 - General Debugging
-- [[Vision Basics]]
+- [[Limelight Basics]]
 - [[PID]]
 - [[FeedForwards]]
 - Odometry Tasks

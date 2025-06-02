@@ -1,6 +1,3 @@
-Requires
-[[Encoder Basics]]
-[[Commands]]
 
 #### Completion Requirements
 - 

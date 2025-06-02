@@ -1,4 +1,6 @@
 
+#### Goals: 
+Interface with swerve for autos and non-trivial teleop interactions
 
 - Changing point of rotation in real time
 - Move from Point to Point using a PID
