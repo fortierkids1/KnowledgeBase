@@ -16,3 +16,8 @@ Lastly, our [[Stormbots Tree.canvas|Stormbots Tree]]  builds on experience, and 
 While any particular page will likely prove somewhat useful on it's own, everything will be written with the assumption you're caught up according to these trees. 
 ### Setup
 This notebook is an [Obsidian.md](https://obsidian.md) notebook, and some features of it may not fully work outside of Obsidian.
+
+### Stormbreaker Tree
+![StormBreakers Tree](https://github.com/user-attachments/assets/bf5f9b03-5e07-4e0c-8e29-bf16f6d1a7c1)
+### Stormbot Tree
+![Stormbots Tree](https://github.com/user-attachments/assets/0a43acb5-d197-4e00-8eb5-28ca4c408e23)
