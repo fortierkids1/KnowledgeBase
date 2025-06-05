@@ -2,3 +2,5 @@
 - [ ] Do the thing
 
 
+
+https://robotics-explained.com/inversekinematics
