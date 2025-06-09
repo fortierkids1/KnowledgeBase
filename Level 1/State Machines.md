@@ -9,4 +9,7 @@ Requires:
 
 #### Possible state model
   - States of Unloaded, unaligned, loaded, scoring
-  - 
+
+Consideration: Explain state machines here, as an explanation of how they're used and what they represent
+
+Actually make it a workshop later.

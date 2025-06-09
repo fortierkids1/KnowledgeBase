@@ -5,5 +5,7 @@
   "advanced-canvas",
   "obsidian-git",
   "semantic-canvas",
-  "terminal"
+  "terminal",
+  "inline-callouts",
+  "hk-code-block"
 ]

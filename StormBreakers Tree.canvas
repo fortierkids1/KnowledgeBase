@@ -303,6 +303,15 @@
       },
       "toNode": "ebf424ba1ca4edff",
       "toSide": "left"
+    },
+    {
+      "fromNode": "77b0ad903304cd3d",
+      "fromSide": "right",
+      "id": "79487d041996071e",
+      "styleAttributes": {
+      },
+      "toNode": "c6a8fbee833fbd11",
+      "toSide": "left"
     }
   ],
   "metadata": {
@@ -501,7 +510,7 @@
       "y": 560
     },
     {
-      "file": "Git Basics.md",
+      "file": "Misc/Git Basics.md",
       "height": 400,
       "id": "809496a857f23df6",
       "type": "file",

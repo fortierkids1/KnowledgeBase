@@ -4,6 +4,7 @@
 
 # Missing topics
 
+- Joystick and Input Basics
 - Solenoids + Pnuematics
 - Rev Hardware Client
 - PWM Output
@@ -17,8 +18,21 @@
 - How to identify when to refactor
 - How to read documentation
 
+## Smaller topics
+[[Slew Rate Limiting]]
+[[clamping]]
+[[units]]
+[[mechanical backlash]]
+[[Hard Stops]]
+[[Subsystems]] <-- deep dive outside of the normal bot structure?
+[[Scheduler]] <-- ? 
+Lambda Syntax
+
+
+?? [[Closed Loop Controller]] to explain detailed terms on plants + other control structures? Good place for sqrt(e) and !! discourse.
+
 # Third Party Tooling
 - Rev Hardware Client
 - Pathplanner/choreo
 - GrappleHook
-
+- [[Driver Station]]

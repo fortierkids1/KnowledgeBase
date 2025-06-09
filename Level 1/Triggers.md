@@ -1,5 +1,6 @@
 
 ## Success Criteria
+- [ ] Start a command when the robot is enabled, and ends automatically
 - [ ] 
 
 #### Learning objectives
@@ -11,3 +12,4 @@
 - Starting commands with triggers
 - ending commands with triggers
 - sequencing component
+
