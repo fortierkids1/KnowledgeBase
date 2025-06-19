@@ -4,6 +4,8 @@
 
 # Missing topics
 
+- Radio, mode switching, powershell scripts to handle it
+- PID: Position control vs velocity control
 - Joystick and Input Basics
 - Solenoids + Pnuematics
 - Rev Hardware Client
@@ -19,17 +21,15 @@
 - How to read documentation
 
 ## Smaller topics
-[[Slew Rate Limiting]]
 [[clamping]]
 [[units]]
 [[mechanical backlash]]
 [[Hard Stops]]
-[[Subsystems]] <-- deep dive outside of the normal bot structure?
+
 [[Scheduler]] <-- ? 
-Lambda Syntax
 
+Data Structures: https://www.youtube.com/watch?v=KwBuV7YZido
 
-?? [[Closed Loop Controller]] to explain detailed terms on plants + other control structures? Good place for sqrt(e) and !! discourse.
 
 # Third Party Tooling
 - Rev Hardware Client

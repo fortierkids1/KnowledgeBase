@@ -21,8 +21,7 @@ Write synopsis
 ## Synopsis
 A PID system is a [[Closed Loop Controller]] designed to reduce system error through a simple, efficient mathematical approach.
 
-
-
+You may also appreciate Chapter 1 and 2 from [[controls-engineering-in-frc.pdf]] , which covers PIDs very well. 
 
 ## Deriving a PID Controller from scratch
 

@@ -7,5 +7,7 @@
   "semantic-canvas",
   "terminal",
   "inline-callouts",
-  "hk-code-block"
+  "hk-code-block",
+  "webpage-html-export",
+  "ascii-tree-generator"
 ]
