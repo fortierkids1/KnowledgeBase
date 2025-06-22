@@ -1,9 +1,13 @@
+---
+aliases:
+  - Elevator
+---
 
 Requires:
 [[FeedForwards]]
 [[PID]]
 Reading Resources: 
-[[Homing]]
+[[Homing Sequences|Homing]]
 ## Success Criteria
 - [ ] Create an Elevator subsystem
 - [ ] Set Encoders

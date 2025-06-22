@@ -135,7 +135,7 @@ OK, that's enough nice things. Understanding PIDs requires knowing when they wor
 - PIDs are reactive, not predictive. Note our key term is "error" ; PIDs only act when the system is _already_ not where you want it, and must be far enough away that the generated math can create corrective action.
 - Large setpoint changes break the math. When you change a setpoint, the P output gets really big, really fast, resulting in an output spike. When the PID is acting to correct it, the errorSum for the I term is building up, and cannot decrease until it's on the other side of the setpoint. This almost _always_ results in overshoot, and is a pain to resolve.  
 - Oscillation: PIDs inherently generate oscillations unless tuned perfectly. Sometimes big, sometimes small.
-- D term instability: D terms are notoriously quirky. Large D terms and velocity spikes can result in bouncy, jostly motion towards setpoints, and can result in harsh, very rapid oscillations around the zero, particularly when systems have significant [[mechanical backlash]].
+- D term instability: D terms are notoriously quirky. Large D terms and velocity spikes can result in bouncy, jostly motion towards setpoints, and can result in harsh, very rapid oscillations around the zero, particularly when systems have significant [[Mechanical Backlash]].
 - PIDS vs Hard stops: Most systems have one or more [[Hard Stops]], which present a problem to the I term output. This requires some consideration on how your encoders are initialized, as well as your setpoints.
 - Tuning is either simple....or very time consuming.
 

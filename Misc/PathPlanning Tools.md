@@ -32,6 +32,9 @@ PathPlanning can give you extremely fast, optimized autos, allowing you to squee
 Unlike "path planning" algorithms that attempt to define and predict robot motion, Pure Pursuit simply acts as a reactive path follower, as the name somewhat implies.
 
 https://www.mathworks.com/help/nav/ug/pure-pursuit-controller.html
-![[Pasted image 20250612135241.png]]
+
+https://wiki.purduesigbots.com/software/control-algorithms/basic-pure-pursuit
+
+![[pathfinding-pure-pursuit.png]]
 
 This algorithm is fairly simple and conceptually straightforward, but with some notable limitations. However, the concept is very useful for advancing simpler autos

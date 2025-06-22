@@ -1,3 +1,8 @@
+---
+aliases:
+  - Relative Encoder
+---
+
 Requires:
 [[Robot Code Basics]]
 
@@ -11,5 +16,8 @@ Requires:
 #### TODO
 - Absolute vs Relative encoders
 - Startup positioning
-- [[Homing]]
+- [[Homing Sequences|Homing]]
+
 - Slew Rate Limiting
+
+

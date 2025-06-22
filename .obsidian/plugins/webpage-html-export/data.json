@@ -2,7 +2,7 @@
   "settingsVersion": "1.8.01",
   "makeOfflineCompatible": true,
   "inlineAssets": false,
-  "includePluginCSS": "graphs\nhk-code-block\ninline-callouts\ncalc-craft\nadvanced-canvas",
+  "includePluginCSS": "graphs\ncalc-craft\nadvanced-canvas\ninline-callouts\nhk-code-block",
   "includeSvelteCSS": true,
   "titleProperty": "title",
   "customHeadContentPath": "",
@@ -26,7 +26,7 @@
   "addGraphView": true,
   "addTitle": true,
   "addRSSFeed": true,
-  "siteURL": "",
+  "siteURL": "https://stormbots.github.io/KnowledgeBase/",
   "authorName": "",
   "vaultTitle": "CodeTest",
   "exportPreset": "website",
@@ -43,7 +43,7 @@
   "defaultFileIcon": "lucide//file",
   "defaultFolderIcon": "lucide//folder",
   "defaultMediaIcon": "lucide//file-image",
-  "exportPath": "/home/tekdemo/Downloads/publishtest",
+  "exportPath": "/home/tekdemo/First/Training Notebook/Knowledgebase-gh-pages",
   "filesToExport": [
     [
       "all"

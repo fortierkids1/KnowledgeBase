@@ -1,10 +1,10 @@
 # General Details
-- Standardize "Success Criteria" for proving you've completed a particular skill
+
 - Add Learning Objective to some/all items
 
 # Missing topics
 
-- Radio, mode switching, powershell scripts to handle it
+- Robot Analysis: How to break down hardware into code targets
 - PID: Position control vs velocity control
 - Joystick and Input Basics
 - Solenoids + Pnuematics
@@ -14,7 +14,6 @@
 - LEDs
 - SPI, I2C, other communication busses
 - Custom controllers
-- bang-bang-controllers
 - Git as a lesson plan
 - Code structuring (Stormbreakers)
 - How to identify when to refactor
@@ -23,8 +22,8 @@
 ## Smaller topics
 [[clamping]]
 [[units]]
-[[mechanical backlash]]
-[[Hard Stops]]
+[[Mechanical Backlash]]
+[[Homing Sequences|Hard Stops]] -> Does this need a mech design page?
 
 [[Scheduler]] <-- ? 
 

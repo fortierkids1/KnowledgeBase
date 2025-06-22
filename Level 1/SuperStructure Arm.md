@@ -1,3 +1,7 @@
+---
+aliases:
+  - Arm
+---
 
 Requires:
 [[FeedForwards]]
