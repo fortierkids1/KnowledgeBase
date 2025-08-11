@@ -1,6 +1,6 @@
 {
   "vaultName": "CodeTest",
-  "lastExport": 1751760332022,
+  "lastExport": 1754900224919,
   "pluginVersion": "1.8.01",
   "validBodyClasses": "publish css-settings-manager theme-dark show-inline-title show-ribbon",
   "useCustomHeadContent": false,
@@ -9,10 +9,19 @@
     "assets/2024-Crescendo-Reveal.mkv",
     "assets/backlash-arm-deviation.png",
     "assets/bolt alignment marks.png",
+    "assets/Circle_cos_sin.gif",
+    "assets/Digital_Gear_Tooth_Sensor.gif",
     "assets/driverstation.jpg",
+    "assets/encoder-gray-code.png",
     "assets/gear-backlash.gif",
+    "assets/Incremental_directional_encoder.gif",
+    "assets/Incremental_encoder.gif",
     "assets/limit-switch-cam.svg",
+    "assets/moment-of-inertia-equations.png",
+    "assets/Pasted image 20250730235351.png",
     "assets/pathfinding-pure-pursuit.png",
+    "assets/quad-encoder-waveform-output.png",
+    "assets/Quadrature_Gear_Tooth_Sensor.gif",
     "assets/README.md",
     "assets/vidid-radio-wifi-bridge.png.png",
     "Hardware/Absolute Encoders.md",
@@ -69,8 +78,10 @@
     "Level 2/System Identification.md",
     "Misc/clamping.md",
     "Misc/Closed Loop Controller.md",
+    "Misc/Code Patterns.md",
     "Misc/controls-engineering-in-frc.pdf",
     "Misc/Driver Station.md",
+    "Misc/Factor Label.md",
     "Misc/Git Basics.md",
     "Misc/Joysticks.md",
     "Misc/Lambdas.md",
@@ -85,16 +96,15 @@
     "Misc/Threading.md",
     "Misc/Units.md",
     "CONTRIBUTING.md",
-    "Incremental_directional_encoder.gif",
-    "Incremental_encoder.gif",
     "index.md",
+    "Pasted image 20250810105718.png",
     "README.md",
     "Stormbots Tree.canvas",
     "StormBreakers Tree.canvas",
     "TODO.md",
-    "lib/media/incremental_encoder.gif",
-    "lib/media/incremental_directional_encoder.gif",
-    "lib/media/2024-crescendo-reveal.mkv",
+    "Untitled.md",
+    "Untitled 1.md",
+    "lib/media/pasted-image-20250810105718.png",
     "lib/scripts/graph-wasm.wasm",
     "lib/fonts/94f2f163d4b698242fef.otf",
     "lib/fonts/72505e6a122c6acd5471.woff2",
@@ -146,13 +156,27 @@
     "lib/styles/other-plugins.css",
     "lib/styles/global-variable-styles.css",
     "lib/styles/main-styles.css",
+    "lib/media/encoder-gray-code.png",
+    "lib/media/circle_cos_sin.gif",
+    "lib/media/incremental_encoder.gif",
+    "lib/media/digital_gear_tooth_sensor.gif",
+    "lib/media/incremental_directional_encoder.gif",
+    "lib/media/quad-encoder-waveform-output.png",
     "lib/media/limit-switch-cam.svg",
     "lib/media/driverstation.jpg",
+    "lib/media/2024-crescendo-reveal.mkv",
+    "lib/media/moment-of-inertia-equations.png",
     "lib/media/bolt-alignment-marks.png",
     "lib/media/gear-backlash.gif",
     "lib/media/backlash-arm-deviation.png",
     "lib/media/pathfinding-pure-pursuit.png",
-    "lib/media/vidid-radio-wifi-bridge.png.png"
+    "lib/media/vidid-radio-wifi-bridge.png.png",
+    "assets/incremental_encoder.gif",
+    "assets/digital_gear_tooth_sensor.gif",
+    "assets/incremental_directional_encoder.gif",
+    "assets/circle_cos_sin.gif",
+    "pasted-image-20250810105718.png",
+    "assets/2024-crescendo-reveal.mkv"
   ],
   "mainDependencies": [
     "lib/scripts/graph-wasm.wasm",
@@ -209,7 +233,7 @@
   ],
   "fileInfo": {
     "assets/driverstation.jpg": {
-      "modifiedTime": 1751760332022,
+      "modifiedTime": 1754852219280,
       "sourceSize": 83782,
       "exportedPath": "assets/driverstation.jpg",
       "dependencies": []
@@ -227,26 +251,29 @@
       "dependencies": []
     },
     "assets/vidid-radio-wifi-bridge.png.png": {
-      "modifiedTime": 1751760332022,
+      "modifiedTime": 1754852219280,
       "sourceSize": 139352,
       "exportedPath": "assets/vidid-radio-wifi-bridge.png.png",
       "dependencies": []
     },
     "Hardware/Absolute Encoders.md": {
-      "modifiedTime": 1751185712444,
-      "sourceSize": 377,
+      "modifiedTime": 1753994059491,
+      "sourceSize": 521,
       "exportedPath": "hardware/absolute-encoders.html",
-      "dependencies": []
+      "dependencies": [
+        "lib/media/encoder-gray-code.png",
+        "lib/media/circle_cos_sin.gif"
+      ]
     },
     "Hardware/LaserCan.md": {
-      "modifiedTime": 1751185712444,
-      "sourceSize": 216,
+      "modifiedTime": 1754852219280,
+      "sourceSize": 270,
       "exportedPath": "hardware/lasercan.html",
       "dependencies": []
     },
     "Hardware/Rev Hardware Client.md": {
-      "modifiedTime": 1751185712444,
-      "sourceSize": 198,
+      "modifiedTime": 1754852219280,
+      "sourceSize": 2313,
       "exportedPath": "hardware/rev-hardware-client.html",
       "dependencies": []
     },
@@ -263,8 +290,8 @@
       "dependencies": []
     },
     "Level 0/Safety.md": {
-      "modifiedTime": 1751760332022,
-      "sourceSize": 4317,
+      "modifiedTime": 1753994059491,
+      "sourceSize": 5753,
       "exportedPath": "level-0/safety.html",
       "dependencies": []
     },
@@ -281,8 +308,8 @@
       "dependencies": []
     },
     "Level 1/Commands.md": {
-      "modifiedTime": 1751185712444,
-      "sourceSize": 10404,
+      "modifiedTime": 1754852219280,
+      "sourceSize": 12454,
       "exportedPath": "level-1/commands.html",
       "dependencies": []
     },
@@ -293,12 +320,14 @@
       "dependencies": []
     },
     "Level 1/Encoder Basics.md": {
-      "modifiedTime": 1751760332022,
-      "sourceSize": 498,
+      "modifiedTime": 1754852219280,
+      "sourceSize": 15424,
       "exportedPath": "level-1/encoder-basics.html",
       "dependencies": [
         "lib/media/incremental_encoder.gif",
-        "lib/media/incremental_directional_encoder.gif"
+        "lib/media/digital_gear_tooth_sensor.gif",
+        "lib/media/incremental_directional_encoder.gif",
+        "lib/media/quad-encoder-waveform-output.png"
       ]
     },
     "Level 1/FeedForwards.md": {
@@ -320,8 +349,8 @@
       "dependencies": []
     },
     "Level 1/Homing Sequences.md": {
-      "modifiedTime": 1751185712444,
-      "sourceSize": 17125,
+      "modifiedTime": 1754852219280,
+      "sourceSize": 17456,
       "exportedPath": "level-1/homing-sequences.html",
       "dependencies": [
         "lib/media/limit-switch-cam.svg"
@@ -340,8 +369,8 @@
       "dependencies": []
     },
     "Level 1/Motor Control.md": {
-      "modifiedTime": 1751760332022,
-      "sourceSize": 1055,
+      "modifiedTime": 1754852219280,
+      "sourceSize": 4294,
       "exportedPath": "level-1/motor-control.html",
       "dependencies": []
     },
@@ -352,8 +381,8 @@
       "dependencies": []
     },
     "Level 1/Robot Code Basics.md": {
-      "modifiedTime": 1751185712444,
-      "sourceSize": 6657,
+      "modifiedTime": 1753994059491,
+      "sourceSize": 7404,
       "exportedPath": "level-1/robot-code-basics.html",
       "dependencies": [
         "lib/media/driverstation.jpg"
@@ -366,8 +395,8 @@
       "dependencies": []
     },
     "Level 1/State Machines.md": {
-      "modifiedTime": 1751185712444,
-      "sourceSize": 660,
+      "modifiedTime": 1754852219280,
+      "sourceSize": 1008,
       "exportedPath": "level-1/state-machines.html",
       "dependencies": []
     },
@@ -486,10 +515,12 @@
       "dependencies": []
     },
     "Level 2/Physics Simulation.md": {
-      "modifiedTime": 1750312896020,
-      "sourceSize": 242,
+      "modifiedTime": 1753994059491,
+      "sourceSize": 387,
       "exportedPath": "level-2/physics-simulation.html",
-      "dependencies": []
+      "dependencies": [
+        "lib/media/moment-of-inertia-equations.png"
+      ]
     },
     "Level 2/Singletons.md": {
       "modifiedTime": 1751185712444,
@@ -546,8 +577,8 @@
       "dependencies": []
     },
     "Misc/Closed Loop Controller.md": {
-      "modifiedTime": 1751760332022,
-      "sourceSize": 5577,
+      "modifiedTime": 1753994059491,
+      "sourceSize": 5624,
       "exportedPath": "misc/closed-loop-controller.html",
       "dependencies": []
     },
@@ -566,10 +597,12 @@
       ]
     },
     "Misc/Git Basics.md": {
-      "modifiedTime": 1750621414848,
-      "sourceSize": 10597,
+      "modifiedTime": 1754900224919,
+      "sourceSize": 29553,
       "exportedPath": "misc/git-basics.html",
-      "dependencies": []
+      "dependencies": [
+        "lib/media/pasted-image-20250810105718.png"
+      ]
     },
     "Misc/Joysticks.md": {
       "modifiedTime": 1751185712444,
@@ -584,8 +617,8 @@
       "dependencies": []
     },
     "Misc/PathPlanning Tools.md": {
-      "modifiedTime": 1751185712444,
-      "sourceSize": 1500,
+      "modifiedTime": 1753994059491,
+      "sourceSize": 1671,
       "exportedPath": "misc/pathplanning-tools.html",
       "dependencies": [
         "lib/media/pathfinding-pure-pursuit.png"
@@ -618,8 +651,8 @@
       "dependencies": []
     },
     "CONTRIBUTING.md": {
-      "modifiedTime": 1750312896020,
-      "sourceSize": 5513,
+      "modifiedTime": 1754852219280,
+      "sourceSize": 9344,
       "exportedPath": "contributing.html",
       "dependencies": []
     },
@@ -638,32 +671,37 @@
       ]
     },
     "StormBreakers Tree.canvas": {
-      "modifiedTime": 1751760332022,
+      "modifiedTime": 1754852219280,
       "sourceSize": 13379,
       "exportedPath": "stormbreakers-tree.html",
       "dependencies": [
+        "assets/incremental_encoder.gif",
+        "assets/digital_gear_tooth_sensor.gif",
+        "assets/incremental_directional_encoder.gif",
+        "assets/quad-encoder-waveform-output.png",
+        "assets/encoder-gray-code.png",
+        "assets/circle_cos_sin.gif",
         "assets/driverstation.jpg",
-        "incremental_encoder.gif",
-        "incremental_directional_encoder.gif",
-        "assets/limit-switch-cam.svg",
         "assets/vidid-radio-wifi-bridge.png.png",
-        "assets/2024-crescendo-reveal.mkv"
+        "pasted-image-20250810105718.png",
+        "assets/2024-crescendo-reveal.mkv",
+        "assets/limit-switch-cam.svg"
       ]
     },
     "TODO.md": {
-      "modifiedTime": 1751760332022,
-      "sourceSize": 1458,
+      "modifiedTime": 1754852219280,
+      "sourceSize": 1612,
       "exportedPath": "todo.html",
       "dependencies": []
     },
     "lib/media/driverstation.jpg": {
-      "modifiedTime": 1751185712444,
+      "modifiedTime": 1753994059491,
       "sourceSize": 83782,
       "exportedPath": "lib/media/driverstation.jpg",
       "dependencies": []
     },
     "lib/media/pathfinding-pure-pursuit.png": {
-      "modifiedTime": 1751185712444,
+      "modifiedTime": 1753994059491,
       "sourceSize": 20259,
       "exportedPath": "lib/media/pathfinding-pure-pursuit.png",
       "dependencies": []
@@ -675,307 +713,307 @@
       "dependencies": []
     },
     "lib/scripts/graph-wasm.wasm": {
-      "modifiedTime": 1751760332022,
+      "modifiedTime": 1754900224919,
       "sourceSize": 23377,
       "exportedPath": "lib/scripts/graph-wasm.wasm",
       "dependencies": []
     },
     "lib/fonts/94f2f163d4b698242fef.otf": {
-      "modifiedTime": 1751760332022,
+      "modifiedTime": 1754900224919,
       "sourceSize": 66800,
       "exportedPath": "lib/fonts/94f2f163d4b698242fef.otf",
       "dependencies": []
     },
     "lib/fonts/72505e6a122c6acd5471.woff2": {
-      "modifiedTime": 1751760332022,
+      "modifiedTime": 1754900224919,
       "sourceSize": 104232,
       "exportedPath": "lib/fonts/72505e6a122c6acd5471.woff2",
       "dependencies": []
     },
     "lib/fonts/2d5198822ab091ce4305.woff2": {
-      "modifiedTime": 1751760332022,
+      "modifiedTime": 1754900224919,
       "sourceSize": 104332,
       "exportedPath": "lib/fonts/2d5198822ab091ce4305.woff2",
       "dependencies": []
     },
     "lib/fonts/c8ba52b05a9ef10f4758.woff2": {
-      "modifiedTime": 1751760332022,
+      "modifiedTime": 1754900224919,
       "sourceSize": 98868,
       "exportedPath": "lib/fonts/c8ba52b05a9ef10f4758.woff2",
       "dependencies": []
     },
     "lib/fonts/cb10ffd7684cd9836a05.woff2": {
-      "modifiedTime": 1751760332022,
+      "modifiedTime": 1754900224919,
       "sourceSize": 106876,
       "exportedPath": "lib/fonts/cb10ffd7684cd9836a05.woff2",
       "dependencies": []
     },
     "lib/fonts/b5f0f109bc88052d4000.woff2": {
-      "modifiedTime": 1751760332022,
+      "modifiedTime": 1754900224919,
       "sourceSize": 105804,
       "exportedPath": "lib/fonts/b5f0f109bc88052d4000.woff2",
       "dependencies": []
     },
     "lib/fonts/cbe0ae49c52c920fd563.woff2": {
-      "modifiedTime": 1751760332022,
+      "modifiedTime": 1754900224919,
       "sourceSize": 106108,
       "exportedPath": "lib/fonts/cbe0ae49c52c920fd563.woff2",
       "dependencies": []
     },
     "lib/fonts/535a6cf662596b3bd6a6.woff2": {
-      "modifiedTime": 1751760332022,
+      "modifiedTime": 1754900224919,
       "sourceSize": 111708,
       "exportedPath": "lib/fonts/535a6cf662596b3bd6a6.woff2",
       "dependencies": []
     },
     "lib/fonts/70cc7ff27245e82ad414.ttf": {
-      "modifiedTime": 1751760332022,
+      "modifiedTime": 1754900224919,
       "sourceSize": 192740,
       "exportedPath": "lib/fonts/70cc7ff27245e82ad414.ttf",
       "dependencies": []
     },
     "lib/fonts/454577c22304619db035.ttf": {
-      "modifiedTime": 1751760332022,
+      "modifiedTime": 1754900224919,
       "sourceSize": 161376,
       "exportedPath": "lib/fonts/454577c22304619db035.ttf",
       "dependencies": []
     },
     "lib/fonts/52ac8f3034507f1d9e53.ttf": {
-      "modifiedTime": 1751760332022,
+      "modifiedTime": 1754900224919,
       "sourceSize": 191568,
       "exportedPath": "lib/fonts/52ac8f3034507f1d9e53.ttf",
       "dependencies": []
     },
     "lib/fonts/05b618077343fbbd92b7.ttf": {
-      "modifiedTime": 1751760332022,
+      "modifiedTime": 1754900224919,
       "sourceSize": 155288,
       "exportedPath": "lib/fonts/05b618077343fbbd92b7.ttf",
       "dependencies": []
     },
     "lib/fonts/4bb6ac751d1c5478ff3a.woff2": {
-      "modifiedTime": 1751760332022,
+      "modifiedTime": 1754900224919,
       "sourceSize": 7876,
       "exportedPath": "lib/fonts/4bb6ac751d1c5478ff3a.woff2",
       "dependencies": []
     },
     "lib/media/6155340132a851f6089e.svg": {
-      "modifiedTime": 1751760332022,
+      "modifiedTime": 1754900224919,
       "sourceSize": 315,
       "exportedPath": "lib/media/6155340132a851f6089e.svg",
       "dependencies": []
     },
     "lib/fonts/mathjax_zero.woff": {
-      "modifiedTime": 1751760332022,
+      "modifiedTime": 1754900224919,
       "sourceSize": 1368,
       "exportedPath": "lib/fonts/mathjax_zero.woff",
       "dependencies": []
     },
     "lib/fonts/mathjax_main-regular.woff": {
-      "modifiedTime": 1751760332022,
+      "modifiedTime": 1754900224919,
       "sourceSize": 34160,
       "exportedPath": "lib/fonts/mathjax_main-regular.woff",
       "dependencies": []
     },
     "lib/fonts/mathjax_main-bold.woff": {
-      "modifiedTime": 1751760332022,
+      "modifiedTime": 1754900224919,
       "sourceSize": 34464,
       "exportedPath": "lib/fonts/mathjax_main-bold.woff",
       "dependencies": []
     },
     "lib/fonts/mathjax_math-italic.woff": {
-      "modifiedTime": 1751760332022,
+      "modifiedTime": 1754900224919,
       "sourceSize": 19360,
       "exportedPath": "lib/fonts/mathjax_math-italic.woff",
       "dependencies": []
     },
     "lib/fonts/mathjax_main-italic.woff": {
-      "modifiedTime": 1751760332022,
+      "modifiedTime": 1754900224919,
       "sourceSize": 20832,
       "exportedPath": "lib/fonts/mathjax_main-italic.woff",
       "dependencies": []
     },
     "lib/fonts/mathjax_math-bolditalic.woff": {
-      "modifiedTime": 1751760332022,
+      "modifiedTime": 1754900224919,
       "sourceSize": 19776,
       "exportedPath": "lib/fonts/mathjax_math-bolditalic.woff",
       "dependencies": []
     },
     "lib/fonts/mathjax_size1-regular.woff": {
-      "modifiedTime": 1751760332022,
+      "modifiedTime": 1754900224919,
       "sourceSize": 5792,
       "exportedPath": "lib/fonts/mathjax_size1-regular.woff",
       "dependencies": []
     },
     "lib/fonts/mathjax_size2-regular.woff": {
-      "modifiedTime": 1751760332022,
+      "modifiedTime": 1754900224919,
       "sourceSize": 5464,
       "exportedPath": "lib/fonts/mathjax_size2-regular.woff",
       "dependencies": []
     },
     "lib/fonts/mathjax_size3-regular.woff": {
-      "modifiedTime": 1751760332022,
+      "modifiedTime": 1754900224919,
       "sourceSize": 3244,
       "exportedPath": "lib/fonts/mathjax_size3-regular.woff",
       "dependencies": []
     },
     "lib/fonts/mathjax_size4-regular.woff": {
-      "modifiedTime": 1751760332022,
+      "modifiedTime": 1754900224919,
       "sourceSize": 5148,
       "exportedPath": "lib/fonts/mathjax_size4-regular.woff",
       "dependencies": []
     },
     "lib/fonts/mathjax_ams-regular.woff": {
-      "modifiedTime": 1751760332022,
+      "modifiedTime": 1754900224919,
       "sourceSize": 40808,
       "exportedPath": "lib/fonts/mathjax_ams-regular.woff",
       "dependencies": []
     },
     "lib/fonts/mathjax_calligraphic-regular.woff": {
-      "modifiedTime": 1751760332022,
+      "modifiedTime": 1754900224919,
       "sourceSize": 9600,
       "exportedPath": "lib/fonts/mathjax_calligraphic-regular.woff",
       "dependencies": []
     },
     "lib/fonts/mathjax_calligraphic-bold.woff": {
-      "modifiedTime": 1751760332022,
+      "modifiedTime": 1754900224919,
       "sourceSize": 9908,
       "exportedPath": "lib/fonts/mathjax_calligraphic-bold.woff",
       "dependencies": []
     },
     "lib/fonts/mathjax_fraktur-regular.woff": {
-      "modifiedTime": 1751760332022,
+      "modifiedTime": 1754900224919,
       "sourceSize": 21480,
       "exportedPath": "lib/fonts/mathjax_fraktur-regular.woff",
       "dependencies": []
     },
     "lib/fonts/mathjax_fraktur-bold.woff": {
-      "modifiedTime": 1751760332022,
+      "modifiedTime": 1754900224919,
       "sourceSize": 22340,
       "exportedPath": "lib/fonts/mathjax_fraktur-bold.woff",
       "dependencies": []
     },
     "lib/fonts/mathjax_sansserif-regular.woff": {
-      "modifiedTime": 1751760332022,
+      "modifiedTime": 1754900224919,
       "sourceSize": 12660,
       "exportedPath": "lib/fonts/mathjax_sansserif-regular.woff",
       "dependencies": []
     },
     "lib/fonts/mathjax_sansserif-bold.woff": {
-      "modifiedTime": 1751760332022,
+      "modifiedTime": 1754900224919,
       "sourceSize": 15944,
       "exportedPath": "lib/fonts/mathjax_sansserif-bold.woff",
       "dependencies": []
     },
     "lib/fonts/mathjax_sansserif-italic.woff": {
-      "modifiedTime": 1751760332022,
+      "modifiedTime": 1754900224919,
       "sourceSize": 14628,
       "exportedPath": "lib/fonts/mathjax_sansserif-italic.woff",
       "dependencies": []
     },
     "lib/fonts/mathjax_script-regular.woff": {
-      "modifiedTime": 1751760332022,
+      "modifiedTime": 1754900224919,
       "sourceSize": 11852,
       "exportedPath": "lib/fonts/mathjax_script-regular.woff",
       "dependencies": []
     },
     "lib/fonts/mathjax_typewriter-regular.woff": {
-      "modifiedTime": 1751760332022,
+      "modifiedTime": 1754900224919,
       "sourceSize": 17604,
       "exportedPath": "lib/fonts/mathjax_typewriter-regular.woff",
       "dependencies": []
     },
     "lib/fonts/mathjax_vector-regular.woff": {
-      "modifiedTime": 1751760332022,
+      "modifiedTime": 1754900224919,
       "sourceSize": 1136,
       "exportedPath": "lib/fonts/mathjax_vector-regular.woff",
       "dependencies": []
     },
     "lib/fonts/mathjax_vector-bold.woff": {
-      "modifiedTime": 1751760332022,
+      "modifiedTime": 1754900224919,
       "sourceSize": 1116,
       "exportedPath": "lib/fonts/mathjax_vector-bold.woff",
       "dependencies": []
     },
     "lib/html/file-tree.html": {
-      "modifiedTime": 1751760332022,
-      "sourceSize": 33326,
+      "modifiedTime": 1754900224919,
+      "sourceSize": 37647,
       "exportedPath": "lib/html/file-tree.html",
       "dependencies": []
     },
     "lib/scripts/webpage.js": {
-      "modifiedTime": 1751760332022,
+      "modifiedTime": 1754900224919,
       "sourceSize": 47290,
       "exportedPath": "lib/scripts/webpage.js",
       "dependencies": []
     },
     "lib/scripts/graph-view.js": {
-      "modifiedTime": 1751760332022,
+      "modifiedTime": 1754900224919,
       "sourceSize": 15519,
       "exportedPath": "lib/scripts/graph-view.js",
       "dependencies": []
     },
     "lib/scripts/graph-wasm.js": {
-      "modifiedTime": 1751760332022,
+      "modifiedTime": 1754900224919,
       "sourceSize": 14021,
       "exportedPath": "lib/scripts/graph-wasm.js",
       "dependencies": []
     },
     "lib/scripts/graph-render-worker.js": {
-      "modifiedTime": 1751760332022,
+      "modifiedTime": 1754900224919,
       "sourceSize": 5179,
       "exportedPath": "lib/scripts/graph-render-worker.js",
       "dependencies": []
     },
     "lib/scripts/tinycolor.js": {
-      "modifiedTime": 1751760332022,
+      "modifiedTime": 1754900224919,
       "sourceSize": 29832,
       "exportedPath": "lib/scripts/tinycolor.js",
       "dependencies": []
     },
     "lib/scripts/pixi.js": {
-      "modifiedTime": 1751760332022,
+      "modifiedTime": 1754900224919,
       "sourceSize": 449509,
       "exportedPath": "lib/scripts/pixi.js",
       "dependencies": []
     },
     "lib/scripts/minisearch.js": {
-      "modifiedTime": 1751760332022,
+      "modifiedTime": 1754900224919,
       "sourceSize": 29422,
       "exportedPath": "lib/scripts/minisearch.js",
       "dependencies": []
     },
     "lib/media/favicon.png": {
-      "modifiedTime": 1751760332022,
+      "modifiedTime": 1754900224919,
       "sourceSize": 1105,
       "exportedPath": "lib/media/favicon.png",
       "dependencies": []
     },
     "lib/scripts/graph-data.js": {
-      "modifiedTime": 1751760332022,
-      "sourceSize": 6488,
+      "modifiedTime": 1754900224919,
+      "sourceSize": 6831,
       "exportedPath": "lib/scripts/graph-data.js",
       "dependencies": []
     },
     "lib/styles/obsidian.css": {
-      "modifiedTime": 1751760332022,
+      "modifiedTime": 1754900224919,
       "sourceSize": 138258,
       "exportedPath": "lib/styles/obsidian.css",
       "dependencies": []
     },
     "lib/styles/other-plugins.css": {
-      "modifiedTime": 1751760332022,
+      "modifiedTime": 1754900224919,
       "sourceSize": 32513,
       "exportedPath": "lib/styles/other-plugins.css",
       "dependencies": []
     },
     "lib/styles/global-variable-styles.css": {
-      "modifiedTime": 1751760332022,
+      "modifiedTime": 1754900224919,
       "sourceSize": 279,
       "exportedPath": "lib/styles/global-variable-styles.css",
       "dependencies": []
     },
     "lib/styles/main-styles.css": {
-      "modifiedTime": 1751760332022,
+      "modifiedTime": 1754900224919,
       "sourceSize": 23130,
       "exportedPath": "lib/styles/main-styles.css",
       "dependencies": []
@@ -987,14 +1025,14 @@
       "dependencies": []
     },
     "assets/limit-switch-cam.svg": {
-      "modifiedTime": 1751760332022,
-      "sourceSize": 4814,
+      "modifiedTime": 1754852219280,
+      "sourceSize": 8367,
       "exportedPath": "assets/limit-switch-cam.svg",
       "dependencies": []
     },
     "lib/media/limit-switch-cam.svg": {
-      "modifiedTime": 1751185712444,
-      "sourceSize": 4814,
+      "modifiedTime": 1754852219280,
+      "sourceSize": 8367,
       "exportedPath": "lib/media/limit-switch-cam.svg",
       "dependencies": []
     },
@@ -1082,59 +1120,185 @@
       "dependencies": []
     },
     "Level 1/Robot Design Analysis.md": {
-      "modifiedTime": 1751760332022,
-      "sourceSize": 9483,
+      "modifiedTime": 1754852219280,
+      "sourceSize": 13112,
       "exportedPath": "level-1/robot-design-analysis.html",
       "dependencies": [
         "lib/media/2024-crescendo-reveal.mkv"
       ]
     },
-    "Incremental_directional_encoder.gif": {
-      "modifiedTime": 1751760332022,
-      "sourceSize": 126668,
-      "exportedPath": "incremental_directional_encoder.gif",
-      "dependencies": []
-    },
-    "Incremental_encoder.gif": {
-      "modifiedTime": 1751760332022,
-      "sourceSize": 4125,
-      "exportedPath": "incremental_encoder.gif",
-      "dependencies": []
-    },
     "lib/media/incremental_encoder.gif": {
-      "modifiedTime": 1751760332022,
+      "modifiedTime": 1754852219280,
       "sourceSize": 4125,
       "exportedPath": "lib/media/incremental_encoder.gif",
       "dependencies": []
     },
     "lib/media/incremental_directional_encoder.gif": {
-      "modifiedTime": 1751760332022,
+      "modifiedTime": 1754852219280,
       "sourceSize": 126668,
       "exportedPath": "lib/media/incremental_directional_encoder.gif",
       "dependencies": []
     },
     "lib/media/2024-crescendo-reveal.mkv": {
-      "modifiedTime": 1751760332022,
+      "modifiedTime": 1754852219280,
       "sourceSize": 57781425,
       "exportedPath": "lib/media/2024-crescendo-reveal.mkv",
       "dependencies": []
     },
-    "incremental_encoder.gif": {
-      "modifiedTime": 1751760332022,
-      "sourceSize": 4125,
-      "exportedPath": "incremental_encoder.gif",
-      "dependencies": []
-    },
-    "incremental_directional_encoder.gif": {
-      "modifiedTime": 1751760332022,
-      "sourceSize": 126668,
-      "exportedPath": "incremental_directional_encoder.gif",
-      "dependencies": []
-    },
     "assets/2024-crescendo-reveal.mkv": {
-      "modifiedTime": 1751760332022,
+      "modifiedTime": 1754852219280,
       "sourceSize": 57781425,
       "exportedPath": "assets/2024-crescendo-reveal.mkv",
+      "dependencies": []
+    },
+    "assets/Circle_cos_sin.gif": {
+      "modifiedTime": 1753994059491,
+      "sourceSize": 529197,
+      "exportedPath": "assets/circle_cos_sin.gif",
+      "dependencies": []
+    },
+    "assets/Digital_Gear_Tooth_Sensor.gif": {
+      "modifiedTime": 1753994059491,
+      "sourceSize": 100243,
+      "exportedPath": "assets/digital_gear_tooth_sensor.gif",
+      "dependencies": []
+    },
+    "assets/encoder-gray-code.png": {
+      "modifiedTime": 1754852219280,
+      "sourceSize": 129024,
+      "exportedPath": "assets/encoder-gray-code.png",
+      "dependencies": []
+    },
+    "assets/Incremental_directional_encoder.gif": {
+      "modifiedTime": 1753994059491,
+      "sourceSize": 126668,
+      "exportedPath": "assets/incremental_directional_encoder.gif",
+      "dependencies": []
+    },
+    "assets/Incremental_encoder.gif": {
+      "modifiedTime": 1753994059491,
+      "sourceSize": 4125,
+      "exportedPath": "assets/incremental_encoder.gif",
+      "dependencies": []
+    },
+    "assets/moment-of-inertia-equations.png": {
+      "modifiedTime": 1753994059491,
+      "sourceSize": 148238,
+      "exportedPath": "assets/moment-of-inertia-equations.png",
+      "dependencies": []
+    },
+    "assets/Pasted image 20250730235351.png": {
+      "modifiedTime": 1753994059491,
+      "sourceSize": 200103,
+      "exportedPath": "assets/pasted-image-20250730235351.png",
+      "dependencies": []
+    },
+    "assets/quad-encoder-waveform-output.png": {
+      "modifiedTime": 1754852219280,
+      "sourceSize": 88108,
+      "exportedPath": "assets/quad-encoder-waveform-output.png",
+      "dependencies": []
+    },
+    "assets/Quadrature_Gear_Tooth_Sensor.gif": {
+      "modifiedTime": 1753994059491,
+      "sourceSize": 90374,
+      "exportedPath": "assets/quadrature_gear_tooth_sensor.gif",
+      "dependencies": []
+    },
+    "Misc/Factor Label.md": {
+      "modifiedTime": 1754852219280,
+      "sourceSize": 3959,
+      "exportedPath": "misc/factor-label.html",
+      "dependencies": []
+    },
+    "lib/media/encoder-gray-code.png": {
+      "modifiedTime": 1753994059491,
+      "sourceSize": 129024,
+      "exportedPath": "lib/media/encoder-gray-code.png",
+      "dependencies": []
+    },
+    "lib/media/circle_cos_sin.gif": {
+      "modifiedTime": 1753994059491,
+      "sourceSize": 529197,
+      "exportedPath": "lib/media/circle_cos_sin.gif",
+      "dependencies": []
+    },
+    "lib/media/digital_gear_tooth_sensor.gif": {
+      "modifiedTime": 1754852219280,
+      "sourceSize": 100243,
+      "exportedPath": "lib/media/digital_gear_tooth_sensor.gif",
+      "dependencies": []
+    },
+    "lib/media/quad-encoder-waveform-output.png": {
+      "modifiedTime": 1754852219280,
+      "sourceSize": 88108,
+      "exportedPath": "lib/media/quad-encoder-waveform-output.png",
+      "dependencies": []
+    },
+    "lib/media/moment-of-inertia-equations.png": {
+      "modifiedTime": 1753994059491,
+      "sourceSize": 148238,
+      "exportedPath": "lib/media/moment-of-inertia-equations.png",
+      "dependencies": []
+    },
+    "Misc/Code Patterns.md": {
+      "modifiedTime": 1754852219280,
+      "sourceSize": 3574,
+      "exportedPath": "misc/code-patterns.html",
+      "dependencies": []
+    },
+    "Pasted image 20250810105718.png": {
+      "modifiedTime": 1754852219280,
+      "sourceSize": 140729,
+      "exportedPath": "pasted-image-20250810105718.png",
+      "dependencies": []
+    },
+    "Untitled.md": {
+      "modifiedTime": 1754852219280,
+      "sourceSize": 0,
+      "exportedPath": "untitled.html",
+      "dependencies": []
+    },
+    "Untitled 1.md": {
+      "modifiedTime": 1754852219280,
+      "sourceSize": 0,
+      "exportedPath": "untitled-1.html",
+      "dependencies": []
+    },
+    "lib/media/pasted-image-20250810105718.png": {
+      "modifiedTime": 1754900224919,
+      "sourceSize": 140729,
+      "exportedPath": "lib/media/pasted-image-20250810105718.png",
+      "dependencies": []
+    },
+    "assets/incremental_encoder.gif": {
+      "modifiedTime": 1754852219280,
+      "sourceSize": 4125,
+      "exportedPath": "assets/incremental_encoder.gif",
+      "dependencies": []
+    },
+    "assets/digital_gear_tooth_sensor.gif": {
+      "modifiedTime": 1754852219280,
+      "sourceSize": 100243,
+      "exportedPath": "assets/digital_gear_tooth_sensor.gif",
+      "dependencies": []
+    },
+    "assets/incremental_directional_encoder.gif": {
+      "modifiedTime": 1754852219280,
+      "sourceSize": 126668,
+      "exportedPath": "assets/incremental_directional_encoder.gif",
+      "dependencies": []
+    },
+    "assets/circle_cos_sin.gif": {
+      "modifiedTime": 1754852219280,
+      "sourceSize": 529197,
+      "exportedPath": "assets/circle_cos_sin.gif",
+      "dependencies": []
+    },
+    "pasted-image-20250810105718.png": {
+      "modifiedTime": 1754852219280,
+      "sourceSize": 140729,
+      "exportedPath": "pasted-image-20250810105718.png",
       "dependencies": []
     }
   }
