@@ -1,3 +1,8 @@
+---
+tags:
+  - stub
+---
+
 Requires:
 [[Commands]]
 [[Motor Control]]

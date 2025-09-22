@@ -4,7 +4,18 @@
 
 # Missing topics
 
-- Robot Analysis: How to break down hardware into code targets
+[[System Tuning]] -> Cover real world tuning, pull from PID
+
+[[Subsystem Lighting]]
+
+[[Mechanism2d]]
+[[Driver Station]] + Controllers
+[[Lambdas]]  + Suppliers
+
+- Training:
+	- Deploying code
+- public/private fields and methods
+- Code planning/bringup stubs, and interfaces.
 - PID: Position control vs velocity control
 - Joystick and Input Basics
 - Solenoids + Pnuematics
@@ -14,14 +25,22 @@
 - LEDs
 - SPI, I2C, other communication busses
 - Custom controllers
-- Git as a lesson plan
 - Code structuring (Stormbreakers)
-- How to identify when to refactor
 - How to read documentation
+- Conventions: Use of Units
+- Telemetry, elastic, printing to terminal
+- Sensor Pairing? Advanced: Information/state transfer (break beam -> indexer position) [[Sensing Basics]]?
+
+## Relocate
+- Threading
+- Old docs
+
+
 
 ## Smaller topics
+[[Encoder Basics#Soft Limits]] - Dependency jank due to need of motor control
 [[clamping]]
-[[units]]
+[[Units]]
 [[Mechanical Backlash]]
 [[Homing Sequences|Hard Stops]] -> Does this need a mech design page?
 
@@ -30,8 +49,28 @@
 Data Structures: https://www.youtube.com/watch?v=KwBuV7YZido
 
 
+
+
 # Third Party Tooling
 - Rev Hardware Client
 - Pathplanner/choreo
 - GrappleHook
 - [[Driver Station]]
+- YAGSL Mechanisms Library https://www.chiefdelphi.com/t/beta-frc-mechanisms-library-elevators-arms-turrets-w-sim-telemetry-built-in/503589
+- another mechanism lib https://www.chiefdelphi.com/t/introducing-excalib-a-mechanism-motor-wrappers-and-utilities-wpilibj-command-library/503814
+
+
+
+
+# Stub Articles
+```query
+#stub 
+```
+
+```query 
+#todo 
+```
+
+## Other Resources to reference
+https://github.com/HighlanderRobotics/Highlanders-Training
+

@@ -53,6 +53,12 @@ like $kV$, $kA$ is typically only known when you're working with [[Motion Profil
 
 Putting this all together, it's helpful to de-mystify the math happening behind the scenes.
 
+The short form is just a re-clarification of the terms and their units
+$kG$: Output to overcome gravity ($output$)
+$kS$: Output to overcome static friction ($output$)
+$kV$: Output per unit of target velocity ($output/velocity$)
+$kA$: Output per unit of target acceleration ($output/(velocity^2)$)
+
 A roller system will often simply be 
 $$output = kS(signOf(velocity)) + kV*velocity + kA*\Delta velocity$$
 If you don't have a motion profile, kA will simply be zero, and and kS might also be negligible unless you plan to operate at very low RPM.
@@ -151,6 +157,12 @@ ExampleSystem extends SubsystemBase(){
 ```
 
 
+
+> [!TIP] 2026 update?
+> Rev released a new FeedForward config API that might allow advanced feed-forwards to be run directly on controller. Look into it and add examples!
+> https://codedocs.revrobotics.com/java/com/revrobotics/spark/config/feedforwardconfig
+
+
 ## Finding Feed-Forward Gains
 
 
@@ -196,6 +208,9 @@ The other option is to tune by hand; This is not especially challenging, and mos
 - Increase profile constraints and and repeat until system performance is attained. Starting small and slow prevents damage to the mechanics of your system.
 
 This process benefits from a relatively low P gain, which helps keep the system stable. Once your system is tuned, you'll probably want a relatively high P gain, now that you can assert the feed-forward is keeping your error close to zero. 
+
+
+
 
 
 

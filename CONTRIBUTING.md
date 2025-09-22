@@ -110,3 +110,79 @@ https://mermaid.live/edit
 If you forget how to set up some syntax detail, just select some text, and hit CTRL+P to open the command bar. Enter whatever it is you're after, and obsidian will help you out. 
 
 When all else fails, just write it! We can always tidy up later. 
+
+
+## Structuring Code Examples
+
+#### Beginner Examples
+
+For early learning plans, "where to put code" is a notable struggle for students. To facilitate getting things in the right place, a document should always provide context in the form of 
+- The file being referenced 
+- The class being referenced
+- The method you're working in
+- a comment indicating nearby code, or code omitted within the relevant code block.
+This will help new coders navigate to the right place. 
+New coders will have a tendency to copy and paste chunks of code, so indicating that you expect code to be present but isn't relevant will help curb copy->paste tendencies without forcing every example to be a complete, functional file.
+
+For example, if adding a method, this should be sufficient
+```java
+//ExampleSubsystem.java
+public class ExampleSubsystem extends SubsystemBase(){
+	// ... other code here ...
+	
+	public Command doAFlip(){
+		return Commands.idle(this);
+	}
+}
+```
+
+If you're working within existing commands like a constructor, it's helpful to reference the example code. This helps indicate if the new code should go _before_ or _after_ existing stuff, which often makes a difference, depending on what you're looking to do.
+```java
+//ExampleSubsystem.java
+public class ExampleSubsystem extends SubsystemBase(){
+	SparkMax motor = new SparkMax(10,kBrushless);
+	// ... other code here ...
+	public ExampleSubsystem(){
+		var config = new SparkBaseConfig();
+		//Change the config file as needed here
+		motor.config(config);
+		// ... other code here ...
+	}
+}
+```
+
+Whenever possible, try to make sure early examples *would* compile if copy-pasted into files, assuming the "other code" hints are given proper attention.
+
+Early, generic code examples should aim to utilize ExampleSubsystem as the default code container, and in particular ExampleSubsystem's Periodic function to generate simple code output and execution. This allows many code to run in a stock Command Robot template with no additional configuration, while avoiding teaching bad habits such as working inside Robot.java, or complex command/defaults to make code run in RobotContainer.java.
+
+#### Advanced Concepts
+
+Once students should be expected to have gone through [[Commands]] and [[Subsystems]] , examples can use free-form custom classes and files to suit the topic. In general, they should aim to either
+- Build off the previous concepts/code examples with similar, simple naming schemes
+- Work from a blank slate in a new file
+in a manner that provides the clearest examples with least amount of duplication. Advanced users will not be copy-pasting large chunks of code, allowing a bit more freedom to streamline unnecessary code
+
+For more experienced concepts, referencing existing, irrelevant code  is less critical, since students will understand the placement, and are less likely to copy-paste over existing code. However, relevant code should still be referenced, but you can simplify much of it with a comment.
+
+For example, an example adding a  "setPosition" function that references an existing motor might look this, referencing only the objects needed, even though the file likely has a lot more going on. Similarly, the filenames for advanced users can be inferred by the base class name, unless you're doing something unusual.
+
+```java
+public class ExampleSubsystem extends SubsystemBase(){
+	SparkMax motor = // exists
+
+	public ExampleSubsystem(){
+		var config = /* Existing config stuff*/
+		config.getClosedLoopController().p(1);
+		motor.config(config);
+	}
+
+	Command setPosition(double setpoint){
+		run(()->motor.setReference(setpoint,kPosition));
+	}
+}
+```
+
+
+This should facilitate students building a single project from start to finish, and including increasingly more complex code snippets and concepts without having to write them all in every example.
+
+

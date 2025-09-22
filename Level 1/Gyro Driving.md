@@ -1,3 +1,7 @@
+---
+tags:
+  - stub
+---
 
 Requires 
 [[Auto Differential]]

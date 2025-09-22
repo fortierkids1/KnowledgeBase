@@ -3,7 +3,7 @@ aliases:
   - Homing
 ---
 
-Homing is the process of recovering physical system positions on relative encoders.
+Homing is the process of recovering physical system positions, typically using relative encoders.
 
 #### Part of: 
 [[SuperStructure Arm]]
@@ -96,7 +96,7 @@ Limit switches are a tried and true method in many systems. You simply place a p
 > Limit switches require notable care on the design and wiring to ensure that the system reliably contacts the switch in the manner needed.
 
 The apparent simplicity of a limit switch hides several design and mounting considerations. In an FRC environment, some of these are surprisingly tricky.
-- A limit switch _must not_ act as an end stop. Simply put, they're not robust enough and will fail, leaving your system in an uncontrolled, downward driving stage. 
+- A limit switch _must not_ act as an end stop. Simply put, they're not robust enough to sustain impacts and will fail, leaving your system in an uncontrolled, downward driving stage. 
 - A limit switch _must_ be triggered at the end of travel; Otherwise, it's possible to start _below_ the switch. 
 - A switch must have a consistent "throw" ; It should trip at the same location every time. Certain triggering mechanisms and arms can cause problems.
 - If the hard stop moves or is adjusted, the switch will be exposed for damage, and/or result in other issues
@@ -105,7 +105,7 @@ Because of these challenges, limit switches in FRC tend to be used in niche appl
 
 Switches also come in multiple types, which can impact the ease of design. In many cases, a magnetic hall effect sensor is optimal, as it's non-contact, and easy to mount alongside a hard stop to prevent overshoot.
 
-Most 3D printers use limit switches, allowing for very good demonstrations of the routines needed.
+Most 3D printers use limit switches, allowing for very good demonstrations of the routines needed to make these work with high precision.
 
 For designs where hard stops are not possible, consider a Roller Arm Limit Switch and run it against a CAM. This configuration allows the switch to be mounted out of the line of motion, but with an extended throw. 
 
@@ -114,7 +114,7 @@ For designs where hard stops are not possible, consider a Roller Arm Limit Switc
 
 ### Index Switches
 
-Index switches work similarly to Limit Switches, but the expectation is that they're in the middle of the travel, rather than above. This makes them unsuitable as a solo homing method, but useful as an auxiliary one. 
+Index switches work similarly to Limit Switches, but the expectation is that they're in the middle of the travel, rather than at the end of travel. This makes them unsuitable as a solo homing method, but useful as an auxiliary one. 
 
 Index switches are best used in situations where other homing routines would simply take too long, but you have sufficient knowledge to know that it _should_ hit the switch in most cases. 
 This can often come up in [[SuperStructure Elevator|Elevator]] systems where the robot starting configuration puts the carriage far away from the nearest limit. 
@@ -123,7 +123,7 @@ In this configuration, use of a non-contact switch is generally preferred, altho
 
 ### Absolute Position Sensors
 
-In some cases we can use absolute sensors such as [[Absolute Encoders]] or [[LaserCan|Range Finders]] to directly detect information about the robot state, and feed that information into our encoders. 
+In some cases we can use absolute sensors such as [[Absolute Encoders]], [[Gyro Sensing|Gyros]], or [[LaserCan|Range Finders]] to directly detect information about the robot state, and feed that information into our other sensors. 
 
 This method works very effectively on [[SuperStructure Arm|Arm]] based systems; [[Absolute Encoders]] on an output shaft provide a 1:1 system state for almost all mechanical designs. 
 
@@ -131,9 +131,27 @@ Elevator systems can also use these routines using [[LaserCan||Range Finders]] ,
 
 Clever designers can also use [[Absolute Encoders]] for elevators in a few ways 
 - You can simply assert a position within a narrow range of travel
-- You can gear the encoder to have a lower resolution across the full range of travel
-- You can use multiple encoders to combine the above global + local states
-- use of the [[Absolute Encoders|Chinese Remainder Theorem]] to get position from two differently geared encoders
+- You can gear the encoder to have a lower resolution across the full range of travel. Many encoders have enough precision that this is perfectly fine.
+- You can use multiple absolute encoders to combine the above global + local states
+
+
+For a typical system using Spark motors and Through Bore Encoders, it looks like this:
+
+```java
+public class ExampleSubsystem{
+	SparkMax motor = new Sparkmax(/*......*/);
+	ExampleSubsystem(){
+		SparkBaseConfig config = new SparkMaxConfig();
+		//Configure the motor's encoders to use the same real-world unit
+		armMotor.configure(config,/***/);
+		
+		//We can now compare the values directly, and initialize the 
+		//Relative encoder state from the absolute sensor.
+		var angle = motor.getAbsoluteEncoder.getPosition();
+		motor.getEncoder.setPosition(angle);
+	}
+}
+```
 
 
 ### Time based homing
@@ -146,7 +164,7 @@ This method is very situational. It should only be used in situations where you 
 
 In some cases you might be able to find the system home state (using gravity or another method), but find [[Mechanical Backlash|backlash]] is preventing you from hitting desired consistency and reliability.
 
-This is most likely to be needed on [[SuperStructure Arm|Arm]] systems, particularly actuated [[Superstructure Shooter|Shooter]] systems.
+This is most likely to be needed on [[SuperStructure Arm|Arm]] systems, particularly actuated [[Superstructure Shooter|Shooter]] systems. This is akin to a "calibration" as much as it is homing.
 
 In these cases, homing routines will tend to find the absolute position by driving downward toward a hard stop. In doing so, this applies drive train tension toward the down direction. However, during normal operation, the drive train tension will be upward, against gravity. 
 
@@ -163,7 +181,7 @@ For an implementation of this, see [CalibrateShooter](https://github.com/stormbo
 Nominally, homing a robot is done once at first run, and from there you know the position. However, sometimes the robot has known mechanical faults that cause routine loss of positioning from the encoder's perspective. However, other sensors may be able to provide insight, and help correct the error. 
 This kind of error most typically shows up in belt or chain skipping. 
 
-To overcome these issues, what you can do is run some condition checking alongside your normal runtime code, trying to identify signs that the system is in a potentially incorrect state, and correcting sensor information. 
+To overcome these issues, what you can do is run some condition checking alongside your normal runtime code, trying to identify signs that the system is in a potentially incorrect state, and correcting sensor information.
 
 This is best demonstrated with examples: 
 - If you home a elevator to the bottom of a drive at position 0, you should never see encoder values be negative. As such, seeing a "negative" encoder value tells you that the mechanism has hit end of travel.
@@ -213,11 +231,11 @@ This state is easy: Your system can now assert the known position, clear your Ho
 ## Example Implementations
 
 ### Command Based
-Conveniently, the whole homing process actually fits very neatly into the [[Command]] model, making for a very simple implementation
-- `init()` represents the unhomed state
+Conveniently, the whole homing process actually fits very neatly into the [[Commands]] model, making for a very simple implementation
+- `init()` represents the unhomed state and reset
 - `execute()` represents the homing state
 - `isFinished()` checks the system state and indicates completion
-- `end(cancelled)` can handle the homed tasks
+- `end(cancelled)` can handle the homed procedure
 
 ```java
 class ExampleSubsystem extends SubsystemBase(){
@@ -234,7 +252,7 @@ class ExampleSubsystem extends SubsystemBase(){
 				motor.getAppliedCurrent()
 			};
 			()->{motor.set(-0.5);};
-			()->{return motor.getAppliedCurrent()>4}; //isFinished
+			()->{return motor.getAppliedCurrent()>3}; //isFinished
 			(cancelled)->{
 				if(cancelled==false){
 					homed = true;
@@ -242,16 +260,19 @@ class ExampleSubsystem extends SubsystemBase(){
 				}
 			};
 		)
+		//Optionally: prevent other commands from stopping this one
+		//This is a *very* powerful option, and one that
+		//Should only be used when you know it's what you want.
+		.withInterruptBehavior(kCancelIncoming)
 		// Failsafe in case something goes wrong,since otherwise you 
 		// can't exit this command by button mashing
-		.withTimeout(5)
-		//Prevent other commands from stopping this one
-		.withInterruptBehavior(kCancelIncoming);
-	}
+		.withTimeout(5);
+		}
 } 
 ```
 
 This command can then be inserted at the start of autonomous, ensuring that your bot is always homed during a match. It also can be easily mapped to a button, allowing for mid-match recovery.
+
 
 For situations where you won't be running an auto (typical testing and practice field scenarios), the use of [[Triggers]] can facilitate automatic checking and scheduling
 ```java
@@ -277,3 +298,4 @@ class ExampleSubsystem extends SubsystemBase(){
 	}
 /* ... */
 ```
+

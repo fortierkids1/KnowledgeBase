@@ -1,3 +1,10 @@
+---
+tags:
+  - stub
+aliases:
+  - Rollers
+  - Roller
+---
 
 Requires:
 [[Motor Control]]

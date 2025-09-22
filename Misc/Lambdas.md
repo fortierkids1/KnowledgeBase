@@ -83,9 +83,7 @@ DoubleSupplier // A function that accepts nothing, and returns a double
 BooleanConsumer // Function that takes a boolean and returns nothing.
 ```
 
-That's about it! These helper classes 
-
-
+That's about it! These helper classes are only necessary as type indicators for function arguments. The functions you're passing in will just be normal functions.
 
 
 ## More complete example
@@ -123,7 +121,7 @@ new FunctionalCommand(
 
 Hooray! This works, and leads us to a useful confirmation: Like any other function, you can access any variable in the current scope in which it was created.
 
-When we combine this feature with [[Subsystems]] and the Factory pattern for commands, we can have "function scope" variables to serve as data between the components of the command. 
+When we combine this feature with [[Subsystems]] and the Factory pattern for commands, we can have variables with a "function scope" serve as data between the components of the command. 
 
 This scope access also is a large value add when creating [[Commands]] inside of [[Subsystems]]. We can just access useful constants, motors, encoders, and helper functions without any extra setup.
 
@@ -145,3 +143,18 @@ Double myFunction(DoubleSupplier left, DoubleSupplier right){
 This command doesn't do much in practice, but demonstrates the process. A more utilitarian practice is something like a "Drive" command on the robot; Sure, you could take a Joystick object, and then read from that. But, what if you want to feed it values from a Vision process? Vision doesn't have a joystick, so, you need a new entire Drive command for it. If you want to use a rangefinder? Another whole  drive command.
 
 Instead, creating a DoubleSupplier interface means your drive command can get values from arbitrary functions, making them much more generic and helpful.
+
+
+## Lambdas + Constant Outputs
+
+The other important detail: What if we're trying to run the above `myFunction`, but we just want a constant value on one side? Well, lambdas work here too. We just create a new, lambda that returns a value. Just because it's boring, doesn't mean  it's not helpful!
+```java
+//Somewhere in our code where we want to do a check
+myFunction(()->0.1,joystick::getLeftX)
+```
+
+One supplier just evaluates to 0.1 every time it's ran. The other side does something on the human input side. In a realistic sense, this could make some intake idle at a low value to hold a game piece, with a human operator maybe running it with more power to do something useful.
+
+The flexibility of accepting functions vs simply doubles is significant, and will streamline your code development for many advanced features.
+
+

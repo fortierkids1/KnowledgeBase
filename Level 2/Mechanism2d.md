@@ -1,3 +1,8 @@
+---
+tags:
+  - stub
+---
+
 ## Success Criteria
 - [ ] Create a basic Arm or Elevator motion system
 - [ ] Create a Mechanism 2D representation of the control angle

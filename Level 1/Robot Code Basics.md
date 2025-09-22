@@ -40,7 +40,7 @@ When you open a new robot project you'll see a lot of files we'll interact with.
 
 For typical projects, you'll be spending the most time in `RobotContainer`, `subsystems`, and occasionally `commands`. 
 
-For some early practice projects, or special use cases you might also interact with `Robot.java` a bit.
+For some early practice projects, or special use cases you might also interact with `Robot.java`,  `ExampleCommand.java`, or `ExampleSubsystem.java` a bit.
 
 ## Third Party Libraries
 
@@ -60,7 +60,7 @@ The hardest part of getting started with robots is figuring out _where_ your rob
 
 #### Robot.java : A microcausm of the complete robot
 
-`Robot.java` is a very powerful file, and it's possible to write your _entire_ robot in just this one file! For reasons we'll get into, we _do not_ want to do this. However, the setup of it does a good job explaining how a robot works. Let's look at the structure of this file for now
+`Robot.java` is a very powerful file, and it's possible to write your _entire_ robot in just this one file! For reasons we'll get into later, we _do not_ want to do this. However, the setup of it does a good job explaining how a robot works. Let's look at the structure of this file for now
 
 ```java
 public class Robot extends TimedRobot {
@@ -116,7 +116,8 @@ Whenever any new "mode" starts, we first run the Init function once, and _then_ 
 We generally won't add much code in Robot.java, but understanding how it works is a helpful starting point to understanding the robot itself. 
 
 #### RobotContainer.java
-As mentioned above, the "Robot Container" is created as the robot boots up. When you create a new project, 
+As mentioned above, the "Robot Container" is created when you create a new project, and one of the first things that gets executed when running robot code. 
+
 This file contains a small number of functions and examples to help you organized. 
 
 ```java
@@ -142,15 +143,91 @@ This file introduces a couple new concepts
 The use of Commands and Subsystems goes a *long* way to managing complex robot interactions across many subsystems. However, they're certainly tricky concepts to get right off the bat. 
 
 #### Constants.java
-Sometimes, you'll have oddball constants that you need to access in multiple places in your code. Constants.java advertises itself as a place to sort and organize files. 
+Sometimes, you'll have oddball constants that you need to access in multiple places in your code. Constants.java advertises itself as a place to sort and organize these constants. 
 
-Without getting too into the "why", in general you should minimize use of Constants.java; It leads to several problems as your robot complexity increases. 
+Without getting too into the "why", in general you should minimize use of Constants.java; It often leads to several problems as your robot complexity increases. 
 
-Instead, simply follow good practices for scope encapsulation, and keep the constants at the lowest necessary scope. 
+Instead, keep your constants as close to where they're used as possible, and move them up through the robot hierarchy as necessary. This is known as  "scope management" or "encapsulation".
 
-- If a value is used once, just use a value. This includes a lot of setup values like PID tuning values.
+- If a value is used once, just use the value directly. This covers a lot of setup values like PID tuning values.
 - If your value is used repeatedly inside a subsystem, make it a private constant in that subsystem. This is common for conversion factors, min/max values, or paired output values
 - If a constant is strongly associated with a subsystem, but needs to be referenced elsewhere, make it a public constant in that subsystem.
-- Lastly, if something is not associated with a subsystem, and used repeatedly across multiple subsystems, constants.java is the place. 
+- Lastly, if something is not associated with a subsystem, and used repeatedly across multiple subsystems, Constants.java is the place. 
 
-If you find yourself depending on a lot of constants, you might need to consider [[Refactoring]] your code a bit to streamline things.  Note that Stormbots code has almost nothing in here! 
+If you find yourself depending on a lot of constants, you might need to consider [[Refactoring]] your code a bit to streamline things. Note that Stormbots code generally has almost nothing in here! 
+
+
+#### ExampleSubsystem.java
+
+The ExampleSubsystem.java file is a preconfigured, blank [[Subsystems|Subsystem]]. We'll explore Subsystems in depth later.
+
+By default, this class is created, and the `periodic()` function it contains will run every code loop. This makes it a great place to put a lot of starter code with minimal setup and fuss.
+
+#### ExampleCommand.java
+
+This is a standard, blank [[Commands|Command]] . By itself, this file is not too useful. However, the fact that it exists allows useful joystick interactions to be set up in `RobotContainer.java`
+
+
+## Understanding The Examples
+
+The code examples provided in early code samples will be built using ExampleSubsystem and ExampleCommand, built into every new robot project. They should work as expected without a deeper understanding of Command based robots while you get your footing, and enabling you to migrate to Command based robots once you get there. If an example doesn't talk about Command based stuff, you probably don't have to worry about it!
+
+## Creating new files
+
+While you *can* just create new files in a "normal" way, it's easy to accidentally miss code details that make things harder for yourself. 
+
+Instead, WPILib+VSCode has a built in way to do this. Simply right click the appropriate folder, and find the "Create new class/command" option.
+
+![[creating-new-command-1.png]]
+
+This will present you with a list of common FRC classes. The typical ones you'd use are Command and Subsystem.
+
+![[creating-new-command-2.png]]
+
+## Code Flow
+
+For those familiar with coding, you might wonder "Where does code actually start from?". This is a fair question in FRC code, which is a more complicated framework. The code path itself is predictable and a simplified view looks like this
+
+```
+- Main Bot Initialization
+  - Robot.java::RobotInit
+    - RobotContainer
+      - Subsystem Constructors
+      - Command constructors
+  - Enter Disabled mode
+    
+- Disabled Mode
+  - Initialize 
+    - Robot.java::DisabledInit()
+  - Loop
+    - Robot.java::DisabledPeriodic
+    - (each subsystem)::periodic()
+      
+- Teleop Mode
+  - Initialize 
+    - Robot.java::TeleopInit()
+    - (any active commands)::init()
+  - Loop
+    - Robot.java::TeleopPeriodic()
+    - (each subsystem)::periodic()
+    - (any active commands)::execute()
+```
+
+This is a *lot* of complexity if you're new to coding, but don't panic. You can *mostly* ignore a lot of this complexity, and our examples will help you position things properly until you get your bearings. 
+
+The complex part, robot actions that move motors and do things, basically boil down into
+```
+initialize/prep on boot
+disabled
+initialize
+run
+stop
+```
+We will quickly capture this with our [[Commands|Commands]] framework, enabling you to do simple things very quickly and efficiently, like they're self-contained little programs.
+
+
+## Deploying Code
+
+
+[[Deploying Code]]
+

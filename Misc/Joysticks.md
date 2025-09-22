@@ -1,3 +1,7 @@
+---
+tags:
+  - stub
+---
 
 
 https://docs.wpilib.org/en/stable/docs/software/basic-programming/joystick.html 

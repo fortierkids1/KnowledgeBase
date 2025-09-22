@@ -1,3 +1,8 @@
+---
+aliases:
+  - Command
+---
+
 Requires:
 [[Robot Code Basics]]
 ## Success Criteria
@@ -48,7 +53,7 @@ This is the surface level complexity, which sets you up for how to view, read, a
 
 ## Requirements and resources
 
-A key aspect of Commands is their ability to claim temporary, exclusive  ownership over a [[Subsystem]] .  This is done by passing the subsystem into a command, and then adding it as a requirement
+A key aspect of Commands is their ability to claim temporary, exclusive  ownership over a [[Subsystem]] .  This is done by passing the subsystem into a command, and then adding it as a requirementcontroll
 ```java
 class ExampleCommand extends CommandBase{
 	public ExampleCommand(ExampleSubsystem subsystemName){
@@ -174,7 +179,7 @@ Roller extends SubsystemBase{
 ```
 
 ```java 
-//In your robotContainer, let's create a copy of that command
+//In your robotContainer.java, let's create a copy of that command
 RobotContainer{
 	RobotContainer(){
 		joystick.a().whileTrue(roller.spinForward());
@@ -195,7 +200,7 @@ Most commands you'll write can be written like this, making for simple and conci
 > [!BUG] Watch the Requires
 > Many `Commands` helpers require you to provide the required subsystem after the lambdas. If you forget, you can end up with multiple commands fighting to modify the current subsystem
 
-Building on the above, Subsystems have several of these command helpers build in! You can see `this.startRun(...)`, `this.run(..)` etc; These commands work the same as the `Commands.` versions, but automatically include the current subsystem.
+Building on the above, Subsystems have several of these command helpers build in! You can see `this.startRun(...)`, `this.run(..)` etc; These commands work the same as the `Commands.` versions, but automatically `require` the current subsystem.
 
 There's a notable special case in `new FunctionalCommand(...)`, which takes 4 lambdas for a full command, perfectly suitable for those odd use cases.
 
@@ -216,4 +221,215 @@ Commands.sequence(
 )
 ```
 
+For  simple sequencing you can also use the `command.andThen(otherCommand)` decorator.
 
+
+One of the most powerful is the Parallel compositor. This allows you to drive multiple subsystems at once. This example would spin rollers, move an elevator, and set your lighting color simultaneous.
+```java
+Commands.parallel(
+	roller.spinForward(),
+	elevator.setHeight(27),
+	leds.setColor(Color.Red)
+).until(elevator.isAtSetpoint())
+```
+
+There's multiple variants of this, which allow various "exit conditions" for existing commands, but a simple `parallel` with an explicit exit condition tends to be the easiest.
+
+## Example Command Composition
+
+For this example, let's assume we have a shooter, consisting of 
+- A Pivot to control aiming
+- Flywheels, which handle the shooting RPM
+- a Feeder that can push a held game piece into the flywheels
+Mechanically, our sequence should then be 
+- Spin up our shooter and aim
+- Once we're spun up, feed the game piece into the shooter
+- Spin down and put our shooter back at a rest position
+
+```java
+RobotContainer{
+	//Pretend these all work as expected!
+	Pivot pivot = new Pivot();
+	Flywheel flywheel = new Flywheel();
+	Feeder feeder = new Feeder();
+	
+	CommandJoystick joystick = new CommandJoystick(/*...*/)
+	
+	RobotContainer(){	
+		joystick.a().whileTrueOnce(
+			/* The command sequence is shown below for clarity */
+		);
+	}
+	
+}
+```
+
+
+```java
+// This would go in the spot indicated above
+Commands.sequence()
+	//Spin up and wait til we're ready
+	Commands.parallel(
+		flywheel.setShootRPM(),
+		pivot.setShootingAngle()
+	)
+	.until(
+		pivot.isAtShootingPosition())
+		.and( flywheels.isAtShootingRPM() 
+	),
+
+	//Keep the shooter+pivot running, and feed it a game piece
+	Commands.parallel(
+		flywheel.setShootRPM(),
+		pivot.setShootingAngle(),
+		feeder.feedGamepieceIntoFlywheels()
+	).withTimeout(1),
+
+	//Set everything down. 
+	Commands.parallel(
+		flywheel.stop(),
+		pivot.setAngleToResting(),
+		feeder.stop()
+	).pivot.isAtShootingPosition()
+)
+```
+
+These kinds of commands are very powerful, but can get unweildy. 
+When building complex sequences, consider using a [[Code Patterns#Factory Pattern|Factory Pattern]] to name and parameterize smaller, reusable snippets.
+
+
+## Where all the commands? 
+
+WPILib's docs document a few useful commands, but the full rundown is here: 
+
+The ones are the "newer" formats; These are subsystem methods (and factories, so you won't see `new` when using them), and automatically include the subsystem for you. 
+https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/wpilibj2/command/Commands.html
+
+These ones are the older style;  They do the same things with different names, and don't include commands. In general, we'll avoid using these, but it's good to know about them for occasional corner cases.
+https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/wpilibj2/command/Command.html
+
+##  Best Practices
+
+Now that you have some command knowledge, there's a few things to keep in mind to make using commands seamless and consistent.
+
+
+#### Command-focused interactions
+
+When interacting with subsystems, we *mostly* only care about the actual commands.
+
+As a result, avoid getting caught in the trap of writing "functions" and then pulling those into commands, like this: 
+```java
+public exampleSubsystem extends SubsystemBase{
+	public void runMotor(double power){ motor.set(power); }
+	public Command runMotorCommand(){
+		return run(this::runMotor);
+	}
+}
+```
+Doing generates more code, uses up good names, and can generate confusion about which one you want. It can also lead you to complicate the Function to do things that a Command is better at.
+
+Instead, just go straight into building out command factories. 
+```java
+public exampleSubsystem extends SubsystemBase{
+	public Command runMotor(double power){
+		return run(()->motor.set(power) );
+	}
+}
+```
+
+
+#### Define Subsystem standards
+
+Most subsystems will have a "Default Command" that handles the passive behavior, so it's not necessary for each individual command to deal with exit conditions. This greatly simplifies writing other commands, since they all get an implied `stop()` or `holdPosition()` when you're done! Your DefaultCommand is great as a "self care" operation when nothing else is going on.
+
+There are exceptions though, and some commands might have multiple preferred "defaults" based on things like "are we holding a game piece". In such cases, your `defaultCommand` might have some additional logic, often using `ConditionalCommands`, `SelectCommand`, and the `.repeatedly()` decorator .
+
+#### By default, subsystem Commands shouldn't exit!
+
+When making your basic, simple commands, *do not* attach exit conditions. Doing so will significantly complicate typical usage. 
+
+As an example, let's say your `intake.setAngle(...)` command extends an intake arm, then exits when reaching the target angle. Now, you put that into a button for your drivers. Well, it extends, then exits. This either leaves it in "uncommanded" (retaining the last provided motor value and likely just going downward), or lets the defaultCommand run (which probably pulls the intake back in!). What you want to happen is to actually maintain the command until the driver releases the button _or_ you intake a game piece. But.... it's unfortunately challenging to cancel the original exit behavior. It's easy to cut a process short; But much harder to make it go longer.
+
+Instead, make base commands run forever, and create [[Triggers]] or Boolean functions that checks for common exit conditions  such as `isAtSetpoint()`; When you use your command, just use `.until(system::isAtSetpoint)` if appropriate.
+
+Later, once you start making more complicated sequences, some of them might have no reasonable case where you'd want that sequence to exit; Such as "getGamePieceFromGroundAndRetractBackIntoRobot()" . This (verbosely named) hypothetical obviously doesn't need to keep going .
+
+#### Start with basic building block functions
+
+Often, you want to start with simple Commands that do simple things. A roller system might need an `intake()`, `stop()`, `eject()` , which just run forever, setting a motor speed. Arms might just have a `setAngle()` that PIDs to an angle. 
+
+These are easy to test, and easy to work with in bigger, more complex sequences.
+
+
+## A practical example
+Putting it all together, let's take two subsystems: a roller attached to an arm, together working as an intake. Then fill in some simple commands.
+
+```java
+public ExampleIntake extends SubsystemBase{
+	//motor created here
+	ExampleIntake(){ //constructor
+		//configure motor here
+		setDefaultCommand(defaultCommand());
+	}
+	public Command intake(){
+		return run(()->motor.run(.5) );
+	}
+	public Command stop(){
+		return run(()->motor.run(0) );
+	}
+	public boolean isGamepieceLoaded(){
+		return sensor.read()==false;
+	}
+	public Command defaultCommand(){
+		return either(
+			()->motor.run(.1),
+			this::stop,
+			this::isGamepieceLoaded
+		);
+	}
+}
+```
+
+```java
+public ExampleArm extends SubsystemBase{
+	//motor created here
+	ExampleArm(){//constructor
+		//configure motor here
+		setDefaultCommand(()->setArmAngle(90));
+	}
+	public boolean isAtTargetAngle(){
+		return /*out of scope for now*/;
+	}
+	public Command setArmAngle(double angle){
+		return run(()->motor.getPIDController().setReference(angle,/*...*/) );
+	}
+}
+```
+
+```java
+public RobotContainer{
+	//joystick and subsystem creation would go here
+	RobotContainer(){
+		joystick.a().whileHeld(grabGamepieceFromFloor());
+	}
+	public Command grabGamepieceFromFloor(){
+		return new SequentialCommandGroup(
+			new ParallelCommandGroup(
+				intake.intake(),
+				arm.setArmAngle(20)
+			).until(intake::isGamepieceLoaded),
+			new ParallelCommandGroup(
+				intake.intake(),
+				arm.setArmAngle(90)
+			).until(arm::isAtTargetAngle)
+		)
+	}
+}
+```
+
+Here you can see all this come together: 
+- We have a couple simple named commands for our rollers. 
+- We have a more complex one that sets an arm position using a [[PID]]
+- We have a couple boolean conditions we can check for potential system states
+-  We have a composite sequence that does a full, complete task. It uses different exit conditions, from different subsystems.
+- And, we have a smart defaultCommand that does something different when loaded vs unloaded, so none of our other commands have to deal with it. The intake handles it for us.

@@ -1,6 +1,11 @@
+---
+tags:
+  - stub
+---
+
 Requires:
 [[Triggers]]
-[[NetworkTables]]
+[[Basic Telemetry]]
 ## Success Criteria
 - [ ] Configure a Limelight to 
 - [ ] Identify an April Tag

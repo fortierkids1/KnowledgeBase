@@ -9,5 +9,6 @@
   "inline-callouts",
   "hk-code-block",
   "webpage-html-export",
-  "ascii-tree-generator"
+  "ascii-tree-generator",
+  "obsidian-icon-shortcodes"
 ]

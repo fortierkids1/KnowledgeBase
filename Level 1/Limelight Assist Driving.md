@@ -1,3 +1,8 @@
+---
+tags:
+  - stub
+---
+
 requires 
 [[Auto Differential]]
 [[Limelight Basics]]

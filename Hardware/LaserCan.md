@@ -1,4 +1,10 @@
-#hardware
+---
+aliases:
+  - RangeFinder
+  - Distance Sensor
+---
+
+#hardware #stub 
 
 ## Success Criteria
 - [ ] Connect to the LaserCan using GrappleHook

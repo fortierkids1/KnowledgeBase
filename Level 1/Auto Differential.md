@@ -1,3 +1,8 @@
+---
+tags:
+  - stub
+---
+
 ## Success Criteria
 
 - [ ] Create a simple autonomous that drives forward and stops

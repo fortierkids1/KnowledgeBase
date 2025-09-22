@@ -1,6 +1,9 @@
 ---
 aliases:
   - Arm
+  - Pivot
+tags:
+  - stub
 ---
 
 Requires:
@@ -21,3 +24,6 @@ Requires:
 - [ ] Create a Trigger that indicates if the system is within a suitable tolerance of the commanded height.
 - [ ] Bind several target positions to a controller
 - [ ] Create a small auto sequence that moves to multiple positions in sequence.
+
+
+

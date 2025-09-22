@@ -1,3 +1,7 @@
+---
+tags:
+  - stub
+---
 
 ## Success Criteria
 - [ ] Choose a PathPlanning tool
@@ -24,8 +28,6 @@ Do you need path planning to make great autos? Maybe! But not always.
 
 PathPlanning can give you extremely fast, optimized autos, allowing you to squeeze every fraction of a second from your auto. However, it can be challenging to set up, and has a long list of requirements to get even moderate performance.
 
-
-
 # Further Research
 
 #### Pure Pursuit
@@ -38,3 +40,7 @@ https://wiki.purduesigbots.com/software/control-algorithms/basic-pure-pursuit
 ![[pathfinding-pure-pursuit.png]]
 
 This algorithm is fairly simple and conceptually straightforward, but with some notable limitations. However, the concept is very useful for advancing simpler autos
+
+# Autopilot
+https://therekrab.github.io/autopilot/technical.html
+https://www.chiefdelphi.com/t/introducing-autopilot-a-novel-solution-to-holonomic-motion-control/504244/21

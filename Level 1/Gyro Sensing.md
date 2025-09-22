@@ -1,3 +1,8 @@
+---
+tags:
+  - stub
+---
+
 
 ## Success Criteria
 - [ ] Configure a NavX or gyro on the robot

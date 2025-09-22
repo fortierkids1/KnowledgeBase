@@ -26,7 +26,6 @@ This decision *will* create more subsystems than you think are necessary. Howeve
 - A couple simple [[Commands]] can easily link two subsystems that might seem useless when operated independently
 - As a season progresses, unexpected developments might bring to light reasons to split a "double actuator subsystem". Having this already be done saves a lot of time and effort.
 
-
 ## Example Implementations
 
 > [!Warning] Pseudocode warning
@@ -35,10 +34,10 @@ This decision *will* create more subsystems than you think are necessary. Howeve
 
 ### Bare minimum roller system
 
-This is a functional, but barebones system. This is 
+This is a functional, but barebones system. This is often suitable for testing, and many simple [[SuperStructure Rollers|Roller]] mechanisms on some bots. 
 
 ```java
-SimpleRollerSystem extends SubsystemBase(){
+public SimpleRollerSystem extends SubsystemBase(){
 	SparkMax motor = new SparkMax(42,kBrushless);
 
 	ExampleSubsystem(){
@@ -56,7 +55,7 @@ SimpleRollerSystem extends SubsystemBase(){
 
 ### Simplified elevator system
 
-This is representative of a much more feature complete subsystem, including positional control. This is in line with the expectation of a Stormbot's production subsystem.
+This is representative of a much more feature complete subsystem, including positional control. This is in line with the expectation of a Stormbot's subsystem suitable for competition.
 
 This integrates [[FeedForwards]], [[PID|PIDs]], and a [[Motion Profiles|Motion Profile]]. 
 
@@ -113,7 +112,7 @@ ExampleElevatorSubsystem extends SubsystemBase(){
 
 ## Sensor Systems
 
-Sensor subsystems can help manage access of a single sensor across multiple other subsystems. 
+Sensor subsystems can help manage access of a single sensor across multiple subsystems. 
 
 ```java
 ExampleSensorSubsystem extends SubsystemBase(){
@@ -122,11 +121,11 @@ ExampleSensorSubsystem extends SubsystemBase(){
 	
 	ExampleSensorSubsystem(){
 		//Normal constructor tasks
-		//Configure motor
+		//Configure sensor
 		//There's likely no need for a defaultCommand
 	}
 
-	//Set Triggers 
+	//Set Triggers if there's obvious reasons to do so
 	public Trigger isThingInRange = new Trigger(()->
 		if(sensor.read < 10) return true;
 		return false;
@@ -141,4 +140,57 @@ ExampleSensorSubsystem extends SubsystemBase(){
 }
 ```
 
-Generally, sensor subsystems should be designed to avoid needing to `require` the subsystem, facilitating shared access. However, sometimes special cases are needed for very modal systems. The most notable and common example is Vision systems where pipeline changes are necessary for different game pieces, zoom, or detection methods.
+In most cases, sensors can simply be integrated with the subsystem they're a part of. However, some subsystems are unclear, or serve multiple roles, and being a dedicated system helps prevent quirky [[Code Patterns|Dependency Injection]] of one subsystem into another.
+
+Generally, sensor subsystems should be designed to avoid needing to `require` the subsystem, facilitating shared access. However, sometimes special cases are needed for very modal sensors. The most notable and common example is Vision systems where pipeline changes are necessary for different game pieces, zoom, or detection methods.
+
+Sensor Systems are one of the places where it might be sensible to wrap the system as a [[Singletons|Singleton]] , enabling easy shared access to read-only data without the scope management of dependency injection.
+
+
+## Bad design: Multi-actuator subsystems
+
+Whenever possible, it is recommended to minimize actuators within a single subsystem: Ideally, you want 1 actuator per subsystem. 
+
+The exception is for systems that are kinematic-ally linked: EG, moving one *requires* controlling the other part, and moving them independently is impossible, unsafe, or impractical. 
+
+The most common case of "too many actuators" applies to simple [[SuperStructure Rollers|Roller]] scoring systems added to height/position mechanisms, and the problem arises in a predictable way. Let's call it ElevatorScorer, consisting of an Elevator and a Roller:
+- The driver loads a game piece, and wants to score
+- The driver presses PositionElevator, requiring ElevatorScorer
+- The driver gets into position,  and presses Score button (also requiring ElevatorScorer)
+From a [[Commands|Command]] perspective, this is no issue: The first command is cancelled, and the second one runs. 
+
+However, let's consider the two actuators: The first one is controlling the height, selecting one of several scoring positions. The second is controlling the rollers. These two actions are independent! 
+
+When running the "Score" routine, you're having to remember the last target height, _or_ you have to have many additional functions to set target height *and* the scoring option. Your driver also cancelled the original go to height one; If they brushed it accidentally too early, they have to *re-hit* the PositionElevator button to set the height.
+
+The real problem though, is if you're following good Command practice, you probably have commands that look like this:
+
+```java
+public class ElevatorScorer extends SubsystemBase{
+	public Command setHeight(double height){
+		return run(()->/*Set the height*/)
+	}	
+	public Command setRollers(double height){
+		return run(()->/*Set the roller speed*/)
+	}
+	public Command scoreWhenAtHeight(){
+		return parallel(
+			setHeight(30),
+			setRollers(0)
+		).until(isAtTargetHeight()
+		.andThen(setRollers(-1))
+		;
+	}
+}
+```
+
+This will actually fail! The `parallel` command group cannot run both `setHeight` and `setRollers` at the same time, since they both require the same subsystem (`elevatorScorer`). It's clearly nonsensical to be unable to run both halves of the same subsystem at the same time, but by structuring things incorrectly, we've backed ourselves into a mess. 
+
+Our solutions now are 
+- Use some gross, poorly documented secret command wrappers to ignore the requirements (`.runAsProxy()`)
+- Remove the requirements from the Rollers, violating the goal of Commands
+- Duplicate a bunch of work to have "combo" commands to run both with a single requires.
+- [[Refactoring|Refactor]] our code into two subsystems
+
+While there's some cases to use the first few, the best solution long term is to refactor the code, making the systems properly independent. 
+

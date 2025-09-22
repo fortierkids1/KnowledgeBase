@@ -1,6 +1,8 @@
 ---
 aliases:
   - Elevator
+tags:
+  - stub
 ---
 
 Requires:
