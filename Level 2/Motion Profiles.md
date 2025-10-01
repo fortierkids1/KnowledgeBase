@@ -12,3 +12,4 @@ aliases:
 
 
 
+![[motion-profile-time-plots.png]]

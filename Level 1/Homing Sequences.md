@@ -51,7 +51,7 @@ However, homing is generally recommended, as it provides benefits and safeguards
 
 > [!INFO] Hard stops
 > When looking at homing, the concept of a "Hard Stop" will come up a lot. A hard stop is simply a physical constraint at the end of a system's travel, that you can reliably anticipate the robot hitting without causing system damage. 
-> In some bot designs, hard stops are free. In other designs, hard stops require some specific engineering design. 
+> In some bot designs, hard stops are free. In other designs, hard stops require some specific engineering design.
 
 
 > [!WARNING] Safety first!
@@ -77,13 +77,13 @@ This method is often "good enough", especially for testing or initial bringup. F
 
 Current detection is a very common, and reliable method within FRC. With this method, you drive the system toward a hard stop, and monitor the system current.
 
-When the system hits the hard stop, the load on your system increases, requiring more power. This can be detected by polling for the motor current. When your system exceeds a specific current for a long enough time, you can assert that your system is homed!
+When the system hits the hard stop, the load on your system increases, requiring more power. This can be detected by polling for the motor current. When your system exceeds a specific current for a long enough time, you can assert that your system is homed! A [[Triggers|Trigger]] is a great tool for helping monitor this condition.
 
 ### Velocity Detection
 
 Speed Detection works by watching the encoder's velocity. You expect that when you hit the hard stop, the velocity should be zero, and go from there. However, there's some surprises that make this more challenging than current detection. 
 
-Velocity measurements can be very noisy, so using a [filter](https://docs.wpilib.org/en/stable/docs/software/advanced-controls/filters/index.html) is generally required.
+Velocity measurements can be very noisy, so using a [filter](https://docs.wpilib.org/en/stable/docs/software/advanced-controls/filters/index.html) is generally required, although debounced [[Triggers]] can sometimes work.
 
 This method also suffers from the simple fact that the system velocity will be zero when homing starts. And zero is also the speed you're looking for as an end condition. You also cannot guarantee that the system speed ever increases above zero, as it can start against the hard stop. 
  As such, you can't do a simple check, but need to monitor the speed for long enough to assert that the system _should_ have moved if it was able to. 
@@ -158,7 +158,7 @@ public class ExampleSubsystem{
 
 A relatively simple routine, but just running your system with a known minimum power for a set length of time can ensure the system gets into a known position. After the time, you can reset the encoder. 
 
-This method is very situational. It should only be used in situations where you have a solid understanding of the system mechanics, and know that the system will not encounter damage when ran for a set length of time. 
+This method is very situational. It should only be used in situations where you have a solid understanding of the system mechanics, and know that the system will not encounter damage when ran for a set length of time. This is usually paired with a lower current constraint during the homing operation.
 
 ### Backlash-compensated homing
 
@@ -219,14 +219,14 @@ Modeling this sequence tends to be the tricky part, and a careless approach will
 - And, trying to continuously re-apply homing and cancellation processes can make the drivers frustrated as the system never gets to the known state.
 - Trying to make many other commands check homing conditions can result in bugs by omission.
 
-The obvious takeaway is that however you home, you want it to be _fast_ and ideally run in the Auto sequence. Working with your designers can streamline this process.
+The obvious takeaway is that however you home, you want it to be _fast_ and preferably completed before the drivers try to command the system. Working with your designers can streamline this process.
 
 Use of the [[Commands|Command]] decorator `withInterruptBehavior(...)` allows an easy escape hatch. This flag allows an inversion of how Command are scheduled; Instead of new commands cancelling running ones, this allows your homing command to forcibly block others from getting scheduled.
 
 If your system is already operating on an internal state machine, homing can simply be a state within that state machine.
 
 #### Homed
-This state is easy: Your system can now assert the known position, clear your Homed state, apply updated power/speed constraints, resume normal operation.
+This state is easy: Your system can now assert the known position, set your Homed state, apply updated power/speed constraints, resume normal operation.
 
 ## Example Implementations
 
@@ -271,7 +271,7 @@ class ExampleSubsystem extends SubsystemBase(){
 } 
 ```
 
-This command can then be inserted at the start of autonomous, ensuring that your bot is always homed during a match. It also can be easily mapped to a button, allowing for mid-match recovery.
+This command can then be inserted at the start of autonomous, ensuring that your bot is always homed during a match. It also can be easily mapped to a button, allowing for mid-match recovery. If needed, it can also be broken up into a slightly more complicated command sequence.
 
 
 For situations where you won't be running an auto (typical testing and practice field scenarios), the use of [[Triggers]] can facilitate automatic checking and scheduling
@@ -280,7 +280,7 @@ class ExampleSubsystem extends SubsystemBase(){
 	ExampleSubsystem(){
 		Trigger.new(Driverstation::isEnabled)
 		.and(()->isHomed==false)
-		.onTrue(goHome())
+		.whileTrue(goHome())
 	}
 }
 ```
@@ -291,11 +291,12 @@ class ExampleSubsystem extends SubsystemBase(){
 /* ... */
 	//Intercept commands directly to prevent unhomed operation
 	public Command goUp(){
-		return Commands.either(
-		Commands.run(()->motor.0.5)
+		return either(
+		stop(),
 		goHome(),
 		()->isHomed
 	}
 /* ... */
 ```
 
+While generally not preferable, a DefaultCommand and the `either`/`ConditionalCommand` notation can be used to  initiate homing. This is typically not recommended due to defaultCommands having an implicit low priority, while homing is a very high priority task.

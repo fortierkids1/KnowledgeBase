@@ -35,6 +35,7 @@ The speed of deployment and retraction both impact cycle times, forming a critic
 
 The automatic detection and retraction provide cycle advantages (streamlining the driver experience), but also prevent fouls and damage due to the collisions on the deployed mechanism.
 
+Intakes often are a [[Compound Subsystem|Compound Subsystem]] , and come with several quirks for structuring and control
 
 ## Intakes: Taming the unknown
 
@@ -114,8 +115,22 @@ If the jam is not able to be mechanically prevented, then Programming's job is t
 
 Within the vast possibility space of the intake you'll handle, there's a few good practices
 
-- Test early, test often, capture a lot of errors:
-- Revise the hardware, then revise the software: 
+- Test early, test often, capture a lot of errors.
+- Revise the hardware, then revise the software: Fix the software only as needed to keep things working. Don't spend the time keeping junked intake designs limping along, unless needed for further testing.
 - Closed loop: Several fault conditions can be avoided by using a velocity PID and feed-forwards to generate a slower, more consistent initial interaction with game pieces, and automatically apply more power in fault condition.
-- Operate with l
+- Operate at the edge cases: Do *not* baby the intake, and do your best to generate repeatable fault conditions to inform the design. 
+- Operate in motion: Feeding the intake on a stationary chassis tends to feed differently than a mobile chassis and stationary game piece, or a mobile chassis + Mobile Game Piece. 
 
+## Intakes + Other Subsystems
+
+#### Interactions
+Generally,  intakes are not one "system", but often actuated to deploy it beyond the frame perimeter, or line it up with intake positions. These are often done using [[SuperStructure Arm|Arms]] or [[SuperStructure Elevator|Elevators]]. In some cases, it's a deployable linkage using motors or [[Level 1/Pnuematics|Pnuematic Solenoids]] .
+
+Intakes often also interact with gamepiece management systems, usually an [[Superstructure Indexer|Indexer/Passthrough]] that helps move the game piece through a scoring mechanism. In some systems, the intake *is* the scoring mechanism.
+
+#### Naming
+Regardless of the system setup, good [[Subsystems|Subsystem]] design remains, and the "Intake" name tends to be given to the end effector (usually [[SuperStructure Rollers|Rollers]]) contacting the game piece, with intake actuators being named appropriately (like IntakeArm or IntakeElevator)
+
+#### Code structure and control
+
+#todo

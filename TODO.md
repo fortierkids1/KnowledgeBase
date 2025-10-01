@@ -7,10 +7,12 @@
 [[System Tuning]] -> Cover real world tuning, pull from PID
 
 [[Subsystem Lighting]]
-
+triggers as state passing, strong and loose coupling.
+Motors: Current, free, stall
 [[Mechanism2d]]
 [[Driver Station]] + Controllers
 [[Lambdas]]  + Suppliers
+Climber systems
 
 - Training:
 	- Deploying code
@@ -28,8 +30,7 @@
 - Code structuring (Stormbreakers)
 - How to read documentation
 - Conventions: Use of Units
-- Telemetry, elastic, printing to terminal
-- Sensor Pairing? Advanced: Information/state transfer (break beam -> indexer position) [[Sensing Basics]]?
+- Sensor Pairing? Advanced: Information/state transfer (break beam -> indexer position) [[Sensing Basics]]? -> State Transfer
 
 ## Relocate
 - Threading
@@ -43,7 +44,7 @@
 [[Units]]
 [[Mechanical Backlash]]
 [[Homing Sequences|Hard Stops]] -> Does this need a mech design page?
-
+[[Pnuematics]] and solenoids
 [[Scheduler]] <-- ? 
 
 Data Structures: https://www.youtube.com/watch?v=KwBuV7YZido

@@ -17,7 +17,7 @@
                 "file": "StormBreakers Tree.canvas",
                 "viewState": {
                   "x": 126.14883306844987,
-                  "y": 1041.5820060645642,
+                  "y": 2299.7116401174335,
                   "zoom": -0.989474294009825
                 }
               },
@@ -27,51 +27,79 @@
             }
           },
           {
-            "id": "c1587af3b0c2a355",
+            "id": "4dbde2795665d3d4",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Level 2/Mechanism2d.md",
+                "file": "Level 1/FeedForwards.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Mechanism2d"
+              "title": "FeedForwards"
             }
           },
           {
-            "id": "402739174b91bb6b",
+            "id": "9f94cd8cd13252fc",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Level 1/Limelight Basics.md",
+                "file": "Misc/Subsystems.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Limelight Basics"
+              "title": "Subsystems"
             }
           },
           {
-            "id": "194000cf53e6bafb",
+            "id": "b7b3a200edaec827",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Level 1/Basic Odometry+Telemetry.md",
+                "file": "Level 2/QuestNav.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Basic Odometry+Telemetry"
+              "title": "QuestNav"
+            }
+          },
+          {
+            "id": "6df780ef8a47652e",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Level 2/Motion Profiles.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": false
+              },
+              "icon": "lucide-file",
+              "title": "Motion Profiles"
+            }
+          },
+          {
+            "id": "7e93f56f41f54309",
+            "type": "leaf",
+            "state": {
+              "type": "image",
+              "state": {
+                "file": "assets/motion-profile-time-plots.png"
+              },
+              "icon": "lucide-image",
+              "title": "motion-profile-time-plots"
             }
           }
-        ]
+        ],
+        "currentTab": 4
       }
     ],
     "direction": "vertical"
@@ -145,7 +173,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "StormBreakers Tree.canvas",
+                "file": "Level 2/Motion Profiles.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -155,7 +183,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for StormBreakers Tree"
+              "title": "Backlinks for Motion Profiles"
             }
           },
           {
@@ -262,7 +290,8 @@
               "title": "All properties"
             }
           }
-        ]
+        ],
+        "currentTab": 7
       },
       {
         "id": "fd90a05aa47b0988",
@@ -290,7 +319,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 342.5
+    "width": 344.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -303,40 +332,47 @@
       "command-palette:Open command palette": false,
       "obsidian-git:Open Git source control": false,
       "terminal:Open terminal": false,
-      "webpage-html-export:Export Vault to HTML": false
+      "webpage-html-export:Export Vault to HTML": false,
+      "vscode-editor:Create Code File": false
     }
   },
-  "active": "47b2bd4680eb0761",
+  "active": "6df780ef8a47652e",
   "lastOpenFiles": [
-    "TODO.md",
-    "StormBreakers Tree.canvas",
-    "Stormbots Tree.canvas",
-    "Misc/Subsystems.md",
-    "Misc/Driver Station.md",
-    "Misc/Code Patterns.md",
-    "Misc/Closed Loop Controller.md",
-    "Level 2/SuperStructure Flywheel.md",
-    "Level 2/Mechanism2d.md",
-    "Level 1/Robot Code Basics.md",
-    "Level 1/PID.md",
-    "Level 1/Motor Control.md",
-    "Level 1/Limelight Odometry.md",
-    "Level 1/FeedForwards.md",
-    "Level 1/Basic Telemetry.md",
-    "Level 1/Basic Odometry+Telemetry.md",
-    "Hardware/Absolute Encoders.md",
-    "Level 1/Limelight Basics.md",
-    "Level 2/NetworkTables.md",
-    "Level 1/Triggers.md",
-    "Misc/Lambdas.md",
+    "Level 1/SuperStructure Intake.md",
+    "Pasted image 20250927225025.png",
+    "Untitled.base",
+    "assets/motion-profile-time-plots.png",
+    "Pasted image 20250926235704.png",
     "Level 1/Commands.md",
-    "assets/driverstation-usb-tab.png",
+    "Misc/Subsystems.md",
+    "Level 1/SuperStructure Elevator.md",
     "Level 1/SuperStructure Arm.md",
+    "Level 2/SuperStructure Flywheel.md",
+    "Level 1/SuperStructure Rollers.md",
+    "Level 1/Robot Design Analysis.md",
+    "TODO.md",
+    "Level 2/QuestNav.md",
+    "README.md",
+    "assets/README.md",
+    "index.md",
+    "Level 1/Compound Subsystem.md",
+    "Level 1/Triggers.md",
+    "Stormbots Tree.canvas",
+    "Level 2/PhotonVision Basics.md",
+    "Level 2/Motion Profiles.md",
+    "Level 1/Homing Sequences.md",
+    "Level 2/PhotonVision Object Detection.md",
+    "JavaReferences/ProfiledElevator.java",
+    "StormBreakers Tree.canvas",
+    "Misc/Units.md",
+    "Misc/Pose2d.md",
+    "Misc/Joysticks.md",
+    "Level 1/Motor Control.md",
+    "Level 1/FeedForwards.md",
+    "Level 1/Basic Odometry+Telemetry.md",
+    "JavaReferences",
+    "assets/driverstation-usb-tab.png",
     "Level1",
-    "Level 1/Encoder Basics.md",
-    "Level 2/Swerve Odometry.md",
-    "Level 2/PhotonVision Odometry.md",
-    "Level 0/Deploying Code.md",
     "assets/backlash-arm-deviation.png",
     "assets/open-loop-closed-loop-diagram.png",
     "Misc/controls-engineering-in-frc.pdf",
@@ -344,9 +380,6 @@
     "assets/Gray-code-table-Gray-coding-to-read-position.gif",
     "assets/Rev Through Bore Encoder.png",
     "assets/telemetry-glass.png",
-    "assets/telemetry-elastic.png",
-    "assets/creating-new-command-2.png",
-    "assets/creating-new-command-1.png",
     "Marketingbot",
     "Level 0/Coding Basics.canvas",
     "assets/Command State Machine.canvas",
@@ -354,9 +387,6 @@
     "assets",
     "Hardware",
     "Level 0",
-    "TestingTesting/Canva.canvas",
-    "_Templates",
-    "TestingTesting",
-    "Level 2"
+    "TestingTesting/Canva.canvas"
   ]
 }

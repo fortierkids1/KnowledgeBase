@@ -1,6 +1,8 @@
 ---
 tags:
   - stub
+aliases:
+  - Joystick
 ---
 
 

@@ -107,8 +107,6 @@ ExampleSubsystem extends SubsystemBase{
 ```
 
 
-
-
 ![[Rev Hardware Client#^fb223b]]
 
 
