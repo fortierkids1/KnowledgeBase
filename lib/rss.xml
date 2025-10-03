@@ -1,4 +1,4 @@
-<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[CodeTest]]></title><description><![CDATA[Obsidian digital garden]]></description><link>https://stormbots.github.io/KnowledgeBase/</link><image><url>https://stormbots.github.io/KnowledgeBase/lib/media/favicon.png</url><title>CodeTest</title><link>https://stormbots.github.io/KnowledgeBase/</link></image><generator>Webpage HTML Export plugin for Obsidian</generator><lastBuildDate>Wed, 01 Oct 2025 20:22:58 GMT</lastBuildDate><atom:link href="https://stormbots.github.io/KnowledgeBase/lib/rss.xml" rel="self" type="application/rss+xml"/><pubDate>Wed, 01 Oct 2025 20:22:44 GMT</pubDate><ttl>60</ttl><dc:creator/><item><title><![CDATA[Compound Subsystem]]></title><description><![CDATA[ 
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[CodeTest]]></title><description><![CDATA[Obsidian digital garden]]></description><link>https://stormbots.github.io/KnowledgeBase/</link><image><url>https://stormbots.github.io/KnowledgeBase/lib/media/favicon.png</url><title>CodeTest</title><link>https://stormbots.github.io/KnowledgeBase/</link></image><generator>Webpage HTML Export plugin for Obsidian</generator><lastBuildDate>Fri, 03 Oct 2025 20:13:20 GMT</lastBuildDate><atom:link href="https://stormbots.github.io/KnowledgeBase/lib/rss.xml" rel="self" type="application/rss+xml"/><pubDate>Fri, 03 Oct 2025 20:13:18 GMT</pubDate><ttl>60</ttl><dc:creator/><item><title><![CDATA[Compound Subsystem]]></title><description><![CDATA[ 
  <br>A compound subsystem is one that has multiple, interlinked mechanisms. Many common systems as <a data-tooltip-position="top" aria-label="SuperStructure Intake" data-href="SuperStructure Intake" href="https://stormbots.github.io/KnowledgeBase/level-1/superstructure-intake.html" class="internal-link" target="_self" rel="noopener nofollow">Intakes</a> or <a data-tooltip-position="top" aria-label="Superstructure Shooter" data-href="Superstructure Shooter" href="https://stormbots.github.io/KnowledgeBase/level-2/superstructure-shooter.html" class="internal-link" target="_self" rel="noopener nofollow">Shooters</a> fall into this, as do complex kinematic systems like extendable <a data-tooltip-position="top" aria-label="SuperStructure Arm" data-href="SuperStructure Arm" href="https://stormbots.github.io/KnowledgeBase/level-1/superstructure-arm.html" class="internal-link" target="_self" rel="noopener nofollow">Arms</a>, or Arms riding <a data-tooltip-position="top" aria-label="SuperStructure Elevator" data-href="SuperStructure Elevator" href="https://stormbots.github.io/KnowledgeBase/level-1/superstructure-elevator.html" class="internal-link" target="_self" rel="noopener nofollow">Elevators</a> form a compound subsystem.<br>These systems have common quirks in how they interact with <a data-tooltip-position="top" aria-label="Commands" data-href="Commands" href="https://stormbots.github.io/KnowledgeBase/level-1/commands.html" class="internal-link" target="_self" rel="noopener nofollow">Commands</a> and <a data-tooltip-position="top" aria-label="Subsystems" data-href="Subsystems" href="https://stormbots.github.io/KnowledgeBase/misc/subsystems.html" class="internal-link" target="_self" rel="noopener nofollow">Subsystem</a> control flow.<br><br>Generally, you do not want to bundle two or more actuators together into the same subsystem; Inevitably, you will need a Command that tries to require() one, but forcibly require the second. <br>This makes some command sequences awkward, since you need to require and control an actuator you don't care about. Alternatively, streamlining the system to automatically control just one or the other means extending the subsystem with multiple state tracking, as you can't rely on defaultCommands() which won't be active.<br>Combining multiple actuators in one system also can lead you to cases that block code re-use. Having simple commands that control "half" the system cannot be run in parallel without obscure, poorly documented command modifiers or forcibly removing the command mutexes. <br>Lastly, you need to name and manage commands to interact with both actuators, making the subsystem large and complicated.<br><br>A better structure is to simply break them into two subsystems, giving them the minimal controls needed to act independently. <br>You can then use a separate container class to house utility functions, or combined Command classes that interact with both systems.<br>Note, the wrapper class will not be a subsystem itself: WPILib does not support "requires" through nested subsystems.<br><br>DefaultCommands by their nature must require themselves, and can only require themselves; This means it's not possible to have a "default" for two subsystems. <br>In some cases, you may be able to simply leave each individual part with a default command. <br>However, if you wish to have them default as a group, you can emulate the "default command" behavior through the use of a Trigger, and detection of the currently commanded state of any controlled systems. <br><br><br><br>Scheduling some actions based on sensors might wind up interfering with other ongoing robot tasks. Remember, they're exactly like a driver hitting a button!<br>For example, if you automatically "grab" a loaded game piece, like this: <br>public class IntakeSubsystem extends SubsystemBase{
 	public IntakeSubsystem(){
 		new Trigger(isGamePieceLoaded).onTrue(holdGamePiece());
@@ -30,10 +30,7 @@
 	.onTrue(holdGamePiece());
 	//Note, if you have no defaultCommand getDefaultCommand() will 
 	//return null!
-<br>These methods allow your trigger to intentionally set its own priority below other commands that might be interacting with the system. <br>However, in some cases you might simply be better off using an intelligent DefaultCommand for such automated actions, but this is a useful tool to be aware of!<br>Test this behavior
-While these specific Trigger techniques been used successfully in the past, these examples are not written from older, validated code and may contain errors.<br>
-Trigger/command behavior might also be changing in 2025, rendering these obsolete or working differently.
-<br><br>If your systems should be operating with dependent kinematics or logic for decision making, you can do this a couple ways:<br>// Via Dependency injection of state functions
+<br>These methods allow your trigger to intentionally set its own priority below other commands that might be interacting with the system. <br><br><br>If your systems should be operating with dependent kinematics or logic for decision making, you can do this a couple ways:<br>// Via Dependency injection of state functions
 BottomSystem bottom = new BottomSystem();
 TopSystem top = new TopSystem(bottomsystem::getPosition);
 <br>This allows a clear distinction of systems, while still permitting TopSystem to access details it may need to see on the bottom.<br>This interaction is pretty ineffective things such as two-way collision conflicts. For such cases, you likely want to use a <a data-tooltip-position="top" aria-label="State Machines" data-href="State Machines" href="https://stormbots.github.io/KnowledgeBase/level-1/state-machines.html" class="internal-link" target="_self" rel="noopener nofollow">State Machine</a> to control motion.<br>While not recommended, you can bind cross-dependencies between two systems. However, this cyclic connection should clue you to the need to <a data-tooltip-position="top" aria-label="Refactoring" data-href="Refactoring" href="https://stormbots.github.io/KnowledgeBase/misc/refactoring.html" class="internal-link" target="_self" rel="noopener nofollow">Refactor</a> some of your code interactions. <br>//Construct the subsystem 
@@ -56,7 +53,243 @@ public class RobotContainer{
 		top.addBottomPositionSupplier(bottom.getPosition());
 	}
 }
-]]></description><link>https://stormbots.github.io/KnowledgeBase/level-1/compound-subsystem.html</link><guid isPermaLink="false">Level 1/Compound Subsystem.md</guid><pubDate>Tue, 30 Sep 2025 08:41:01 GMT</pubDate></item><item><title><![CDATA[PID]]></title><description><![CDATA[<a class="tag" href="https://stormbots.github.io/KnowledgeBase/?query=tag:todo" style="background-color: rgb(4, 108, 116); color: white; font-weight: 700; border: none; border-radius: 1em; padding: 0.2em 0.5em;">#todo</a> 
+<br><br>New Process!
+This subsystem type tends to be rare, and as such we do not implement this often to fully validate best practices. Feedback on the documentation and trial methods for optimal layout is requested!
+<br>Sometimes, your robot will have a subsystem that is two "identical" parts that are not kinetically linked. In these cases, the subsystem split can be quirky, and they tend to provide different tradeoffs<br>
+<br>Handling each half as it's own subsystem with independent code generates a lot of copy-pasted code, repeated bugfixes, and increased maintenance overhead. 
+<br>Bundling both in the same subsystem can result in duplicate code to drive the separate motors,  especially if they each run independent, non-trivial logic like <a data-tooltip-position="top" aria-label="Motion Profiles" data-href="Motion Profiles" href="https://stormbots.github.io/KnowledgeBase/level-2/motion-profiles.html" class="internal-link" target="_self" rel="noopener nofollow">Motion Profiles</a> 
+<br>Providing a "base class" and then creating two instances: This simplifies control logic and reduces code duplication, but pushes all a fair amount of configuration and combined logic to higher-level code structures (such as RobotContainer . 
+<br>However, in general the final option is often worth it to prevent errors and streamline debugging. With proper naming, abstraction, and parameterize, these systems can be handled without significant overhead. <br><br>While there's a few ways we could structure this in general we want to keep subsystem logic<br>
+contained in it's own file for easy tracking, viewing, and modification. Since we expect twinned systems to have few difference, this structure provides a simple way to easily manage the adjustments.<br>//This forms our the base class both ExampleTwin systems will use 
+class ExampleTwinBase extends SubsystemBase{
+	//Private to prevent unexpected creation anywhere
+	private ExampleTwinBase(boolean invert, double switchChannel){
+		//Configure the motor using the provided parameters
+		// making sure to use the parameters as appropriate.
+		// In this example, 
+		// using "invert" for motor direction, 
+		// and switchChannel for a rio DIO port for something
+		// but provide the necessary ones in whatever form makes sense.
+	}
+	
+	public static BuildExampleLeft(){
+		var inverted=false; //
+		var channel=0; //example 
+		return new ExampleTwinBase(inverted,channel);
+	}
+	
+	public static BuildExampleRight(){
+		var inverted=true; //
+		var channel=1; //example 
+		return new ExampleTwinBase(inverted,channel);
+	}
+	
+	//Do the rest of your normal, non-static instance classes here.
+}
+<br>public class RobotContainer{
+	//We can now build the two seperately, using the static functions
+	// to handle the difference in configuration
+	ExampleTwinBase exampleLeft=ExampleTwinBase.BuildExampleLeft();
+	ExampleTwinBase exampleRight=ExampleTwinBase.BuildExampleRight();
+}
+<br>Rev's Config api has a useful feature that allows you to combine configs; This facilitates splitting logic, and even allows you to provide a Spark config as a parameter directly.<br>public ExampleRevParam(SparkBaseConfig customConfig){
+	SparkBaseConfig config = new SparkMaxConfig();
+	config./*whatever your configs that apply in both cases*/
+
+	config.apply(customConfig); // Copy the special configs to the base config
+
+	//Apply your config normally, getting everything at once
+	motor.configure(
+		config,
+		ResetMode.kResetSafeParameters, 
+		PersistMode.kNoPersistParameters
+	);
+};
+<br>We now have two subsystems.... which is not exactly optimal for clean Command setup. However, a simple wrapper class will help us out!<br>public Example{ //NOTE: Not a subsystem! Just a generic class
+	ExampleTwinBase left;
+	ExampleTwinBase right;
+	public ExampleSubsystem(ExampleTwinBase left, ExampleTwinBase right){
+		this.left=left;
+		this.right=right;
+	}
+	//Now, we can use *this* to house all our combo commands nice and cleanly!
+	// Parallel runs both at once, and each end independently if configured.
+	// When both are done, the parallel ends. 
+	public Command doTheThing(){
+		returns Commands.parallel(
+			left.doTheThing(),
+			right.doTheThing()
+		);
+	}
+	
+}
+<br>public class RobotContainer{
+	//We can now build the two seperately, using the static functions
+	// to handle the difference in configuration
+	ExampleTwinBase exampleLeft=ExampleTwinBase.BuildExampleLeft();
+	ExampleTwinBase exampleRight=ExampleTwinBase.BuildExampleRight();
+	Example example = Example(exampleLeft,exampleRight);
+}
+<br>Cleanup Note We could also just move the whole Builder calls directly in the wrapper, or directly into the Example file itself! Depending on the goals, this may or may not be ideal. Sometimes having access to each side is nice, so consider leaving yourself an easy option should the need arise.<br>//Example of the streamlined, cleaned up code. The individual sides are now not accessable without going through our wrapper.
+public class RobotContainer{
+	Example example = Example(
+		ExampleTwinBase.BuildExampleLeft(),
+		ExampleTwinBase.BuildExampleRight()
+	);
+}
+]]></description><link>https://stormbots.github.io/KnowledgeBase/level-1/compound-subsystem.html</link><guid isPermaLink="false">Level 1/Compound Subsystem.md</guid><pubDate>Fri, 03 Oct 2025 09:53:10 GMT</pubDate></item><item><title><![CDATA[Homing Sequences]]></title><description><![CDATA[ 
+ <br>Homing is the process of recovering physical system positions, typically using relative encoders.<br><br><a data-href="SuperStructure Arm" href="https://stormbots.github.io/KnowledgeBase/level-1/superstructure-arm.html" class="internal-link" target="_self" rel="noopener nofollow">SuperStructure Arm</a><br>
+<a data-href="SuperStructure Elevator" href="https://stormbots.github.io/KnowledgeBase/level-1/superstructure-elevator.html" class="internal-link" target="_self" rel="noopener nofollow">SuperStructure Elevator</a><br>
+And will generally be done after most requirements for those systems<br><br>
+<br>Home a subsystem using a Command-oriented method
+<br>Home a subsystem using a state-based method
+<br>Make a non-homed system refuse non-homing command operations
+<br>Document the "expected startup configuration" of your robot, and how the homing sequence resolves potential issues.
+<br><br>
+<br>Configure encoders and other system configurations
+<br>Construct a Command that homes the system
+<br>Create a Trigger to represent if the system is homed or not
+<br>Determine the best way to integrate the homing operation. This can be 
+
+<br>Initial one-off sequence on enable
+<br>As a blocking operation when attempting to command the system
+<br>As a default command with a Conditional Command
+<br>Idle re-homing (eg, correcting for slipped belts when system is not in use)
+<br>
+
+
+<br><br>
+<br>Home an elevator system using system current
+<br>home an arm system using system current
+<br>Home a system 
+<br><br>When a system is booted using <a data-tooltip-position="top" aria-label="Encoder Basics" data-href="Encoder Basics" href="https://stormbots.github.io/KnowledgeBase/level-1/encoder-basics.html" class="internal-link" target="_self" rel="noopener nofollow">Relative Encoders</a>, the encoder boots with a value of 0, like you'd expect. However, the real physical system can be anywhere in it's normal range of travel, and the bot has no way to know the difference.<br>Homing is the process of reconciling this difference, this allowing your code to assert a known physical position, regardless of what position it was in when the system booted. <br><br>Homing is not a hard requirement of <a data-tooltip-position="top" aria-label="SuperStructure Elevator" data-href="SuperStructure Elevator" href="https://stormbots.github.io/KnowledgeBase/level-1/superstructure-elevator.html" class="internal-link" target="_self" rel="noopener nofollow">Elevator</a> or <a data-tooltip-position="top" aria-label="SuperStructure Arm" data-href="SuperStructure Arm" href="https://stormbots.github.io/KnowledgeBase/level-1/superstructure-arm.html" class="internal-link" target="_self" rel="noopener nofollow">Arm</a> systems. As long as you boot your systems in known, consistent states, you operate without issue.<br>However, homing is generally recommended, as it provides benefits and safeguards<br>
+<br>You don't need strict power-on procedures. This is helpful at practices when the bot will be power cycled and get new uploaded code regularly. 
+<br>Power loss protection: If the bot loses power during a match, you just lose time when re-homing; You don't lose full control of the bot, or worse, cause serious damage.
+<br>Improved precision: Homing the system via code ensures that the system is always set to the same starting position. 
+<br><br>Hard stops
+When looking at homing, the concept of a "Hard Stop" will come up a lot. A hard stop is simply a physical constraint at the end of a system's travel, that you can reliably anticipate the robot hitting without causing system damage.<br>
+In some bot designs, hard stops are free. In other designs, hard stops require some specific engineering design.
+<br>Safety first!
+Any un-homed system has potential to perform in unexpected ways, potentially causing damage to itself or it's surroundings.<br>
+We'll gloss over this for now, but make sure to set safe motor current constraints by default, and only enable full power when homing is complete.
+<br><br>With this method, the consistency comes from the physical reset of the robot when first powering on the robot. Humans must physically set all non-homing mechanisms, then power the robot. <br>From here, you can do anything  you would normally do, and the robot knows where it is. <br>This method is often "good enough", especially for testing or initial bringup. For some robots, gravity makes it difficult to boot the robot outside of the expected condition.<br>Watch your resets!
+With this method, make sure your code does not reset encoder positions when initializing.<br>
+If you do, code resets or power loss will cause a de-sync between the booted position and the operational one. You have to trust the motor controller + encoder to retain positional accuracy. 
+<br><br>Current detection is a very common, and reliable method within FRC. With this method, you drive the system toward a hard stop, and monitor the system current.<br>When the system hits the hard stop, the load on your system increases, requiring more power. This can be detected by polling for the motor current. When your system exceeds a specific current for a long enough time, you can assert that your system is homed! A <a data-tooltip-position="top" aria-label="Triggers" data-href="Triggers" href="https://stormbots.github.io/KnowledgeBase/level-1/triggers.html" class="internal-link" target="_self" rel="noopener nofollow">Trigger</a> is a great tool for helping monitor this condition.<br><br>Speed Detection works by watching the encoder's velocity. You expect that when you hit the hard stop, the velocity should be zero, and go from there. However, there's some surprises that make this more challenging than current detection. <br>Velocity measurements can be very noisy, so using a <a data-tooltip-position="top" aria-label="https://docs.wpilib.org/en/stable/docs/software/advanced-controls/filters/index.html" rel="noopener nofollow" class="external-link" href="https://docs.wpilib.org/en/stable/docs/software/advanced-controls/filters/index.html" target="_blank">filter</a> is generally required, although debounced <a data-href="Triggers" href="https://stormbots.github.io/KnowledgeBase/level-1/triggers.html" class="internal-link" target="_self" rel="noopener nofollow">Triggers</a> can sometimes work.<br>This method also suffers from the simple fact that the system velocity will be zero when homing starts. And zero is also the speed you're looking for as an end condition. You also cannot guarantee that the system speed ever increases above zero, as it can start against the hard stop.<br>
+As such, you can't do a simple check, but need to monitor the speed for long enough to assert that the system should have moved if it was able to. <br><br>Limit switches are a tried and true method in many systems. You simply place a physical switch at the end of travel; When the bot hits the end of travel, you know where it is.<br>Mechanical Robustness Required
+Limit switches require notable care on the design and wiring to ensure that the system reliably contacts the switch in the manner needed.
+<br>The apparent simplicity of a limit switch hides several design and mounting considerations. In an FRC environment, some of these are surprisingly tricky.<br>
+<br>A limit switch must not act as an end stop. Simply put, they're not robust enough to sustain impacts and will fail, leaving your system in an uncontrolled, downward driving stage. 
+<br>A limit switch must be triggered at the end of travel; Otherwise, it's possible to start below the switch. 
+<br>A switch must have a consistent "throw" ; It should trip at the same location every time. Certain triggering mechanisms and arms can cause problems.
+<br>If the hard stop moves or is adjusted, the switch will be exposed for damage, and/or result in other issues
+<br>Because of these challenges, limit switches in FRC tend to be used in niche applications, where use of hard stops is restricted. One such case is screw-driven <a data-href="Linear Actuators" href="https://stormbots.github.io/KnowledgeBase/Linear Actuators" class="internal-link" target="_self" rel="noopener nofollow">Linear Actuators</a>, which generate enormous amounts of force at very low currents, but are very slow and easy to mount things to.<br>Switches also come in multiple types, which can impact the ease of design. In many cases, a magnetic hall effect sensor is optimal, as it's non-contact, and easy to mount alongside a hard stop to prevent overshoot.<br>Most 3D printers use limit switches, allowing for very good demonstrations of the routines needed to make these work with high precision.<br>For designs where hard stops are not possible, consider a Roller Arm Limit Switch and run it against a CAM. This configuration allows the switch to be mounted out of the line of motion, but with an extended throw. <br><img alt="limit-switch-cam.svg" src="https://stormbots.github.io/KnowledgeBase/lib/media/limit-switch-cam.svg"><br><br>Index switches work similarly to Limit Switches, but the expectation is that they're in the middle of the travel, rather than at the end of travel. This makes them unsuitable as a solo homing method, but useful as an auxiliary one. <br>Index switches are best used in situations where other homing routines would simply take too long, but you have sufficient knowledge to know that it should hit the switch in most cases.<br>
+This can often come up in <a data-tooltip-position="top" aria-label="SuperStructure Elevator" data-href="SuperStructure Elevator" href="https://stormbots.github.io/KnowledgeBase/level-1/superstructure-elevator.html" class="internal-link" target="_self" rel="noopener nofollow">Elevator</a> systems where the robot starting configuration puts the carriage far away from the nearest limit. <br>In this configuration, use of a non-contact switch is generally preferred, although a roller-arm switch and a cam can work well.<br><br>In some cases we can use absolute sensors such as <a data-href="Absolute Encoders" href="https://stormbots.github.io/KnowledgeBase/hardware/absolute-encoders.html" class="internal-link" target="_self" rel="noopener nofollow">Absolute Encoders</a>, <a data-tooltip-position="top" aria-label="Gyro Sensing" data-href="Gyro Sensing" href="https://stormbots.github.io/KnowledgeBase/level-1/gyro-sensing.html" class="internal-link" target="_self" rel="noopener nofollow">Gyros</a>, or <a data-tooltip-position="top" aria-label="LaserCan" data-href="LaserCan" href="https://stormbots.github.io/KnowledgeBase/hardware/lasercan.html" class="internal-link" target="_self" rel="noopener nofollow">Range Finders</a> to directly detect information about the robot state, and feed that information into our other sensors. <br>This method works very effectively on <a data-tooltip-position="top" aria-label="SuperStructure Arm" data-href="SuperStructure Arm" href="https://stormbots.github.io/KnowledgeBase/level-1/superstructure-arm.html" class="internal-link" target="_self" rel="noopener nofollow">Arm</a> based systems; <a data-href="Absolute Encoders" href="https://stormbots.github.io/KnowledgeBase/hardware/absolute-encoders.html" class="internal-link" target="_self" rel="noopener nofollow">Absolute Encoders</a> on an output shaft provide a 1:1 system state for almost all mechanical designs. <br>Elevator systems can also use these routines using <a data-tooltip-position="top" aria-label="LaserCan" data-href="LaserCan" href="https://stormbots.github.io/KnowledgeBase/hardware/lasercan.html" class="internal-link" target="_self" rel="noopener nofollow">|Range Finders</a> , detecting the distance between the carriage and end of travel. <br>Clever designers can also use <a data-href="Absolute Encoders" href="https://stormbots.github.io/KnowledgeBase/hardware/absolute-encoders.html" class="internal-link" target="_self" rel="noopener nofollow">Absolute Encoders</a> for elevators in a few ways <br>
+<br>You can simply assert a position within a narrow range of travel
+<br>You can gear the encoder to have a lower resolution across the full range of travel. Many encoders have enough precision that this is perfectly fine.
+<br>You can use multiple absolute encoders to combine the above global + local states
+<br>For a typical system using Spark motors and Through Bore Encoders, it looks like this:<br>public class ExampleSubsystem{
+	SparkMax motor = new Sparkmax(/*......*/);
+	ExampleSubsystem(){
+		SparkBaseConfig config = new SparkMaxConfig();
+		//Configure the motor's encoders to use the same real-world unit
+		armMotor.configure(config,/***/);
+		
+		//We can now compare the values directly, and initialize the 
+		//Relative encoder state from the absolute sensor.
+		var angle = motor.getAbsoluteEncoder.getPosition();
+		motor.getEncoder.setPosition(angle);
+	}
+}
+<br><br>A relatively simple routine, but just running your system with a known minimum power for a set length of time can ensure the system gets into a known position. After the time, you can reset the encoder. <br>This method is very situational. It should only be used in situations where you have a solid understanding of the system mechanics, and know that the system will not encounter damage when ran for a set length of time. This is usually paired with a lower current constraint during the homing operation.<br><br>In some cases you might be able to find the system home state (using gravity or another method), but find <a data-tooltip-position="top" aria-label="Mechanical Backlash" data-href="Mechanical Backlash" href="https://stormbots.github.io/KnowledgeBase/misc/mechanical-backlash.html" class="internal-link" target="_self" rel="noopener nofollow">backlash</a> is preventing you from hitting desired consistency and reliability.<br>This is most likely to be needed on <a data-tooltip-position="top" aria-label="SuperStructure Arm" data-href="SuperStructure Arm" href="https://stormbots.github.io/KnowledgeBase/level-1/superstructure-arm.html" class="internal-link" target="_self" rel="noopener nofollow">Arm</a> systems, particularly actuated <a data-tooltip-position="top" aria-label="Superstructure Shooter" data-href="Superstructure Shooter" href="https://stormbots.github.io/KnowledgeBase/level-2/superstructure-shooter.html" class="internal-link" target="_self" rel="noopener nofollow">Shooter</a> systems. This is akin to a "calibration" as much as it is homing.<br>In these cases, homing routines will tend to find the absolute position by driving downward toward a hard stop. In doing so, this applies drive train tension toward the down direction. However, during normal operation, the drive train tension will be upward, against gravity. <br>This gives a small, but potentially significant difference between the "zero" detected by the sensor, and the "zero" you actually want. Notably, this value is not a consistent value, and wear over the life of the robot can impact it.<br>Similarly, in "no-homing" scenarios where you have gravity assertion, the backlash tension is effectively randomized. <br>To resolve this, backlash compensation then needs to run to apply tension "upward" before fully asserting a fully defined system state. This is a scenario where a time-based operation is suitable, as it's a fast operation, from a known state. The power applied should also be small, ideally a large value that won't cause actual motion away from your hard stop (meaning, at/below <a data-tooltip-position="top" aria-label="FeedForwards" data-href="FeedForwards" href="https://stormbots.github.io/KnowledgeBase/level-1/feedforwards.html" class="internal-link" target="_self" rel="noopener nofollow">kS+kG</a> ).<br>For an implementation of this, see <a data-tooltip-position="top" aria-label="https://github.com/stormbots/Crescendo/blob/main/src/main/java/frc/robot/commands/CalibrateShooter.java" rel="noopener nofollow" class="external-link" href="https://github.com/stormbots/Crescendo/blob/main/src/main/java/frc/robot/commands/CalibrateShooter.java" target="_blank">CalibrateShooter</a> from Crescendo.<br><br>Nominally, homing a robot is done once at first run, and from there you know the position. However, sometimes the robot has known mechanical faults that cause routine loss of positioning from the encoder's perspective. However, other sensors may be able to provide insight, and help correct the error.<br>
+This kind of error most typically shows up in belt or chain skipping. <br>To overcome these issues, what you can do is run some condition checking alongside your normal runtime code, trying to identify signs that the system is in a potentially incorrect state, and correcting sensor information.<br>This is best demonstrated with examples: <br>
+<br>If you home a elevator to the bottom of a drive at position 0, you should never see encoder values be negative. As such, seeing a "negative" encoder value tells you that the mechanism has hit end of travel.
+<br>If you have a switch at the limit of travel, you can just re-assert zero every time you hit it. If there's a belt slip, you still end up at zero.
+<br>If an arm should rest in an "up" position, but the slip trends to push it down, retraction failures might have no good detection modes. So, simply apply a re-homing technique whenever the arm is in idle state.
+<br>Band-Aid Fix
+Online Position Recovery is a useful technique in a pinch. But, as with all other hardware faults, it's best to fix it in hardware. Use only when needed.
+<br>If the system is running nominally, these techniques don't provide much value, and can cause other runtime surprises and complexity, so it's discouraged.<br>
+In cases where such loss of control is hypothetical or infrequent, simply giving drivers a homing/button tends to be a better approach. <br><br>When doing homing, you typically have 4 system states, each with their own behavior. Referring it to it as a <a data-tooltip-position="top" aria-label="State Machines" data-href="State Machines" href="https://stormbots.github.io/KnowledgeBase/level-1/state-machines.html" class="internal-link" target="_self" rel="noopener nofollow">State Machine</a> is generally simpler <br><br><br>The UnHomed state should be the default bootup state. This state should prepare your system to <br>
+<br>A boolean flag or state variable your system can utilize
+<br>Safe operational current limits; Typically this means a low output current or speed control.
+<br>It's often a good plan to have some way to manually trigger a system to go into the Unhomed state and begin homing again. This allows your robot drivers to recover from unexpected conditions when they come up. There's a number of ways your robot can lose position during operation, most of which have nothing to do with software.<br><br>The Homing state should simply run the desired homing strategy. <br>Modeling this sequence tends to be the tricky part, and a careless approach will typically reveal a few issues<br>
+<br>Modelling the system with driving logic in the subsystem and Periodic routine typically clashes with the general flow of the Command structure. 
+<br>Modelling the Homing as a command can result in drivers cancelling the command, leaving the system in an unknown state
+<br>And, trying to continuously re-apply homing and cancellation processes can make the drivers frustrated as the system never gets to the known state.
+<br>Trying to make many other commands check homing conditions can result in bugs by omission.
+<br>The obvious takeaway is that however you home, you want it to be fast and preferably completed before the drivers try to command the system. Working with your designers can streamline this process.<br>Use of the <a data-tooltip-position="top" aria-label="Commands" data-href="Commands" href="https://stormbots.github.io/KnowledgeBase/level-1/commands.html" class="internal-link" target="_self" rel="noopener nofollow">Command</a> decorator withInterruptBehavior(...) allows an easy escape hatch. This flag allows an inversion of how Command are scheduled; Instead of new commands cancelling running ones, this allows your homing command to forcibly block others from getting scheduled.<br>If your system is already operating on an internal state machine, homing can simply be a state within that state machine.<br><br>This state is easy: Your system can now assert the known position, set your Homed state, apply updated power/speed constraints, resume normal operation.<br><br><br>Conveniently, the whole homing process actually fits very neatly into the <a data-href="Commands" href="https://stormbots.github.io/KnowledgeBase/level-1/commands.html" class="internal-link" target="_self" rel="noopener nofollow">Commands</a> model, making for a very simple implementation<br>
+<br>init() represents the unhomed state and reset
+<br>execute() represents the homing state
+<br>isFinished() checks the system state and indicates completion
+<br>end(cancelled) can handle the homed procedure
+<br>class ExampleSubsystem extends SubsystemBase(){
+	SparkMax motor = ....;
+	private boolean homed=false;
+	ExampleSubsystem(){
+		motor.setMaxOutputCurrent(4); // Will vary by system
+	}
+
+	public Command goHome(){
+		return new FunctionalCommand(
+			()-&gt;{
+				homed=false;
+				motor.setMaxOutputCurrent(4);
+			},
+			()-&gt;{motor.set(-0.5);},
+			()-&gt;{return motor.getAppliedCurrent()&gt;3}, //isFinished
+			(cancelled)-&gt;{
+				if(cancelled==false){
+					homed = true;
+					motor.setMaxOutputCurrent(30);
+				}
+			};
+		)
+		//Optionally: prevent other commands from stopping this one
+		//This is a *very* powerful option, and one that
+		//Should only be used when you know it's what you want.
+		.withInterruptBehavior(kCancelIncoming)
+		// Failsafe in case something goes wrong,since otherwise you 
+		// can't exit this command by button mashing
+		.withTimeout(5);
+	}
+} 
+<br>This command can then be inserted at the start of autonomous, ensuring that your bot is always homed during a match. It also can be easily mapped to a button, allowing for mid-match recovery. If needed, it can also be broken up into a slightly more complicated command sequence.<br>For situations where you won't be running an auto (typical testing and practice field scenarios), the use of <a data-href="Triggers" href="https://stormbots.github.io/KnowledgeBase/level-1/triggers.html" class="internal-link" target="_self" rel="noopener nofollow">Triggers</a> can facilitate automatic checking and scheduling<br>class ExampleSubsystem extends SubsystemBase(){
+	ExampleSubsystem(){
+		Trigger.new(Driverstation::isEnabled)
+		.and(()-&gt;isHomed==false)
+		.whileTrue(goHome())
+	}
+}
+<br>Alternatively, if you don't want to use the withInterruptBehavior(...) option, you can hijack other command calls with Commands.either(...) or new ConditionalCommand(...)<br>class ExampleSubsystem extends SubsystemBase(){
+/* ... */
+	//Intercept commands directly to prevent unhomed operation
+	public Command goUp(){
+		return either(
+		stop(),
+		goHome(),
+		()-&gt;isHomed
+	}
+/* ... */
+<br>While generally not preferable, a DefaultCommand and the either/ConditionalCommand notation can be used to  initiate homing. This is typically not recommended due to defaultCommands having an implicit low priority, while homing is a very high priority task.]]></description><link>https://stormbots.github.io/KnowledgeBase/level-1/homing-sequences.html</link><guid isPermaLink="false">Level 1/Homing Sequences.md</guid><pubDate>Fri, 03 Oct 2025 08:40:36 GMT</pubDate><enclosure url="https://stormbots.github.io/KnowledgeBase/lib/media/limit-switch-cam.svg" length="0" type="image/svg+xml"/><content:encoded>&lt;figure&gt;&lt;img src="https://stormbots.github.io/KnowledgeBase/lib/media/limit-switch-cam.svg"&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[SuperStructure Climber]]></title><description><![CDATA[ 
+ <br><br>
+<br>Configure the climber system's encoder
+<br>Configure soft limits to restrict motion
+<br>Write a homing routine
+<br>Write triggers to indicate climber's target positions/states
+<br>Write a viable control mode for the climber
+<br><br>A climber represents a subsystem which is intended to raise the robot off of the ground. This is a common game task, although the requirements for "climbing" vary from year to year. <br>These can range from <br>
+<br>obtain and climb a rope
+<br>grab a horizontal bar and do a hold yourself up
+<br>somehow get 2 feet off the ground onto a platform 
+<br>In general, climbing tasks also require that you remain in the climbed position after the game ends, providing interesting mechanics and control considerations.<br><br>Torque. Climbers typically represent a significant amount of power, and if left running uncontrolled, will destroy your robot and contacting objects in slow motion while you scramble to disable it. <br>As a result, consistent <a data-tooltip-position="top" aria-label="Homing Sequences" data-href="Homing Sequences" href="https://stormbots.github.io/KnowledgeBase/level-1/homing-sequences.html" class="internal-link" target="_self" rel="noopener nofollow">Homing</a> routines and strong enforcement of the homed state is critical to a successful climber. These systems are often difficult or impossible to move by hand, and will often not be in the correct "starting position" when the robot is enabled.<br>In some cases, the significant torque makes tuning and calibration trivial; You just give it a P value and it eventually gets to the new place, regardless of if it's lifting a bot or not.<br>
+In other cases, the significant change in load on the motor means you need to change <a data-href="PID" href="https://stormbots.github.io/KnowledgeBase/level-1/pid.html" class="internal-link" target="_self" rel="noopener nofollow">PID</a> and <a data-href="FeedForwards" href="https://stormbots.github.io/KnowledgeBase/level-1/feedforwards.html" class="internal-link" target="_self" rel="noopener nofollow">FeedForwards</a> gains based on whether you're actually climbing, or just moving the system while not climbing.<br>In many cases, the act of climbing will add additional physical constraints on the robot. Commonly, if you grab a bar, the bar and/or wall now form significant obstacles that restrict the actuator range. You might have other actuators that need to be in custom positions.<br><br>While somewhat uncommon, sometimes an arm is used to raise the robot. No special notes beyond the standard differences.<br><br>Systems that grab a dangling field element (a chain or rope) work similar to <a data-tooltip-position="top" aria-label="SuperStructure Rollers" data-href="SuperStructure Rollers" href="https://stormbots.github.io/KnowledgeBase/level-1/superstructure-rollers.html" class="internal-link" target="_self" rel="noopener nofollow">Rollers</a> have no initial homing process, but do develop physical constraints once a rope is secured.<br>For these systems, you would want to make sure that you can detect the attached field element, and then enable safe upper constraints limits to prevent your bot from running out of chain, or otherwise driving through systems. <br>Note, that this can be very difficult! Winding ropes and chains may collect unevenly, and you should ensure you have appropriate considerations for various ways it can wind. If your system cannot reliably detect end-of-motion conditions, such a system may need an additional switch or contact plate to provide additional data.<br><br>Winch systems are <a data-tooltip-position="top" aria-label="SuperStructure Rollers" data-href="SuperStructure Rollers" href="https://stormbots.github.io/KnowledgeBase/level-1/superstructure-rollers.html" class="internal-link" target="_self" rel="noopener nofollow">Rollers</a> permanently attached to a rope; Generally, these are a split subsystem with a separate, low-power mechanism that secures the rope to the field, followed by the winch doing the high-torque action. <br>Unlike other roller systems, these are more closely tied to <a data-href="#Linear Climbers" href="https://stormbots.github.io/KnowledgeBase/about:blank#Linear_Climbers" class="internal-link" target="_self" rel="noopener nofollow">Linear Climbers</a> and <a data-tooltip-position="top" aria-label="SuperStructure Elevator" data-href="SuperStructure Elevator" href="https://stormbots.github.io/KnowledgeBase/level-1/superstructure-elevator.html" class="internal-link" target="_self" rel="noopener nofollow">Elevators</a>, as they generally require a homing process based on the unspooled length of rope, often equated to the height of the hook/grabber. <br>In many cases, the bot designers will simply make the "attachment" mechanisms spring loaded or passive, and automatically driven through unspooling the winch.<br>In other cases, Winches involve active placement mechanisms. In this setup, the two actuators need to be moved together accurately to avoid causing physical conflicts and damage. Using good <a data-href="Forward Kinematics" href="https://stormbots.github.io/KnowledgeBase/level-2/forward-kinematics.html" class="internal-link" target="_self" rel="noopener nofollow">Forward Kinematics</a> and <a data-href="Motion Profiles" href="https://stormbots.github.io/KnowledgeBase/level-2/motion-profiles.html" class="internal-link" target="_self" rel="noopener nofollow">Motion Profiles</a> is essential to ensuring both systems move at the same rates, which will necessarily be the speed of the slower system.<br>
+During the climb action, setting the placement mechanism to "coast mode" and disabling output is often advisable; This prevents surprises when forces in the robot cause unexpected motion that would cause the actuated placement system to fight eachother. <br>When working with Winch systems, having excess unspooled rope is extremely hazardous; This can bind wires, tangle other subsystems, or get re-spooled wrong, and with the significant power on winch shafts, it's easy to cause damage. It's important to make a re-spooling or re-homing option readily available for effective resets and preperation.<br><br>These systems work similarly to <a data-tooltip-position="top" aria-label="SuperStructure Elevator" data-href="SuperStructure Elevator" href="https://stormbots.github.io/KnowledgeBase/level-1/superstructure-elevator.html" class="internal-link" target="_self" rel="noopener nofollow">Elevators</a>. <br>Generally, you will operate these with extremely low current limits during homing and "preparation" motions, and shifting to "full power" modes once the driver properly initializes the climb, or if you can detect an engaged field element. <br><br>In some cases, climbers might several different actuating parts working together due to design goals. This is likely either a generic <a data-href="Compound Subsystem" href="https://stormbots.github.io/KnowledgeBase/level-1/compound-subsystem.html" class="internal-link" target="_self" rel="noopener nofollow">Compound Subsystem</a> with different actuator types, or a <a data-tooltip-position="top" aria-label="Compound Subsystem > Handling &quot;twinned&quot; subsystems" data-href="Compound Subsystem#Handling &quot;twinned&quot; subsystems" href="https://stormbots.github.io/KnowledgeBase/level-1/compound-subsystem.html#Handling_&quot;twinned&quot;_subsystems" class="internal-link" target="_self" rel="noopener nofollow">Twinned Subsystem</a> with two mostly identical actuators operated separately but simultaneously due to design constraints.<br><br>For many climbing tasks, the robot must "be in the air" for several seconds after the match ends and the motor controllers are disabled. <br>The typical way to facilitate this is via the use of Brake mode on the climbing system; With high torque systems, this will create significant resistance, and the robot will generally stay up long enough to secure points. <br>In other cases, it may be necessary to actuate a mechanism to "lock" the bot in place. <br>In all cases, care should be taken to ensure that the robot is safely reset after climbs, prior to the next attempted motion. <br><br>Due to the need to hang, we can assert that we should always end matches in Brake mode. <br>When the robot is powered off, the motor is (effectively) in coast mode.<br>However, when the drivers need to manipulate the bot (such as in practice or queuing for a match), we generally also want it in coast mode.<br>As a result, the typical climber states for Brake/Coast is as follows:<br>
+<br>Initialize on boot to coast mode (allowing human adjustment) before matches start.
+<br>When initiating the climb, or a climb attempt is detected, apply Brake mode.
+<br>The other considerations vary on climb: <br>
+<br>If the robot can safely de-climb in coast mode, apply Coast when the robot is enabled. This facilitates resets during practices, since the bot can be enabled+disabled to allow human assistance
+<br>If the robot cannot safely de-climb via coast, but can via actuation, provide this to your drivers for quick field resets.
+]]></description><link>https://stormbots.github.io/KnowledgeBase/level-1/superstructure-climber.html</link><guid isPermaLink="false">Level 1/SuperStructure Climber.md</guid><pubDate>Fri, 03 Oct 2025 20:09:01 GMT</pubDate></item><item><title><![CDATA[PID]]></title><description><![CDATA[<a class="tag" href="https://stormbots.github.io/KnowledgeBase/?query=tag:todo" style="background-color: rgb(4, 108, 116); color: white; font-weight: 700; border: none; border-radius: 1em; padding: 0.2em 0.5em;">#todo</a> 
  <br>Requires<br>
 <a data-href="Commands" href="https://stormbots.github.io/KnowledgeBase/level-1/commands.html" class="internal-link" target="_self" rel="noopener nofollow">Commands</a><br>
 <a data-href="Encoder Basics" href="https://stormbots.github.io/KnowledgeBase/level-1/encoder-basics.html" class="internal-link" target="_self" rel="noopener nofollow">Encoder Basics</a><br><br>
@@ -1962,140 +2195,7 @@ Hold the system stable again, and then decrease output until it just barely star
 <br>This process benefits from a relatively low P gain, which helps keep the system stable. Once your system is tuned, you'll probably want a relatively high P gain, now that you can assert the feed-forward is keeping your error close to zero. <br><br>
 <br>
 <br>Note, you might observe that the kCos output,   is reading the current system state, and say "hey!  That's a feed back system, not a feed forward!" and you are technically correct; the best kind of correct. However, kCos is often implemented this way, as it's much more stable than the feed-forward version. In that version, you apply , regardless of what  happens to actually be. Feel free to do a thought experiment on how this might present problems in real-world systems.<a href="https://stormbots.github.io/KnowledgeBase/about:blank#fnref-1-eccb17358eb5b44f" class="footnote-backref footnote-link" target="_self" rel="noopener nofollow">↩︎</a>
-]]></description><link>https://stormbots.github.io/KnowledgeBase/level-1/feedforwards.html</link><guid isPermaLink="false">Level 1/FeedForwards.md</guid><pubDate>Sat, 27 Sep 2025 21:15:38 GMT</pubDate></item><item><title><![CDATA[Homing Sequences]]></title><description><![CDATA[ 
- <br>Homing is the process of recovering physical system positions, typically using relative encoders.<br><br><a data-href="SuperStructure Arm" href="https://stormbots.github.io/KnowledgeBase/level-1/superstructure-arm.html" class="internal-link" target="_self" rel="noopener nofollow">SuperStructure Arm</a><br>
-<a data-href="SuperStructure Elevator" href="https://stormbots.github.io/KnowledgeBase/level-1/superstructure-elevator.html" class="internal-link" target="_self" rel="noopener nofollow">SuperStructure Elevator</a><br>
-And will generally be done after most requirements for those systems<br><br>
-<br>Home a subsystem using a Command-oriented method
-<br>Home a subsystem using a state-based method
-<br>Make a non-homed system refuse non-homing command operations
-<br>Document the "expected startup configuration" of your robot, and how the homing sequence resolves potential issues.
-<br><br>
-<br>Configure encoders and other system configurations
-<br>Construct a Command that homes the system
-<br>Create a Trigger to represent if the system is homed or not
-<br>Determine the best way to integrate the homing operation. This can be 
-
-<br>Initial one-off sequence on enable
-<br>As a blocking operation when attempting to command the system
-<br>As a default command with a Conditional Command
-<br>Idle re-homing (eg, correcting for slipped belts when system is not in use)
-<br>
-
-
-<br><br>
-<br>Home an elevator system using system current
-<br>home an arm system using system current
-<br>Home a system 
-<br><br>When a system is booted using <a data-tooltip-position="top" aria-label="Encoder Basics" data-href="Encoder Basics" href="https://stormbots.github.io/KnowledgeBase/level-1/encoder-basics.html" class="internal-link" target="_self" rel="noopener nofollow">Relative Encoders</a>, the encoder boots with a value of 0, like you'd expect. However, the real physical system can be anywhere in it's normal range of travel, and the bot has no way to know the difference.<br>Homing is the process of reconciling this difference, this allowing your code to assert a known physical position, regardless of what position it was in when the system booted. <br><br>Homing is not a hard requirement of <a data-tooltip-position="top" aria-label="SuperStructure Elevator" data-href="SuperStructure Elevator" href="https://stormbots.github.io/KnowledgeBase/level-1/superstructure-elevator.html" class="internal-link" target="_self" rel="noopener nofollow">Elevator</a> or <a data-tooltip-position="top" aria-label="SuperStructure Arm" data-href="SuperStructure Arm" href="https://stormbots.github.io/KnowledgeBase/level-1/superstructure-arm.html" class="internal-link" target="_self" rel="noopener nofollow">Arm</a> systems. As long as you boot your systems in known, consistent states, you operate without issue.<br>However, homing is generally recommended, as it provides benefits and safeguards<br>
-<br>You don't need strict power-on procedures. This is helpful at practices when the bot will be power cycled and get new uploaded code regularly. 
-<br>Power loss protection: If the bot loses power during a match, you just lose time when re-homing; You don't lose full control of the bot, or worse, cause serious damage.
-<br>Improved precision: Homing the system via code ensures that the system is always set to the same starting position. 
-<br><br>Hard stops
-When looking at homing, the concept of a "Hard Stop" will come up a lot. A hard stop is simply a physical constraint at the end of a system's travel, that you can reliably anticipate the robot hitting without causing system damage.<br>
-In some bot designs, hard stops are free. In other designs, hard stops require some specific engineering design.
-<br>Safety first!
-Any un-homed system has potential to perform in unexpected ways, potentially causing damage to itself or it's surroundings.<br>
-We'll gloss over this for now, but make sure to set safe motor current constraints by default, and only enable full power when homing is complete.
-<br><br>With this method, the consistency comes from the physical reset of the robot when first powering on the robot. Humans must physically set all non-homing mechanisms, then power the robot. <br>From here, you can do anything  you would normally do, and the robot knows where it is. <br>This method is often "good enough", especially for testing or initial bringup. For some robots, gravity makes it difficult to boot the robot outside of the expected condition.<br>Watch your resets!
-With this method, make sure your code does not reset encoder positions when initializing.<br>
-If you do, code resets or power loss will cause a de-sync between the booted position and the operational one. You have to trust the motor controller + encoder to retain positional accuracy. 
-<br><br>Current detection is a very common, and reliable method within FRC. With this method, you drive the system toward a hard stop, and monitor the system current.<br>When the system hits the hard stop, the load on your system increases, requiring more power. This can be detected by polling for the motor current. When your system exceeds a specific current for a long enough time, you can assert that your system is homed! A <a data-tooltip-position="top" aria-label="Triggers" data-href="Triggers" href="https://stormbots.github.io/KnowledgeBase/level-1/triggers.html" class="internal-link" target="_self" rel="noopener nofollow">Trigger</a> is a great tool for helping monitor this condition.<br><br>Speed Detection works by watching the encoder's velocity. You expect that when you hit the hard stop, the velocity should be zero, and go from there. However, there's some surprises that make this more challenging than current detection. <br>Velocity measurements can be very noisy, so using a <a data-tooltip-position="top" aria-label="https://docs.wpilib.org/en/stable/docs/software/advanced-controls/filters/index.html" rel="noopener nofollow" class="external-link" href="https://docs.wpilib.org/en/stable/docs/software/advanced-controls/filters/index.html" target="_blank">filter</a> is generally required, although debounced <a data-href="Triggers" href="https://stormbots.github.io/KnowledgeBase/level-1/triggers.html" class="internal-link" target="_self" rel="noopener nofollow">Triggers</a> can sometimes work.<br>This method also suffers from the simple fact that the system velocity will be zero when homing starts. And zero is also the speed you're looking for as an end condition. You also cannot guarantee that the system speed ever increases above zero, as it can start against the hard stop.<br>
-As such, you can't do a simple check, but need to monitor the speed for long enough to assert that the system should have moved if it was able to. <br><br>Limit switches are a tried and true method in many systems. You simply place a physical switch at the end of travel; When the bot hits the end of travel, you know where it is.<br>Mechanical Robustness Required
-Limit switches require notable care on the design and wiring to ensure that the system reliably contacts the switch in the manner needed.
-<br>The apparent simplicity of a limit switch hides several design and mounting considerations. In an FRC environment, some of these are surprisingly tricky.<br>
-<br>A limit switch must not act as an end stop. Simply put, they're not robust enough to sustain impacts and will fail, leaving your system in an uncontrolled, downward driving stage. 
-<br>A limit switch must be triggered at the end of travel; Otherwise, it's possible to start below the switch. 
-<br>A switch must have a consistent "throw" ; It should trip at the same location every time. Certain triggering mechanisms and arms can cause problems.
-<br>If the hard stop moves or is adjusted, the switch will be exposed for damage, and/or result in other issues
-<br>Because of these challenges, limit switches in FRC tend to be used in niche applications, where use of hard stops is restricted. One such case is screw-driven <a data-href="Linear Actuators" href="https://stormbots.github.io/KnowledgeBase/Linear Actuators" class="internal-link" target="_self" rel="noopener nofollow">Linear Actuators</a>, which generate enormous amounts of force at very low currents, but are very slow and easy to mount things to.<br>Switches also come in multiple types, which can impact the ease of design. In many cases, a magnetic hall effect sensor is optimal, as it's non-contact, and easy to mount alongside a hard stop to prevent overshoot.<br>Most 3D printers use limit switches, allowing for very good demonstrations of the routines needed to make these work with high precision.<br>For designs where hard stops are not possible, consider a Roller Arm Limit Switch and run it against a CAM. This configuration allows the switch to be mounted out of the line of motion, but with an extended throw. <br><img alt="limit-switch-cam.svg" src="https://stormbots.github.io/KnowledgeBase/lib/media/limit-switch-cam.svg"><br><br>Index switches work similarly to Limit Switches, but the expectation is that they're in the middle of the travel, rather than at the end of travel. This makes them unsuitable as a solo homing method, but useful as an auxiliary one. <br>Index switches are best used in situations where other homing routines would simply take too long, but you have sufficient knowledge to know that it should hit the switch in most cases.<br>
-This can often come up in <a data-tooltip-position="top" aria-label="SuperStructure Elevator" data-href="SuperStructure Elevator" href="https://stormbots.github.io/KnowledgeBase/level-1/superstructure-elevator.html" class="internal-link" target="_self" rel="noopener nofollow">Elevator</a> systems where the robot starting configuration puts the carriage far away from the nearest limit. <br>In this configuration, use of a non-contact switch is generally preferred, although a roller-arm switch and a cam can work well.<br><br>In some cases we can use absolute sensors such as <a data-href="Absolute Encoders" href="https://stormbots.github.io/KnowledgeBase/hardware/absolute-encoders.html" class="internal-link" target="_self" rel="noopener nofollow">Absolute Encoders</a>, <a data-tooltip-position="top" aria-label="Gyro Sensing" data-href="Gyro Sensing" href="https://stormbots.github.io/KnowledgeBase/level-1/gyro-sensing.html" class="internal-link" target="_self" rel="noopener nofollow">Gyros</a>, or <a data-tooltip-position="top" aria-label="LaserCan" data-href="LaserCan" href="https://stormbots.github.io/KnowledgeBase/hardware/lasercan.html" class="internal-link" target="_self" rel="noopener nofollow">Range Finders</a> to directly detect information about the robot state, and feed that information into our other sensors. <br>This method works very effectively on <a data-tooltip-position="top" aria-label="SuperStructure Arm" data-href="SuperStructure Arm" href="https://stormbots.github.io/KnowledgeBase/level-1/superstructure-arm.html" class="internal-link" target="_self" rel="noopener nofollow">Arm</a> based systems; <a data-href="Absolute Encoders" href="https://stormbots.github.io/KnowledgeBase/hardware/absolute-encoders.html" class="internal-link" target="_self" rel="noopener nofollow">Absolute Encoders</a> on an output shaft provide a 1:1 system state for almost all mechanical designs. <br>Elevator systems can also use these routines using <a data-tooltip-position="top" aria-label="LaserCan" data-href="LaserCan" href="https://stormbots.github.io/KnowledgeBase/hardware/lasercan.html" class="internal-link" target="_self" rel="noopener nofollow">|Range Finders</a> , detecting the distance between the carriage and end of travel. <br>Clever designers can also use <a data-href="Absolute Encoders" href="https://stormbots.github.io/KnowledgeBase/hardware/absolute-encoders.html" class="internal-link" target="_self" rel="noopener nofollow">Absolute Encoders</a> for elevators in a few ways <br>
-<br>You can simply assert a position within a narrow range of travel
-<br>You can gear the encoder to have a lower resolution across the full range of travel. Many encoders have enough precision that this is perfectly fine.
-<br>You can use multiple absolute encoders to combine the above global + local states
-<br>For a typical system using Spark motors and Through Bore Encoders, it looks like this:<br>public class ExampleSubsystem{
-	SparkMax motor = new Sparkmax(/*......*/);
-	ExampleSubsystem(){
-		SparkBaseConfig config = new SparkMaxConfig();
-		//Configure the motor's encoders to use the same real-world unit
-		armMotor.configure(config,/***/);
-		
-		//We can now compare the values directly, and initialize the 
-		//Relative encoder state from the absolute sensor.
-		var angle = motor.getAbsoluteEncoder.getPosition();
-		motor.getEncoder.setPosition(angle);
-	}
-}
-<br><br>A relatively simple routine, but just running your system with a known minimum power for a set length of time can ensure the system gets into a known position. After the time, you can reset the encoder. <br>This method is very situational. It should only be used in situations where you have a solid understanding of the system mechanics, and know that the system will not encounter damage when ran for a set length of time. This is usually paired with a lower current constraint during the homing operation.<br><br>In some cases you might be able to find the system home state (using gravity or another method), but find <a data-tooltip-position="top" aria-label="Mechanical Backlash" data-href="Mechanical Backlash" href="https://stormbots.github.io/KnowledgeBase/misc/mechanical-backlash.html" class="internal-link" target="_self" rel="noopener nofollow">backlash</a> is preventing you from hitting desired consistency and reliability.<br>This is most likely to be needed on <a data-tooltip-position="top" aria-label="SuperStructure Arm" data-href="SuperStructure Arm" href="https://stormbots.github.io/KnowledgeBase/level-1/superstructure-arm.html" class="internal-link" target="_self" rel="noopener nofollow">Arm</a> systems, particularly actuated <a data-tooltip-position="top" aria-label="Superstructure Shooter" data-href="Superstructure Shooter" href="https://stormbots.github.io/KnowledgeBase/level-2/superstructure-shooter.html" class="internal-link" target="_self" rel="noopener nofollow">Shooter</a> systems. This is akin to a "calibration" as much as it is homing.<br>In these cases, homing routines will tend to find the absolute position by driving downward toward a hard stop. In doing so, this applies drive train tension toward the down direction. However, during normal operation, the drive train tension will be upward, against gravity. <br>This gives a small, but potentially significant difference between the "zero" detected by the sensor, and the "zero" you actually want. Notably, this value is not a consistent value, and wear over the life of the robot can impact it.<br>Similarly, in "no-homing" scenarios where you have gravity assertion, the backlash tension is effectively randomized. <br>To resolve this, backlash compensation then needs to run to apply tension "upward" before fully asserting a fully defined system state. This is a scenario where a time-based operation is suitable, as it's a fast operation, from a known state. The power applied should also be small, ideally a large value that won't cause actual motion away from your hard stop (meaning, at/below <a data-tooltip-position="top" aria-label="FeedForwards" data-href="FeedForwards" href="https://stormbots.github.io/KnowledgeBase/level-1/feedforwards.html" class="internal-link" target="_self" rel="noopener nofollow">kS+kG</a> ).<br>For an implementation of this, see <a data-tooltip-position="top" aria-label="https://github.com/stormbots/Crescendo/blob/main/src/main/java/frc/robot/commands/CalibrateShooter.java" rel="noopener nofollow" class="external-link" href="https://github.com/stormbots/Crescendo/blob/main/src/main/java/frc/robot/commands/CalibrateShooter.java" target="_blank">CalibrateShooter</a> from Crescendo.<br><br>Nominally, homing a robot is done once at first run, and from there you know the position. However, sometimes the robot has known mechanical faults that cause routine loss of positioning from the encoder's perspective. However, other sensors may be able to provide insight, and help correct the error.<br>
-This kind of error most typically shows up in belt or chain skipping. <br>To overcome these issues, what you can do is run some condition checking alongside your normal runtime code, trying to identify signs that the system is in a potentially incorrect state, and correcting sensor information.<br>This is best demonstrated with examples: <br>
-<br>If you home a elevator to the bottom of a drive at position 0, you should never see encoder values be negative. As such, seeing a "negative" encoder value tells you that the mechanism has hit end of travel.
-<br>If you have a switch at the limit of travel, you can just re-assert zero every time you hit it. If there's a belt slip, you still end up at zero.
-<br>If an arm should rest in an "up" position, but the slip trends to push it down, retraction failures might have no good detection modes. So, simply apply a re-homing technique whenever the arm is in idle state.
-<br>Band-Aid Fix
-Online Position Recovery is a useful technique in a pinch. But, as with all other hardware faults, it's best to fix it in hardware. Use only when needed.
-<br>If the system is running nominally, these techniques don't provide much value, and can cause other runtime surprises and complexity, so it's discouraged.<br>
-In cases where such loss of control is hypothetical or infrequent, simply giving drivers a homing/button tends to be a better approach. <br><br>When doing homing, you typically have 4 system states, each with their own behavior. Referring it to it as a <a data-tooltip-position="top" aria-label="State Machines" data-href="State Machines" href="https://stormbots.github.io/KnowledgeBase/level-1/state-machines.html" class="internal-link" target="_self" rel="noopener nofollow">State Machine</a> is generally simpler <br><br><br>The UnHomed state should be the default bootup state. This state should prepare your system to <br>
-<br>A boolean flag or state variable your system can utilize
-<br>Safe operational current limits; Typically this means a low output current or speed control.
-<br>It's often a good plan to have some way to manually trigger a system to go into the Unhomed state and begin homing again. This allows your robot drivers to recover from unexpected conditions when they come up. There's a number of ways your robot can lose position during operation, most of which have nothing to do with software.<br><br>The Homing state should simply run the desired homing strategy. <br>Modeling this sequence tends to be the tricky part, and a careless approach will typically reveal a few issues<br>
-<br>Modelling the system with driving logic in the subsystem and Periodic routine typically clashes with the general flow of the Command structure. 
-<br>Modelling the Homing as a command can result in drivers cancelling the command, leaving the system in an unknown state
-<br>And, trying to continuously re-apply homing and cancellation processes can make the drivers frustrated as the system never gets to the known state.
-<br>Trying to make many other commands check homing conditions can result in bugs by omission.
-<br>The obvious takeaway is that however you home, you want it to be fast and preferably completed before the drivers try to command the system. Working with your designers can streamline this process.<br>Use of the <a data-tooltip-position="top" aria-label="Commands" data-href="Commands" href="https://stormbots.github.io/KnowledgeBase/level-1/commands.html" class="internal-link" target="_self" rel="noopener nofollow">Command</a> decorator withInterruptBehavior(...) allows an easy escape hatch. This flag allows an inversion of how Command are scheduled; Instead of new commands cancelling running ones, this allows your homing command to forcibly block others from getting scheduled.<br>If your system is already operating on an internal state machine, homing can simply be a state within that state machine.<br><br>This state is easy: Your system can now assert the known position, set your Homed state, apply updated power/speed constraints, resume normal operation.<br><br><br>Conveniently, the whole homing process actually fits very neatly into the <a data-href="Commands" href="https://stormbots.github.io/KnowledgeBase/level-1/commands.html" class="internal-link" target="_self" rel="noopener nofollow">Commands</a> model, making for a very simple implementation<br>
-<br>init() represents the unhomed state and reset
-<br>execute() represents the homing state
-<br>isFinished() checks the system state and indicates completion
-<br>end(cancelled) can handle the homed procedure
-<br>class ExampleSubsystem extends SubsystemBase(){
-	SparkMax motor = ....;
-	private boolean homed=false;
-	ExampleSubsystem(){
-		motor.setMaxOutputCurrent(4); // Will vary by system
-	}
-
-	public Command goHome(){
-		return new FunctionalCommand(
-			()-&gt;{
-				homed=false;
-				motor.getAppliedCurrent()
-			};
-			()-&gt;{motor.set(-0.5);};
-			()-&gt;{return motor.getAppliedCurrent()&gt;3}; //isFinished
-			(cancelled)-&gt;{
-				if(cancelled==false){
-					homed = true;
-					motor.setMaxOutputCurrent(30);
-				}
-			};
-		)
-		//Optionally: prevent other commands from stopping this one
-		//This is a *very* powerful option, and one that
-		//Should only be used when you know it's what you want.
-		.withInterruptBehavior(kCancelIncoming)
-		// Failsafe in case something goes wrong,since otherwise you 
-		// can't exit this command by button mashing
-		.withTimeout(5);
-		}
-} 
-<br>This command can then be inserted at the start of autonomous, ensuring that your bot is always homed during a match. It also can be easily mapped to a button, allowing for mid-match recovery. If needed, it can also be broken up into a slightly more complicated command sequence.<br>For situations where you won't be running an auto (typical testing and practice field scenarios), the use of <a data-href="Triggers" href="https://stormbots.github.io/KnowledgeBase/level-1/triggers.html" class="internal-link" target="_self" rel="noopener nofollow">Triggers</a> can facilitate automatic checking and scheduling<br>class ExampleSubsystem extends SubsystemBase(){
-	ExampleSubsystem(){
-		Trigger.new(Driverstation::isEnabled)
-		.and(()-&gt;isHomed==false)
-		.whileTrue(goHome())
-	}
-}
-<br>Alternatively, if you don't want to use the withInterruptBehavior(...) option, you can hijack other command calls with Commands.either(...) or new ConditionalCommand(...)<br>class ExampleSubsystem extends SubsystemBase(){
-/* ... */
-	//Intercept commands directly to prevent unhomed operation
-	public Command goUp(){
-		return either(
-		stop(),
-		goHome(),
-		()-&gt;isHomed
-	}
-/* ... */
-<br>While generally not preferable, a DefaultCommand and the either/ConditionalCommand notation can be used to  initiate homing. This is typically not recommended due to defaultCommands having an implicit low priority, while homing is a very high priority task.]]></description><link>https://stormbots.github.io/KnowledgeBase/level-1/homing-sequences.html</link><guid isPermaLink="false">Level 1/Homing Sequences.md</guid><pubDate>Sat, 27 Sep 2025 19:28:56 GMT</pubDate><enclosure url="https://stormbots.github.io/KnowledgeBase/lib/media/limit-switch-cam.svg" length="0" type="image/svg+xml"/><content:encoded>&lt;figure&gt;&lt;img src="https://stormbots.github.io/KnowledgeBase/lib/media/limit-switch-cam.svg"&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[Motor Control]]></title><description><![CDATA[ 
+]]></description><link>https://stormbots.github.io/KnowledgeBase/level-1/feedforwards.html</link><guid isPermaLink="false">Level 1/FeedForwards.md</guid><pubDate>Sat, 27 Sep 2025 21:15:38 GMT</pubDate></item><item><title><![CDATA[Motor Control]]></title><description><![CDATA[ 
  <br>Requires:<a data-href="Robot Code Basics" href="https://stormbots.github.io/KnowledgeBase/level-1/robot-code-basics.html" class="internal-link" target="_self" rel="noopener nofollow">Robot Code Basics</a><br>
 Recommends:<a data-href="Commands" href="https://stormbots.github.io/KnowledgeBase/level-1/commands.html" class="internal-link" target="_self" rel="noopener nofollow">Commands</a><br><br>
 <br>Spin a motor
