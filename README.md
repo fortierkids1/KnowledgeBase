@@ -3,7 +3,7 @@
 This is the Skyview Robotics training wiki and educational resources
 
 You can find a web version of this documentation at
-https://stormbots.github.io/Knowledgebase
+https://stormbots.github.io/KnowledgeBase
 ### What this is about
 Robotics does not have a linear path to success; There's a lot of variety in what you'll need to do, and a bigger variety in what you _want_ to do. So, instead of a standard curriculum, our resources are broken down as skill trees that build up and out from smaller, foundational sections.
 

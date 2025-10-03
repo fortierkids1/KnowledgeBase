@@ -1,3 +1,8 @@
+---
+tags:
+  - stub
+---
+
 ## Goals
 Interact with the PhotoVision UI and basic code structures
 

@@ -2,7 +2,6 @@
 aliases:
   - Field2d
   - Field Odometry
-  - Pose2d
 ---
 #stub 
 
@@ -39,6 +38,14 @@ In general, Glass is the superior option for most programming tasks and developm
 
 The WPILib Docs are excellent at helping demonstrate many of these examples:
 https://docs.wpilib.org/en/stable/docs/software/dashboards/glass/field2d-widget.html
+
+## Pose
+In Robots, a Pose represents a specific location and state of a robot's actuator. Within the context of odometry, a pose represents the robot's location on a 2D plane. In most cases, this means the location on the game field. 
+
+In order to represent such a state, we need 3 things: The X position, the Y position, and a rotation. 
+
+In WPILib, this is handled by the [[Pose2d]] object, which can be provided to and returned from many utilities interacting with the robot position, including drivetrain path planning, vision, simulation, and telemetry.
+
 ### Field2D Basics
 
 The `Field2D` object in WPILib contains a number of utilities for keeping tabs on odometry. It can be added with just a couple lines. 
@@ -205,7 +212,3 @@ class Drivetrain extends SubsystemBase{
 
 In this use case, the work will likely be done inside your Auto class after selecting the appropriate one. 
 
-
-## Pose2D Objects
-
-#todo Explain useful features of Pose2D and how to use them

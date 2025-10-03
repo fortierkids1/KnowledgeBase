@@ -79,7 +79,7 @@ class ExampleSubsystem(){
 
 #### For Conversions
 
-In some cases, we just have to use atypical units that don't match everything else in the file. When this comes up, the Units library helps ensure that the actual base number stays consistent with everything else.
+In some cases, we just have to use atypical units that don't match everything else in the file. When this comes up, the Units library helps ensure that the actual base number stays consistent with other measured values and our available measurement tools.
 
 ```java
 Inches.of(100).in(Meters);

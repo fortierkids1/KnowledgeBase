@@ -1,3 +1,7 @@
+---
+tags:
+  - stub
+---
 
 ## Success Criteria
 - [ ] Configure the PV networking

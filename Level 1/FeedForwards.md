@@ -170,6 +170,13 @@ ExampleSystem extends SubsystemBase(){
 > When tuning feed-forwards, it's helpful to recognize that values being _too high_ will result in notable problems, but gains being _too low_ generally result in lower performance. 
 > Just remember that the lowest possible value is 0; Which is equivalent to not using that feed forward in the first place. Can only improve from there. 
 
+
+
+> [!BUG] FeedForward Units
+> It's worth clarifying that the "units" of feedForward are usually provided in "volts", rather than "percent output". This allows FeedForwards to operate reliably in spite of changes of supply voltage, which can vary from 13 volts on a fresh battery to ~10 volts at the end of a match. 
+> Percent output on the other hand is just how much of the available voltage to output; This makes it suboptimal for controlled calculations in this case. 
+
+
 #### Finding kS and kG
 These two terms are defined at the boundary between "moving" and "not moving", and thus are closely intertwined. Or, in other words, they interfere with finding the other. So it's best to find them both at once.
 

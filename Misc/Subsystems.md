@@ -21,10 +21,22 @@ For more complex bots, you may be forced to consider a single subsystem as one o
 Chassis are something of an exception: Despite having multiple actuators/motors, they act as a single cohesive system, and have helper classes to manage some complexity.
 
 This decision *will* create more subsystems than you think are necessary. However, it has a few advantages
-- The subsystems are smaller, and more manageable
+- The subsystems are smaller, simpler, and more manageable
 - More subsystems --> easier splitting of tasks and workloads 
 - A couple simple [[Commands]] can easily link two subsystems that might seem useless when operated independently
 - As a season progresses, unexpected developments might bring to light reasons to split a "double actuator subsystem". Having this already be done saves a lot of time and effort.
+
+
+## Triggers as subsystem state 
+
+When breaking down a robot, it's a good idea to model your subsystem's state using [[Triggers|Triggers]]. This might be directly measured state such as `isGamepieceLoaded` or `isAtPosition`. 
+Triggers can also model other implicit states such as `isHomed` or complex conditions like `isJammed` .
+
+Encapsulating your system state as a Trigger makes it simple to pass into Commands, sequences, or even directly launch conditions based on them.
+
+There are of course states that *cannot* be represented this way, such as the current arm angle or elevator height. However, it is often useful to represent a meaningful angle/height as a function, such as `isAtGoal2Height`, `atScoringPosition`, or `isAtIdlePosition`
+
+Modelling your system this way promotes loose coupling between subsystems: A given command can check for required conditions across a variety of subsystems without having to strictly control the system. This makes for flexible, easy to write autos and sequences, and makes for easy to read code.
 
 ## Example Implementations
 
@@ -60,7 +72,7 @@ This is representative of a much more feature complete subsystem, including posi
 This integrates [[FeedForwards]], [[PID|PIDs]], and a [[Motion Profiles|Motion Profile]]. 
 
 ```java
-ExampleElevatorSubsystem extends SubsystemBase(){
+ExampleElevatorSubsystem extends SubsystemBase{
 	SparkMax motor = new SparkMax(42,kBrushless);
 
 	//See [[FeedForwards]] for additional information
@@ -79,7 +91,8 @@ ExampleElevatorSubsystem extends SubsystemBase(){
 		
 		//DefaultCommands help avoid leaving a system in an uncontrolled
 		//state. Often, this simply means intentionally applying no motion.
-		setDefaultCommand(setPower(kg));
+		//No motion does *not* always mean a power of 0, as seen here!
+		setDefaultCommand(setPower(ff.getKg()));
 	}	
 
 	//Triggers form the optimal way to transfer subsystem states/conditions
@@ -97,6 +110,8 @@ ExampleElevatorSubsystem extends SubsystemBase(){
 	public Command setPosition(double position){
 		return startRun(()->{
 			//Do initial reset for PID/profile
+		},
+		()->{}
 			//Run the profiledPID
 		});
 	}
@@ -194,3 +209,4 @@ Our solutions now are
 
 While there's some cases to use the first few, the best solution long term is to refactor the code, making the systems properly independent. 
 
+The easy way to catch this design early is ask "Am I having to provide two inputs for one action". If so, they should probably be two seperate subsystems. Currently, WPILib has no way to properly "nest" subsystems, but a simple wrapper class can be used to house commands interacting with two strongly coupled, but independent subsystems (such as an Arm attached to an Elevator).

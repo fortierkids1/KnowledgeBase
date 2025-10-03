@@ -52,17 +52,16 @@ Here, we see that the Trigger uses `.whileTrue(command)` . This Trigger option 1
 
 Triggers are a great way to wrap sensor and subsystem "state", and expose it to be integrated with Commands. 
 
-While it's less common to launch commands based on these types of Triggers, Triggers provide several functions that prove useful, and help clean up your subsystem code. 
+While it's less common to launch commands based on these types of Triggers, Triggers provide several functions that prove useful, and help clean up your subsystem and command code. 
 
 Common triggers include
 
-- Confirming you're at a target position, usually written isOnTarget / isAtGoal / isAtSetpoint(), or something similar. 
+- Confirming you're at an arbitrary commanded position, usually written isOnTarget / isAtGoal / isAtSetpoint(), or something similar. 
+- Confirming that you're at a relevant named position, such as atScoringPosition, atLevel2, atLevel3, atPickupAngle
 - Confirming the state of a game piece: Usually isGamepieceLoaded, replacing Gamepiece with the name of the current year's item.
 - isWithinRange() ; Common for rangefinders like [[LaserCan]]
 
 Usually, these are further customized to provide very clear, yes/no queries with true/false responses.
-
-
 
 ## Exploring Trigger methods
 
@@ -80,7 +79,11 @@ The most helpful ones will tend to be
 
 `getAsBoolean` can be useful, as it simply returns the true/false value of the checked condition. This allows Triggers to be used as simple Boolean functions, or as boolean variables.
 
-`debounce(time)` prevents the trigger from changing  state until the condition is in the new state for `time` seconds. This  prevents instantaneous changes caused by environmental errors, which is common in sensors. A small debounce can significantly improve reliability and reduce "misfires".
+`debounce(time)` prevents the trigger from changing output until the condition is in the new state for `time` seconds. A small debounce can improve reliability and prevent misfires by handling sensor quirks or environmental errors that can trigger the condition without really being in the intended state.
+- This is especially useful for measuring time-sensitive readings like velocity and current, as they provide extremely noisy signals otherwise.
+- Helpful for Position-based measures, ensuring that the system is "stable" and not bouncing around the target position
+- Helpful when `and`ing multiple sensor reading, to ensure that the system has settled on the desired state properly.
+
 ## Where do Triggers go?
 
 Triggers are a bit strange; When they're created, they're included in the robot's Command Scheduler, and it's not needed to make sure they stay in scope to continue working. 
