@@ -57,21 +57,6 @@
             }
           },
           {
-            "id": "b7b3a200edaec827",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Level 2/QuestNav.md",
-                "mode": "source",
-                "source": false,
-                "backlinks": false
-              },
-              "icon": "lucide-file",
-              "title": "QuestNav"
-            }
-          },
-          {
             "id": "6df780ef8a47652e",
             "type": "leaf",
             "state": {
@@ -87,19 +72,37 @@
             }
           },
           {
-            "id": "7e93f56f41f54309",
+            "id": "bad93f1201d1b98b",
             "type": "leaf",
             "state": {
-              "type": "image",
+              "type": "markdown",
               "state": {
-                "file": "assets/motion-profile-time-plots.png"
+                "file": "Level 1/Homing Sequences.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": false
               },
-              "icon": "lucide-image",
-              "title": "motion-profile-time-plots"
+              "icon": "lucide-file",
+              "title": "Homing Sequences"
+            }
+          },
+          {
+            "id": "c58c72376f19615e",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Level 1/Compound Subsystem.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": false
+              },
+              "icon": "lucide-file",
+              "title": "Compound Subsystem"
             }
           }
         ],
-        "currentTab": 4
+        "currentTab": 5
       }
     ],
     "direction": "vertical"
@@ -131,7 +134,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "tag:stub",
+                "query": "tag:#stub",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -336,40 +339,42 @@
       "vscode-editor:Create Code File": false
     }
   },
-  "active": "6df780ef8a47652e",
+  "active": "c58c72376f19615e",
   "lastOpenFiles": [
-    "Level 1/SuperStructure Intake.md",
-    "Pasted image 20250927225025.png",
+    "Level 1/SuperStructure Climber.md",
+    "Level 1/Homing Sequences.md",
+    "Level 1/Compound Subsystem.md",
+    "Untitled 2.base",
+    "Untitled 1.base",
     "Untitled.base",
-    "assets/motion-profile-time-plots.png",
-    "Pasted image 20250926235704.png",
-    "Level 1/Commands.md",
+    "Level 2/Motion Profiles.md",
     "Misc/Subsystems.md",
     "Level 1/SuperStructure Elevator.md",
+    "Level 1/FeedForwards.md",
+    "assets/motion-profile-time-plots.png",
+    "Level 2/QuestNav.md",
+    "TODO.md",
+    "Stormbots Tree.canvas",
+    "README.md",
+    "index.md",
+    "Level 2/PhotonVision Odometry.md",
+    "Level 2/PhotonVision Object Detection.md",
+    "Level 2/PhotonVision Model Training.md",
+    "Level 2/PhotonVision Bringup.md",
+    "Level 1/PID.md",
+    "Level 1/SuperStructure Intake.md",
+    "Pasted image 20250927225025.png",
+    "Pasted image 20250926235704.png",
+    "Level 1/Commands.md",
     "Level 1/SuperStructure Arm.md",
     "Level 2/SuperStructure Flywheel.md",
     "Level 1/SuperStructure Rollers.md",
     "Level 1/Robot Design Analysis.md",
-    "TODO.md",
-    "Level 2/QuestNav.md",
-    "README.md",
     "assets/README.md",
-    "index.md",
-    "Level 1/Compound Subsystem.md",
     "Level 1/Triggers.md",
-    "Stormbots Tree.canvas",
     "Level 2/PhotonVision Basics.md",
-    "Level 2/Motion Profiles.md",
-    "Level 1/Homing Sequences.md",
-    "Level 2/PhotonVision Object Detection.md",
     "JavaReferences/ProfiledElevator.java",
     "StormBreakers Tree.canvas",
-    "Misc/Units.md",
-    "Misc/Pose2d.md",
-    "Misc/Joysticks.md",
-    "Level 1/Motor Control.md",
-    "Level 1/FeedForwards.md",
-    "Level 1/Basic Odometry+Telemetry.md",
     "JavaReferences",
     "assets/driverstation-usb-tab.png",
     "Level1",
@@ -385,8 +390,6 @@
     "assets/Command State Machine.canvas",
     "Misc",
     "assets",
-    "Hardware",
-    "Level 0",
     "TestingTesting/Canva.canvas"
   ]
 }

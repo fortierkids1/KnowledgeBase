@@ -249,10 +249,10 @@ class ExampleSubsystem extends SubsystemBase(){
 		return new FunctionalCommand(
 			()->{
 				homed=false;
-				motor.getAppliedCurrent()
-			};
-			()->{motor.set(-0.5);};
-			()->{return motor.getAppliedCurrent()>3}; //isFinished
+				motor.setMaxOutputCurrent(4);
+			},
+			()->{motor.set(-0.5);},
+			()->{return motor.getAppliedCurrent()>3}, //isFinished
 			(cancelled)->{
 				if(cancelled==false){
 					homed = true;
@@ -267,7 +267,7 @@ class ExampleSubsystem extends SubsystemBase(){
 		// Failsafe in case something goes wrong,since otherwise you 
 		// can't exit this command by button mashing
 		.withTimeout(5);
-		}
+	}
 } 
 ```
 
