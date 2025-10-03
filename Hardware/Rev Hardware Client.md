@@ -11,13 +11,15 @@ tags:
 
 
 
-## Introduction to the Hardware CLient
+## Introduction to the Hardware Client
 https://docs.revrobotics.com/rev-hardware-client/gs/navigation
+![[rev-hardware-client.png]]
 
 
 ### Configuring a Spark
 
 https://docs.revrobotics.com/rev-hardware-client/ion/spark-max
+![[rev-hardware-config.png]]
 
 
 ## Identifying a motor ID
@@ -42,7 +44,7 @@ https://docs.revrobotics.com/rev-hardware-client/ion/spark-max
 > This shows up as a error on your line for 
 >  `motor.config(....);`
 
-^fb223b
+
 
 
 ###### Configuration Parameters
