@@ -1,5 +1,5 @@
 
-A compound subsystem is one that has multiple, interlinked mechanisms. Many common systems as [[SuperStructure Intake|Intakes]] or [[Superstructure Shooter|Shooters]] fall into this, as do complex kinematic systems like extendable [[SuperStructure Arm|Arms]], or Arms riding [[SuperStructure Elevator|Elevators]] form a compound subsystem.
+A compound subsystem is one that has multiple, different components, usually linked together or operating in conjunction. Many common systems as [[SuperStructure Intake|Intakes]] or [[Superstructure Shooter|Shooters]] fall into this, as do complex kinematic systems like extendable [[SuperStructure Arm|Arms]], or Arms riding [[SuperStructure Elevator|Elevators]] form a compound subsystem.
 
 These systems have common quirks in how they interact with [[Commands|Commands]] and [[Subsystems|Subsystem]] control flow.
 
@@ -27,11 +27,13 @@ Note, the wrapper class will not be a subsystem itself: WPILib does not support 
 
 ## Handling Default Commands
 
-DefaultCommands by their nature must require themselves, and can *only* require themselves; This means it's not possible to have a "default" for two subsystems. 
+DefaultCommands by their nature must require their own subsystem, and can *only* require that subsystem; This means it's not possible to have a "default" for two subsystems. 
 
 In some cases, you may be able to simply leave each individual part with a default command. 
 
 However, if you wish to have them default as a group, you can emulate the "default command" behavior through the use of a Trigger, and detection of the currently commanded state of any controlled systems. 
+
+#todo streamline these examples
 
 ![[Triggers#Playing nice with other commands|Trigger]]
 
@@ -93,7 +95,7 @@ However, in general the final option is often worth it to prevent errors and str
 #### Construct the base actuator class
 
 While there's a few ways we could structure this *in general* we want to keep subsystem logic 
-contained in it's own file for easy tracking, viewing, and modification. Since we expect twinned systems to have few difference, this structure provides a simple way to easily manage the adjustments.
+contained in it's own file for easy tracking, viewing, and modification. Since we expect twinned systems to have few differences, this structure provides a simple way to easily manage the adjustments.
 
 ```java 
 //This forms our the base class both ExampleTwin systems will use 
@@ -134,24 +136,6 @@ public class RobotContainer{
 }
 ```
 
-Rev's Config api has a useful feature that allows you to combine configs; This facilitates splitting logic, and even allows you to provide a Spark config as a parameter directly.
-
-```java
-public ExampleRevParam(SparkBaseConfig customConfig){
-	SparkBaseConfig config = new SparkMaxConfig();
-	config./*whatever your configs that apply in both cases*/
-
-	config.apply(customConfig); // Copy the special configs to the base config
-
-	//Apply your config normally, getting everything at once
-	motor.configure(
-		config,
-		ResetMode.kResetSafeParameters, 
-		PersistMode.kNoPersistParameters
-	);
-};
-```
-
 We now have two subsystems.... which is not exactly optimal for clean Command setup. However, a simple wrapper class will help us out!
 
 ```java
@@ -187,7 +171,7 @@ public class RobotContainer{
 ```
 
 
-`[!!flame|Cleanup Note|var(--color-cyan-rgb)]` We *could* also just move the whole Builder calls directly in the wrapper, or directly into the Example file itself! Depending on the goals, this may or may not be ideal. Sometimes having access to each side is nice, so consider leaving yourself an easy option should the need arise.
+`[!!flame|Cleanup Note|var(--color-cyan-rgb)]` We *could* also just move the whole Builder calls directly in the wrapper, or directly into the Example file itself and clean up the constructor and passing entirely. Depending on the goals, this may or may not be ideal. Sometimes having access to each side is nice, so consider leaving yourself an easy option should the need arise.
 
 ```java
 //Example of the streamlined, cleaned up code. The individual sides are now not accessable without going through our wrapper.
@@ -197,4 +181,23 @@ public class RobotContainer{
 		ExampleTwinBase.BuildExampleRight()
 	);
 }
+```
+
+
+`[!!flame|TIP|var(--color-cyan-rgb)]` Rev's Config api has a useful feature that allows you to combine configs; This facilitates splitting configuration, and even allows you to provide a Spark config as a parameter directly.
+
+```java
+public ExampleRevParam(SparkBaseConfig customConfig){
+	SparkBaseConfig config = new SparkMaxConfig();
+	config./*whatever your configs that apply in both cases*/
+
+	config.apply(customConfig); // Copy the special configs to the base config
+
+	//Apply your config normally, getting everything at once
+	motor.configure(
+		config,
+		ResetMode.kResetSafeParameters, 
+		PersistMode.kNoPersistParameters
+	);
+};
 ```

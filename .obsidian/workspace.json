@@ -16,9 +16,9 @@
               "state": {
                 "file": "StormBreakers Tree.canvas",
                 "viewState": {
-                  "x": 126.14883306844987,
-                  "y": 2299.7116401174335,
-                  "zoom": -0.989474294009825
+                  "x": 401.24322317765734,
+                  "y": -754.2846665756863,
+                  "zoom": -1.3145341173181326
                 }
               },
               "pinned": true,
@@ -47,13 +47,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Misc/Subsystems.md",
+                "file": "Level 1/PID.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Subsystems"
+              "title": "PID"
             }
           },
           {
@@ -77,32 +77,47 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Level 1/Homing Sequences.md",
+                "file": "Level 1/SuperStructure Elevator.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Homing Sequences"
+              "title": "SuperStructure Elevator"
             }
           },
           {
-            "id": "c58c72376f19615e",
+            "id": "2cb25967e24dea16",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Level 1/Compound Subsystem.md",
+                "file": "Level 1/State Machines.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Compound Subsystem"
+              "title": "State Machines"
+            }
+          },
+          {
+            "id": "2895b35bd4c999fc",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Level 1/PID.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": false
+              },
+              "icon": "lucide-file",
+              "title": "PID"
             }
           }
         ],
-        "currentTab": 5
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -339,19 +354,25 @@
       "vscode-editor:Create Code File": false
     }
   },
-  "active": "c58c72376f19615e",
+  "active": "6df780ef8a47652e",
   "lastOpenFiles": [
-    "Level 1/SuperStructure Climber.md",
+    "Level 1/PID.md",
+    "Level 2/Motion Profiles.md",
+    "Misc/Subsystems.md",
+    "Level 1/FeedForwards.md",
+    "Level 1/SuperStructure Elevator.md",
+    "Level 2/Superstructure Shooter.md",
+    "assets/motion-profile-time-plots.png",
+    "Level 1/State Machines.md",
+    "assets/PID Position over time.png",
+    "StormBreakers Tree.canvas",
+    "Level 1/Sensing Basics.md",
     "Level 1/Homing Sequences.md",
     "Level 1/Compound Subsystem.md",
+    "Level 1/SuperStructure Climber.md",
     "Untitled 2.base",
     "Untitled 1.base",
     "Untitled.base",
-    "Level 2/Motion Profiles.md",
-    "Misc/Subsystems.md",
-    "Level 1/SuperStructure Elevator.md",
-    "Level 1/FeedForwards.md",
-    "assets/motion-profile-time-plots.png",
     "Level 2/QuestNav.md",
     "TODO.md",
     "Stormbots Tree.canvas",
@@ -361,7 +382,6 @@
     "Level 2/PhotonVision Object Detection.md",
     "Level 2/PhotonVision Model Training.md",
     "Level 2/PhotonVision Bringup.md",
-    "Level 1/PID.md",
     "Level 1/SuperStructure Intake.md",
     "Pasted image 20250927225025.png",
     "Pasted image 20250926235704.png",
@@ -371,10 +391,7 @@
     "Level 1/SuperStructure Rollers.md",
     "Level 1/Robot Design Analysis.md",
     "assets/README.md",
-    "Level 1/Triggers.md",
-    "Level 2/PhotonVision Basics.md",
     "JavaReferences/ProfiledElevator.java",
-    "StormBreakers Tree.canvas",
     "JavaReferences",
     "assets/driverstation-usb-tab.png",
     "Level1",
@@ -384,7 +401,6 @@
     "assets/absolute-sensor-rotation-error.svg",
     "assets/Gray-code-table-Gray-coding-to-read-position.gif",
     "assets/Rev Through Bore Encoder.png",
-    "assets/telemetry-glass.png",
     "Marketingbot",
     "Level 0/Coding Basics.canvas",
     "assets/Command State Machine.canvas",

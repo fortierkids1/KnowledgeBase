@@ -165,6 +165,65 @@ run(()->{
 }
 ```
 
+
+## Complete Java Example
+
+Adding PID control to a system can vary slightly on system, but at the core it's pretty straightforward:
+
+For controlling a simple positional system like an [[SuperStructure Elevator|Elevator]], it'd looks something like this
+```java
+ExampleElevator extends SubsystemBase{
+	SparkMax motor = new SparkMax(42,kBrushless);
+
+	//Create a PID that obeys those constraints in it's motion
+	//Likely, you will have kI=0 and kD=0
+	//The unit of error will be in inches
+	//The P gain units should be percentoutput/distance
+	private final PIDController controller =
+		new PIDController(kP, kI, kD);
+		
+	public Command setHeight(Supplier<Distance> position){
+		return run(
+		()->{
+			var output=controller.calculate(
+				motor.getEncoder().getPosition(),
+				position.in(Inches)
+			);
+			motor.set(output);
+		});
+	}
+}
+```
+
+For a Roller system, we often want to control the rate, not the position: That's easy too!
+```java
+ExampleElevator extends SubsystemBase{
+	SparkMax motor = new SparkMax(42,kBrushless);
+
+	//Create a PID that obeys those constraints in it's motion
+	//Likely, you will have kI=0 and kD=0
+	//The unit of error will be in RotationsPerMinute or 
+	// RotationsPerSecond (whichever you prefer) to work with.
+	//The P gain units should be percentoutput/rate
+	private final PIDController controller =
+		new PIDController(kP, kI, kD);
+		
+	//Lastly, we actually use our new 
+	public Command setSpeed(Supplier<AngularVelocity> speed){
+		return run(
+		()->{
+			var output=controller.calculate(
+				motor.getEncoder().getVelocity(),
+				speed.in(RPS) //or RPM if your gains are adjusted with that
+			);
+			motor.set(output);
+		});
+	}
+}
+```
+
+Looking carefully, we can see that the only thing we do is just change our units around, as well as the function calls to get the appropriate units.
+
 ## Limitations of PIDs
 OK, that's enough nice things. Understanding PIDs requires knowing when they work well, and when they don't, and when they actually cause problems. 
 
@@ -242,5 +301,6 @@ From here, the actual PID values are likely to barely matter, making tuning extr
 	
 ## TODO
 
-- Discontinuity + setpoint wrappping for PIDs + absolutes
-- 
+- Discontinuity + setpoint wrappping for PIDs + absolute sensors
+
+

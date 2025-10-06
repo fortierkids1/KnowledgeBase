@@ -111,7 +111,6 @@ For designs where hard stops are not possible, consider a Roller Arm Limit Switc
 
 ![[limit-switch-cam.svg]]
 
-
 ### Index Switches
 
 Index switches work similarly to Limit Switches, but the expectation is that they're in the middle of the travel, rather than at the end of travel. This makes them unsuitable as a solo homing method, but useful as an auxiliary one. 
@@ -237,6 +236,7 @@ Conveniently, the whole homing process actually fits very neatly into the [[Comm
 - `isFinished()` checks the system state and indicates completion
 - `end(cancelled)` can handle the homed procedure
 
+This example implements a a "current draw detection" strategy:
 ```java
 class ExampleSubsystem extends SubsystemBase(){
 	SparkMax motor = ....;
@@ -285,7 +285,7 @@ class ExampleSubsystem extends SubsystemBase(){
 }
 ```
 
-Alternatively, if you don't want to use the `withInterruptBehavior(...)` option, you can hijack other command calls with `Commands.either(...)` or `new ConditionalCommand(...)`
+Alternatively, if you don't want to use the `withInterruptBehavior(...)` option, you can consider hijacking other command calls with `Commands.either(...)` or `new ConditionalCommand(...)`
 ```java
 class ExampleSubsystem extends SubsystemBase(){
 /* ... */
