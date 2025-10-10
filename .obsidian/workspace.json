@@ -16,9 +16,9 @@
               "state": {
                 "file": "StormBreakers Tree.canvas",
                 "viewState": {
-                  "x": -53.30395845574164,
-                  "y": 481.4241363700432,
-                  "zoom": -3.3760707119305917
+                  "x": 401.24322317765734,
+                  "y": -754.2846665756863,
+                  "zoom": -1.3145341173181326
                 }
               },
               "pinned": true,
@@ -47,47 +47,77 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Hardware/Rev Hardware Client.md",
+                "file": "Level 1/PID.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Rev Hardware Client"
+              "title": "PID"
             }
           },
           {
-            "id": "3809b8be9421a505",
+            "id": "6df780ef8a47652e",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Misc/Driver Station.md",
+                "file": "Level 2/Motion Profiles.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Driver Station"
+              "title": "Motion Profiles"
             }
           },
           {
-            "id": "5397393b82d5cad0",
+            "id": "bad93f1201d1b98b",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Hardware/NavX.md",
+                "file": "Level 1/SuperStructure Elevator.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "NavX"
+              "title": "SuperStructure Elevator"
+            }
+          },
+          {
+            "id": "2cb25967e24dea16",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Level 1/State Machines.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": false
+              },
+              "icon": "lucide-file",
+              "title": "State Machines"
+            }
+          },
+          {
+            "id": "2895b35bd4c999fc",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Level 1/PID.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": false
+              },
+              "icon": "lucide-file",
+              "title": "PID"
             }
           }
         ],
-        "currentTab": 4
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -119,7 +149,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "tag:#stub",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -325,55 +355,55 @@
   },
   "active": "5397393b82d5cad0",
   "lastOpenFiles": [
-    "Hardware/LaserCan.md",
-    "Hardware/Rev Hardware Client.md",
-    "Level 0/Coding Basics.canvas",
-    "Hardware/NavX.md",
-    "Misc/Driver Station.md",
-    "Stormbots Tree.canvas",
-    "StormBreakers Tree.canvas",
-    "CONTRIBUTING.md",
-    "TODO.md",
-    "Level 0/Safety.md",
-    "Level 1/Sensing Basics.md",
-    "Level 1/State Machines.md",
-    "Level 1/SuperStructure Arm.md",
+    "Level 1/PID.md",
+    "Level 2/Motion Profiles.md",
+    "Misc/Subsystems.md",
+    "Level 1/FeedForwards.md",
     "Level 1/SuperStructure Elevator.md",
-    "Level 2/Superstructure Indexer.md",
-    "Level 1/SuperStructure Intake.md",
-    "Level 2/System Identification.md",
-    "Misc/Joysticks.md",
+    "Level 2/Superstructure Shooter.md",
+    "assets/motion-profile-time-plots.png",
+    "Level 1/State Machines.md",
+    "assets/PID Position over time.png",
+    "StormBreakers Tree.canvas",
+    "Level 1/Sensing Basics.md",
+    "Level 1/Homing Sequences.md",
+    "Level 1/Compound Subsystem.md",
+    "Level 1/SuperStructure Climber.md",
+    "Untitled 2.base",
+    "Untitled 1.base",
+    "Untitled.base",
+    "Level 2/QuestNav.md",
+    "TODO.md",
+    "Stormbots Tree.canvas",
+    "README.md",
+    "index.md",
+    "Level 2/PhotonVision Odometry.md",
     "Level 2/PhotonVision Object Detection.md",
     "Level 2/PhotonVision Model Training.md",
     "Level 2/PhotonVision Bringup.md",
-    "Misc/PathPlanning Tools.md",
-    "Level 2/Mechanism2d.md",
-    "Level 1/Hard Stops.md",
-    "Level 1/Gyro Sensing.md",
-    "Level 1/Gyro Driving.md",
-    "Level 1/Differential Drive.md",
-    "Misc/clamping.md",
-    "assets/motion-profile-time-plots.png",
-    "assets/rev-hardware-telemetry.png",
-    "assets/rev-hardware-abs-encoder.png",
-    "assets/rev-hardware-config.png",
-    "assets/rev-hardware-client.png",
-    "Untitled 2.base",
-    "assets/driverstation-lightning-tab-wide.png",
-    "assets/driverstation-configuration-tab-wide.png",
-    "assets/driverstation-diagnostic-tab-wide.png",
-    "assets/driverstation-lightning-tab.png",
-    "assets/driverstation-configuration-tab.png",
-    "Misc/controls-engineering-in-frc.pdf",
-    "Untitled 1.base",
-    "Untitled.base",
+    "Level 1/SuperStructure Intake.md",
+    "Pasted image 20250927225025.png",
+    "Pasted image 20250926235704.png",
+    "Level 1/Commands.md",
+    "Level 1/SuperStructure Arm.md",
+    "Level 2/SuperStructure Flywheel.md",
+    "Level 1/SuperStructure Rollers.md",
+    "Level 1/Robot Design Analysis.md",
+    "assets/README.md",
+    "JavaReferences/ProfiledElevator.java",
+    "JavaReferences",
+    "assets/driverstation-usb-tab.png",
     "Level1",
+    "assets/backlash-arm-deviation.png",
+    "assets/open-loop-closed-loop-diagram.png",
+    "Misc/controls-engineering-in-frc.pdf",
+    "assets/absolute-sensor-rotation-error.svg",
+    "assets/Gray-code-table-Gray-coding-to-read-position.gif",
+    "assets/Rev Through Bore Encoder.png",
     "Marketingbot",
     "assets/Command State Machine.canvas",
     "Misc",
     "assets",
-    "Hardware",
-    "Level 0",
     "TestingTesting/Canva.canvas"
   ]
 }

@@ -21,7 +21,7 @@ Recommends:
 Optional Bonus criteria: 
 - [ ] Configure the Roller to use RPM instead of setPower
 - [ ] Add a FeedForward and basic PID
-- [ ] Confirm the intake roughly maintains the target RPM when intaking/ejecting
+- [ ] Confirm the roller roughly maintains the target RPM when intaking/ejecting
 
 ## Synopsis
 A Roller system is a simple actuator type: A single motor output mechanically connected to a rotating shaft. Objects contacting the shaft forms the useful motion of a Roller system. This can also extended with additional shafts, belts, or gearing to adjust the contact range.
