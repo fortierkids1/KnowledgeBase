@@ -16,9 +16,9 @@
               "state": {
                 "file": "StormBreakers Tree.canvas",
                 "viewState": {
-                  "x": 884.6788368557449,
-                  "y": -1295.0946825795425,
-                  "zoom": -2.370484161896531
+                  "x": -53.30395845574164,
+                  "y": 481.4241363700432,
+                  "zoom": -3.3760707119305917
                 }
               },
               "pinned": true,
@@ -42,7 +42,7 @@
             }
           },
           {
-            "id": "d35d3ad4f11b6256",
+            "id": "e120e648cfadde29",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -70,9 +70,24 @@
               "icon": "lucide-file",
               "title": "Driver Station"
             }
+          },
+          {
+            "id": "5397393b82d5cad0",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Hardware/NavX.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": false
+              },
+              "icon": "lucide-file",
+              "title": "NavX"
+            }
           }
         ],
-        "currentTab": 2
+        "currentTab": 4
       }
     ],
     "direction": "vertical"
@@ -146,7 +161,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Hardware/Rev Hardware Client.md",
+                "file": "Hardware/NavX.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -156,7 +171,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for Rev Hardware Client"
+              "title": "Backlinks for NavX"
             }
           },
           {
@@ -295,6 +310,7 @@
   },
   "left-ribbon": {
     "hiddenItems": {
+      "vscode-editor:Create Code File": false,
       "bases:Create new base": false,
       "switcher:Open quick switcher": false,
       "graph:Open graph view": false,
@@ -307,51 +323,50 @@
       "webpage-html-export:Export Vault to HTML": false
     }
   },
-  "active": "d35d3ad4f11b6256",
+  "active": "5397393b82d5cad0",
   "lastOpenFiles": [
+    "Hardware/LaserCan.md",
+    "Hardware/Rev Hardware Client.md",
+    "Level 0/Coding Basics.canvas",
+    "Hardware/NavX.md",
+    "Misc/Driver Station.md",
+    "Stormbots Tree.canvas",
+    "StormBreakers Tree.canvas",
+    "CONTRIBUTING.md",
+    "TODO.md",
+    "Level 0/Safety.md",
+    "Level 1/Sensing Basics.md",
+    "Level 1/State Machines.md",
+    "Level 1/SuperStructure Arm.md",
+    "Level 1/SuperStructure Elevator.md",
+    "Level 2/Superstructure Indexer.md",
+    "Level 1/SuperStructure Intake.md",
+    "Level 2/System Identification.md",
+    "Misc/Joysticks.md",
+    "Level 2/PhotonVision Object Detection.md",
+    "Level 2/PhotonVision Model Training.md",
+    "Level 2/PhotonVision Bringup.md",
+    "Misc/PathPlanning Tools.md",
+    "Level 2/Mechanism2d.md",
+    "Level 1/Hard Stops.md",
+    "Level 1/Gyro Sensing.md",
+    "Level 1/Gyro Driving.md",
+    "Level 1/Differential Drive.md",
+    "Misc/clamping.md",
     "assets/motion-profile-time-plots.png",
-    "Misc/Pose2d.md",
-    "Level 2/QuestNav.md",
-    "Level 1/Compound Subsystem.md",
     "assets/rev-hardware-telemetry.png",
     "assets/rev-hardware-abs-encoder.png",
     "assets/rev-hardware-config.png",
     "assets/rev-hardware-client.png",
-    "Hardware/LaserCan.md",
-    "Misc/Driver Station.md",
-    "CONTRIBUTING.md",
-    "StormBreakers Tree.canvas",
     "Untitled 2.base",
-    "Hardware/Rev Hardware Client.md",
-    "TODO.md",
-    "Level 1/Hard Stops.md",
-    "Level 0/Coding Basics.md",
-    "Misc/Robot Radio.md",
     "assets/driverstation-lightning-tab-wide.png",
     "assets/driverstation-configuration-tab-wide.png",
     "assets/driverstation-diagnostic-tab-wide.png",
     "assets/driverstation-lightning-tab.png",
     "assets/driverstation-configuration-tab.png",
-    "assets/driverstation-diagnostic-tab.png",
     "Misc/controls-engineering-in-frc.pdf",
-    "Misc/Code Patterns.md",
-    "Level 2/System Identification.md",
-    "Level 2/AdvantageKit.md",
-    "Level 1/Commands.md",
-    "Level 1/Differential Drive.md",
-    "Level 1/Basic Telemetry.md",
-    "Level 1/Basic Odometry+Telemetry.md",
-    "Level 1/Auto Differential.md",
-    "Level 0/Safety.md",
-    "Level 0/Deploying Code.md",
-    "Level 0/Coding Basics.canvas",
-    "Hardware/Absolute Encoders.md",
-    "Level 1/Limelight Odometry.md",
     "Untitled 1.base",
-    "Stormbots Tree.canvas",
     "Untitled.base",
-    "Misc/Subsystems.md",
-    "Misc/Closed Loop Controller.md",
     "Level1",
     "Marketingbot",
     "assets/Command State Machine.canvas",

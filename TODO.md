@@ -64,10 +64,9 @@ Data Structures: https://www.youtube.com/watch?v=KwBuV7YZido
 
 
 # Stub Articles
-```query
-#stub 
+```query 
+tag:stub
 ```
-
 ```query 
 #todo 
 ```
