@@ -210,15 +210,38 @@ The optimal option is using [[System Identification]] to calculate the system re
 
 The other option is to tune by hand; This is not especially challenging, and mostly involves a process of moving between goal states, watching graphs, and twiddling numbers. It usually looks like this:
 - Identify two setpoints, away from hard stops but with sufficient range of motion you can hit target velocities. 
-- While cycling between setpoints, ihen increase kV until the system generates velocities that match the target velocities. They'll generally lag behind during the accelleration phase. 
-- Then, increase kA until the accelleration shifts and the system perfectly tracks your profile. 
+- While cycling between setpoints, increase increase kV until the system generates velocities that match the target velocities. They'll generally lag behind during the acceleration phase. 
+- Then, increase kA until the acceleration shifts and the system perfectly tracks your profile. 
 - Increase profile constraints and and repeat until system performance is attained. Starting small and slow prevents damage to the mechanics of your system.
 
-This process benefits from a relatively low P gain, which helps keep the system stable. Once your system is tuned, you'll probably want a relatively high P gain, now that you can assert the feed-forward is keeping your error close to zero. 
+This process benefits from a relatively low P gain, which helps keep the system stable and near the intended setpoints, but running *without* a PID at all is actually very informative too.
+
+Once your system is tuned, you'll probably want a relatively high P gain, now that you can assert the feed-forward is keeping your error close to zero, but be aware that this can result in slight kV errors resulting in a "jerky" motion. Lowering kV slightly below nominal can help resolve this.
 
 
+## Modelling changing systems
+
+`[!!bug|NEEDS TESTING|var(--color-yellow-rgb)]` We haven't had to do this much! Be mindful that this section may contain structural errors, or we may find better ways to approach these issues
+
+When considering these systems, remember that they're linear systems: This helpful quirk means we can simply add the system responses together: 
+
+```java 
+ElevatorFeedforward feedforward = new ElevatorFeedforward(kS, kG, kV, kA);
+ElevatorFeedforrward ff_gamepiece = new ElevatorFeedforward(kS, kG, kV, kA);
+//...
+var output = feedforward.calculate(...) + ff_gamepiece.calculate(...)
+```
+
+This lets you respond to things such as a heavy game piece being loaded. 
+
+## Modelling Complex Systems
+
+As systems increase in complexity and precision requirements, you might need to do more advanced modelling, while keeping in mind the mathematical flexibility of adding and multiplying smaller feed-forward components together!
+
+Here's some examples:
+- If your arm extends, you can simply interpolate between a "fully retracted" feedforward and a "fully extended" ones; Thanks to the system linearity, this allows you to model the entire range of values quickly and easily.
+- Arm motions can be impacted by the acceleration of a chassis or elevator; While gravity is a constant acceleration (and thus constant force), other non-constant accelerations can also be modeled as part of your feedforward and added to the base calculations.
 
 
-
-
+# Footnotes
 [^kcos]:Note, you might observe that the kCos output,  $output=kg*Cos(current Angle)$ is reading the current system state, and say "hey!  That's a feed _back_ system, not a feed _forward_!" and you are technically correct; the best kind of correct. However, kCos is often implemented this way, as it's much more stable than the feed-forward version. In that version, you apply $kCos(expectedAngle)$, regardless of what $actualAngle$ happens to actually be. Feel free to do a thought experiment on how this might present problems in real-world systems.
