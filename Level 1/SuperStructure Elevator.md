@@ -132,7 +132,7 @@ There's many useful methods here : [ProfiledPIDController Method Reference](http
 
 ```java
 ExampleElevator extends SubsystemBase{
-	SparkMax motor = new SparkMax(42,kBrushless);
+	SparkMax motor = new SparkMax(42,MotorType.kBrushless);
 
 	//Define our system's maximum motion constraints
 	//When in doubt, 
@@ -173,11 +173,11 @@ ExampleElevator extends SubsystemBase{
 		var velocity=motor.getEncoder().getVelocity();
 		var setpoint=controller.getSetpoint();
 		
-		Smartdashboard.putNumber("elevator/voltage",voltage);
-		Smartdashboard.putNumber("elevator/height",height);
-		Smartdashboard.putNumber("elevator/velocity",velocity);
-		Smartdashboard.putNumber("elevator/set position",setpoint.position);
-		Smartdashboard.putNumber("elevator/set velocity",setpoint.velocity);
+		SmartDashboard.putNumber("elevator/voltage",voltage);
+		SmartDashboard.putNumber("elevator/height",height);
+		SmartDashboard.putNumber("elevator/velocity",velocity);
+		SmartDashboard.putNumber("elevator/set position",setpoint.position);
+		SmartDashboard.putNumber("elevator/set velocity",setpoint.velocity);
 	}
 
 	//Triggers form the optimal way to transfer subsystem states/conditions
@@ -189,7 +189,7 @@ ExampleElevator extends SubsystemBase{
 	
 	/// Return the height of our elevator, using Unit measures
 	public Distance getHeight(){
-		return Inches.of(motor.getEncoder().getPosition)
+		return Inches.of(motor.getEncoder().getPosition());
 	}
 	
 	/// Provide manual output. Should only be used for
@@ -199,7 +199,7 @@ ExampleElevator extends SubsystemBase{
 		//if your testing is easier without it.
 		return run(()->motor.setVoltage(
 			percentOutput.getAsDouble()*RobotController.getBatteryVoltage()
-			+ ff.getKg()
+			+ feedforward.getKg()
 			)
 		); 
 	}
@@ -213,31 +213,31 @@ ExampleElevator extends SubsystemBase{
 		return setPower(feedforward::getKg)
 	}
 	
-	/// Actively maintain the position command was started at
-	public Command holdPosition(){
-		var currentHeight=getHeight();
-		return setHeight(()->currentHeight);
-	}
-
 	///Command the Elevator to go to the target position
 	public Command setHeight(Supplier<Distance> position){
-		return startRun(
-		()->{
-			//Set our initial goal prior to starting the command
-			// Optional? Used previously to prevent trigger glitches
-			controller.setGoal(position.get().in(Inches));
-		},
-		()->{
+		return run(()->{
 			//Update our goal with any new targets
 			controller.setGoal(position.get().in(Inches));
-			//Calculate the voltage
-			voltage=
-			motor.setVoltage(
-				controller.calculate(motor.getEncoder().getPosition()) 
-				+ feedforward.calculate(controller.getSetpoint().velocity)
-			);
+			//Calculate the voltage contributing to the output
+			var vff = feedforward.calculate(controller.getSetpoint().velocity);
+			var vpid = controller.calculate(motor.getEncoder().getPosition());
+			//Apply to the motor
+			motor.setVoltage(vff+vpid);
 		});
 	}
+	
+	/** Set the angle to a fixed value */
+	public Command setHeight(Distance position){
+		return setAngle(()->position);
+	};
+	
+	/** Actively maintain the position command was started at */
+	public Command holdPosition(){
+		//Deferred commands are needed here to capture the angle
+		//at the time the command is initiated
+		return defer(()->setHeight(getHeight()));
+	}
+
 }
 ```
 

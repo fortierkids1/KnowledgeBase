@@ -31,7 +31,7 @@ Climber systems
 - How to read documentation
 - Conventions: Use of Units
 - Sensor Pairing? Advanced: Information/state transfer (break beam -> indexer position) [[Sensing Basics]]? -> State Transfer
-
+- defer/DeferredCommand
 ## Relocate
 - Threading
 - Old docs
@@ -64,8 +64,8 @@ Data Structures: https://www.youtube.com/watch?v=KwBuV7YZido
 
 
 # Stub Articles
-```query 
-tag:stub
+```query
+#stub
 ```
 ```query 
 #todo 

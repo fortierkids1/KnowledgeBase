@@ -16,9 +16,9 @@
               "state": {
                 "file": "StormBreakers Tree.canvas",
                 "viewState": {
-                  "x": 1514.8941408063554,
-                  "y": -635.6483145258939,
-                  "zoom": -2.0409034001995514
+                  "x": 401.24322317765734,
+                  "y": -754.2846665756863,
+                  "zoom": -1.3145341173181326
                 }
               },
               "pinned": true,
@@ -47,17 +47,17 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Hardware/Absolute Encoders.md",
+                "file": "Level 1/PID.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Absolute Encoders"
+              "title": "PID"
             }
           },
           {
-            "id": "bad93f1201d1b98b",
+            "id": "6df780ef8a47652e",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -70,24 +70,9 @@
               "icon": "lucide-file",
               "title": "SuperStructure Elevator"
             }
-          },
-          {
-            "id": "f636c6273930ba70",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Superstructure Lighting.md",
-                "mode": "source",
-                "source": false,
-                "backlinks": false
-              },
-              "icon": "lucide-file",
-              "title": "Superstructure Lighting"
-            }
           }
         ],
-        "currentTab": 4
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -144,7 +129,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 237.50247192382812
+    "width": 267.5024719238281
   },
   "right": {
     "id": "fe0356411609e45b",
@@ -161,7 +146,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Superstructure Lighting.md",
+                "file": "Hardware/NavX.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -171,7 +156,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for Superstructure Lighting"
+              "title": "Backlinks for NavX"
             }
           },
           {
@@ -323,43 +308,44 @@
       "webpage-html-export:Export Vault to HTML": false
     }
   },
-  "active": "f636c6273930ba70",
+  "active": "5397393b82d5cad0",
   "lastOpenFiles": [
-    "Misc/Robot Radio.md",
-    "Misc/Superstructure Lighting.md",
-    "Hardware/Absolute Encoders.md",
-    "Hardware/Rev Hardware Client.md",
-    "Superstructure Lighting.md",
-    "Level 1/SuperStructure Elevator.md",
-    "Untitled 1.base",
-    "Level 1/PID.md",
-    "assets/blinkin.png",
-    "Level 2/SuperStructure Flywheel.md",
-    "Level 2/Motion Profiles.md",
-    "Level 1/State Machines.md",
-    "Level 1/Basic Telemetry.md",
-    "Level 0/Deploying Code.md",
-    "Level 0/Coding Basics.md",
-    "Level 0/Coding Basics.canvas",
-    "Stormbots Tree.canvas",
-    "StormBreakers Tree.canvas",
-    "Misc/Subsystems.md",
     "Level 1/FeedForwards.md",
+    "Level 2/Swerve Odometry.md",
+    "Level 0/Coding Basics.canvas",
+    "Level 2/Code Structuring.md",
     "Level 2/Superstructure Shooter.md",
+    "Level 2/Swerve Basics.md",
+    "Level 2/Swerve Bringup.md",
+    "Level 2/Swerve Motion.md",
+    "Level 2/AdvantageKit.md",
+    "Level 2/Flight Trajectory Calculations.md",
+    "Level 2/Lookup Tables.md",
+    "Level 2/Inverse Kinematics.md",
+    "Level 2/Forward Kinematics.md",
+    "assets/README.md",
+    "Misc/Slew Rate Limiting.md",
+    "Misc/Robot Radio.md",
+    "Level 2/Singletons.md",
+    "Level 0/Coding Basics.md",
+    "Misc/Maintenance Checklist.md",
+    "Misc/clamping.md",
+    "Level 1/Auto Differential.md",
+    "Level 1/Differential Drive.md",
+    "Level 1/Gyro Driving.md",
+    "Level 1/Gyro Sensing.md",
+    "Level 1/Limelight Assist Driving.md",
+    "Level 2/System Identification.md",
+    "Misc/Refactoring.md",
+    "StormBreakers Tree.canvas",
+    "Stormbots Tree.canvas",
+    "Untitled.canvas",
+    "Untitled 1.base",
+    "Untitled 1.canvas",
+    "Untitled.base",
     "assets/motion-profile-time-plots.png",
     "assets/PID Position over time.png",
-    "Level 1/Sensing Basics.md",
-    "Level 1/Homing Sequences.md",
-    "Level 1/Compound Subsystem.md",
-    "Level 1/SuperStructure Climber.md",
     "Untitled 2.base",
-    "Untitled.base",
-    "Level 2/QuestNav.md",
-    "TODO.md",
-    "README.md",
-    "index.md",
-    "Level 2/PhotonVision Odometry.md",
-    "Level 2/PhotonVision Object Detection.md",
     "Pasted image 20250927225025.png",
     "Pasted image 20250926235704.png",
     "JavaReferences/ProfiledElevator.java",
@@ -371,6 +357,7 @@
     "Misc/controls-engineering-in-frc.pdf",
     "assets/absolute-sensor-rotation-error.svg",
     "assets/Gray-code-table-Gray-coding-to-read-position.gif",
+    "assets/Rev Through Bore Encoder.png",
     "Marketingbot",
     "assets/Command State Machine.canvas",
     "Misc",
