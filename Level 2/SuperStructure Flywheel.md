@@ -66,7 +66,7 @@ Note, that the recommended approach is *still* to do good feed-forward modelling
 
 Drivers *need* to know when they can utilize an on-target flywheel. When in performance mode, they will be cutting every corner for performance, and their trust in robot feedback is crucial. Unfortunately, RPM is largely invisible to drivers in competitions. 
 
-In these cases, the robot's best feedback source is a [[Subsystem Lighting|LED Subsystem]] ; Simply have the bot  lighting give the all-clear to fire. In practice, this helps the drivers get a "feel" for spinup time, and in competitions gives them certainty that a shot will work as expected. 
+In these cases, the robot's best feedback source is a [[Superstructure Lighting|LED Subsystem]] ; Simply have the bot lighting give the all-clear to fire. In practice, this helps the drivers get a "feel" for spinup time, and in competitions gives them certainty that a shot will work as expected. 
 
 Note, that the feedback itself can be challenging: Remember, the goal is "will our shot make it" more than "Is the shooter at the target RPM". Some notable considerations:
 - Sometimes far-away shots at higher velocities only succeed with a lower RPM error than closer, nearby ones going at a slower speed. 

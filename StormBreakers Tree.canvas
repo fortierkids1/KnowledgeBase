@@ -102,13 +102,6 @@
       "toSide": "left"
     },
     {
-      "fromNode": "d385afd6608b95e5",
-      "fromSide": "right",
-      "id": "7e213ce37350e238",
-      "toNode": "9a40762c0f7eefa1",
-      "toSide": "left"
-    },
-    {
       "fromNode": "77b0ad903304cd3d",
       "fromSide": "right",
       "id": "d78150123d4c17a7",
@@ -122,15 +115,6 @@
       "styleAttributes": {
       },
       "toNode": "d385afd6608b95e5",
-      "toSide": "left"
-    },
-    {
-      "fromNode": "9a40762c0f7eefa1",
-      "fromSide": "right",
-      "id": "c3415692412d3ebb",
-      "styleAttributes": {
-      },
-      "toNode": "26d2b69ebeb77abe",
       "toSide": "left"
     },
     {
@@ -170,15 +154,6 @@
       "toSide": "left"
     },
     {
-      "fromNode": "a8aa39e9a066166b",
-      "fromSide": "right",
-      "id": "a7fb64a1539dafab",
-      "styleAttributes": {
-      },
-      "toNode": "ebf424ba1ca4edff",
-      "toSide": "left"
-    },
-    {
       "fromNode": "77b0ad903304cd3d",
       "fromSide": "right",
       "id": "79487d041996071e",
@@ -196,15 +171,6 @@
       },
       "toNode": "77b0ad903304cd3d",
       "toSide": "bottom"
-    },
-    {
-      "fromNode": "9a40762c0f7eefa1",
-      "fromSide": "right",
-      "id": "6bfc744544b7efe4",
-      "styleAttributes": {
-      },
-      "toNode": "2cf69a37fb2b4def",
-      "toSide": "left"
     },
     {
       "fromNode": "2cf69a37fb2b4def",
@@ -369,42 +335,6 @@
       "width": 400,
       "x": 160,
       "y": 880
-    },
-    {
-      "file": "Misc/Git Basics.md",
-      "height": 400,
-      "id": "809496a857f23df6",
-      "type": "file",
-      "width": 400,
-      "x": -1760,
-      "y": 2400
-    },
-    {
-      "file": "Level 1/Robot Design Analysis.md",
-      "height": 400,
-      "id": "378652d7a90156b4",
-      "type": "file",
-      "width": 400,
-      "x": -2200,
-      "y": 2400
-    },
-    {
-      "file": "Level 1/Limelight Assist Driving.md",
-      "height": 400,
-      "id": "26d2b69ebeb77abe",
-      "type": "file",
-      "width": 400,
-      "x": 2120,
-      "y": 1080
-    },
-    {
-      "file": "Level 1/Gyro Sensing.md",
-      "height": 400,
-      "id": "bd556bb6f4381bdb",
-      "type": "file",
-      "width": 400,
-      "x": 2640,
-      "y": 1560
     },
     {
       "file": "Level 1/Homing Sequences.md",

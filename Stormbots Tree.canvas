@@ -280,15 +280,6 @@
       "y": -3360
     },
     {
-      "height": 1600,
-      "id": "c20e0e273c2e8658",
-      "label": "Specialized Dependencies",
-      "type": "group",
-      "width": 3460,
-      "x": 140,
-      "y": 3520
-    },
-    {
       "height": 1520,
       "id": "5e93492e915057c9",
       "label": "Swerve Focus",
@@ -307,6 +298,15 @@
       "y": 520
     },
     {
+      "height": 1600,
+      "id": "c20e0e273c2e8658",
+      "label": "Specialized Dependencies",
+      "type": "group",
+      "width": 3460,
+      "x": 140,
+      "y": 3520
+    },
+    {
       "height": 1400,
       "id": "712348508852c33e",
       "label": "Simulation, Logging, Visualization",
@@ -314,123 +314,6 @@
       "width": 2740,
       "x": 140,
       "y": 2000
-    },
-    {
-      "file": "Level 1/SuperStructure Intake.md",
-      "height": 150,
-      "id": "5657d366613722e7",
-      "type": "file",
-      "width": 400,
-      "x": 280,
-      "y": -2915
-    },
-    {
-      "file": "Level 1/SuperStructure Rollers.md",
-      "height": 140,
-      "id": "0132e41e73fd3635",
-      "type": "file",
-      "width": 400,
-      "x": 280,
-      "y": -2570
-    },
-    {
-      "file": "Level 2/Superstructure Indexer.md",
-      "height": 400,
-      "id": "ccc2084ea7272471",
-      "type": "file",
-      "width": 400,
-      "x": 1160,
-      "y": -3040
-    },
-    {
-      "file": "Level 2/Superstructure Shooter.md",
-      "height": 400,
-      "id": "f88fa501d700ebc3",
-      "type": "file",
-      "width": 400,
-      "x": 1880,
-      "y": -3040
-    },
-    {
-      "file": "Level 2/Inverse Kinematics.md",
-      "height": 400,
-      "id": "59fc9804d564ed46",
-      "type": "file",
-      "width": 400,
-      "x": 2340,
-      "y": -1825
-    },
-    {
-      "file": "Level 2/Forward Kinematics.md",
-      "height": 400,
-      "id": "d639098f45a861a4",
-      "type": "file",
-      "width": 400,
-      "x": 1560,
-      "y": -1825
-    },
-    {
-      "file": "Level 2/Swerve Motion.md",
-      "height": 400,
-      "id": "a0cc01b271cf2327",
-      "type": "file",
-      "width": 400,
-      "x": 2000,
-      "y": -1120
-    },
-    {
-      "file": "Level 2/Swerve Basics.md",
-      "height": 400,
-      "id": "bf2cd469307b1a66",
-      "type": "file",
-      "width": 400,
-      "x": 280,
-      "y": -1120
-    },
-    {
-      "file": "Level 1/PID.md",
-      "height": 140,
-      "id": "04fcd5f84dc2cedf",
-      "type": "file",
-      "width": 400,
-      "x": 280,
-      "y": -2370
-    },
-    {
-      "file": "Level 1/FeedForwards.md",
-      "height": 145,
-      "id": "de39acd54457e894",
-      "type": "file",
-      "width": 400,
-      "x": 280,
-      "y": -2127
-    },
-    {
-      "file": "Level 2/SuperStructure Flywheel.md",
-      "height": 400,
-      "id": "cf0c72a1f32c5883",
-      "type": "file",
-      "width": 400,
-      "x": 1160,
-      "y": -2455
-    },
-    {
-      "file": "Level 2/Flight Trajectory Calculations.md",
-      "height": 400,
-      "id": "f55acfded7cee262",
-      "type": "file",
-      "width": 400,
-      "x": 1880,
-      "y": -2455
-    },
-    {
-      "file": "Level 2/Motion Profiles.md",
-      "height": 400,
-      "id": "d3fa835ee207becb",
-      "type": "file",
-      "width": 400,
-      "x": 280,
-      "y": -1915
     },
     {
       "height": 180,
@@ -444,24 +327,6 @@
       "y": -1805
     },
     {
-      "file": "Level 2/Swerve Bringup.md",
-      "height": 400,
-      "id": "a5a7166f22f9198c",
-      "type": "file",
-      "width": 400,
-      "x": 280,
-      "y": -620
-    },
-    {
-      "file": "Level 2/Swerve Odometry.md",
-      "height": 400,
-      "id": "357ebf4119ecc825",
-      "type": "file",
-      "width": 400,
-      "x": 2000,
-      "y": -620
-    },
-    {
       "file": "Level 2/Code Structuring.md",
       "height": 400,
       "id": "19ca22b92de04cb6",
@@ -469,60 +334,6 @@
       "width": 400,
       "x": -1040,
       "y": 240
-    },
-    {
-      "file": "Level 2/PhotonVision Basics.md",
-      "height": 400,
-      "id": "44cef5adf8ef166e",
-      "type": "file",
-      "width": 400,
-      "x": 780,
-      "y": 640
-    },
-    {
-      "file": "Level 2/PhotonVision Bringup.md",
-      "height": 400,
-      "id": "f5e56e40345e2fde",
-      "type": "file",
-      "width": 400,
-      "x": 780,
-      "y": 1160
-    },
-    {
-      "file": "Level 2/PhotonVision Odometry.md",
-      "height": 400,
-      "id": "7fa6ed6497a335b4",
-      "type": "file",
-      "width": 400,
-      "x": 1500,
-      "y": 640
-    },
-    {
-      "file": "Level 2/PhotonVision Model Training.md",
-      "height": 400,
-      "id": "244fc653697fb41e",
-      "type": "file",
-      "width": 400,
-      "x": 2280,
-      "y": 1160
-    },
-    {
-      "file": "Level 2/PhotonVision Object Detection.md",
-      "height": 400,
-      "id": "3d2a9342121cd965",
-      "type": "file",
-      "width": 400,
-      "x": 1500,
-      "y": 1160
-    },
-    {
-      "file": "Level 1/Basic Odometry+Telemetry.md",
-      "height": 400,
-      "id": "1854c4ac050c5bd0",
-      "type": "file",
-      "width": 400,
-      "x": 240,
-      "y": 640
     },
     {
       "height": 120,
@@ -642,6 +453,195 @@
       "width": 400,
       "x": 280,
       "y": 4600
+    },
+    {
+      "file": "Level 2/Swerve Motion.md",
+      "height": 400,
+      "id": "a0cc01b271cf2327",
+      "type": "file",
+      "width": 400,
+      "x": 2000,
+      "y": -1120
+    },
+    {
+      "file": "Level 2/Swerve Basics.md",
+      "height": 400,
+      "id": "bf2cd469307b1a66",
+      "type": "file",
+      "width": 400,
+      "x": 280,
+      "y": -1120
+    },
+    {
+      "file": "Level 2/PhotonVision Basics.md",
+      "height": 400,
+      "id": "44cef5adf8ef166e",
+      "type": "file",
+      "width": 400,
+      "x": 780,
+      "y": 640
+    },
+    {
+      "file": "Level 2/PhotonVision Bringup.md",
+      "height": 400,
+      "id": "f5e56e40345e2fde",
+      "type": "file",
+      "width": 400,
+      "x": 780,
+      "y": 1160
+    },
+    {
+      "file": "Level 2/PhotonVision Odometry.md",
+      "height": 400,
+      "id": "7fa6ed6497a335b4",
+      "type": "file",
+      "width": 400,
+      "x": 1500,
+      "y": 640
+    },
+    {
+      "file": "Level 2/PhotonVision Model Training.md",
+      "height": 400,
+      "id": "244fc653697fb41e",
+      "type": "file",
+      "width": 400,
+      "x": 2280,
+      "y": 1160
+    },
+    {
+      "file": "Level 2/PhotonVision Object Detection.md",
+      "height": 400,
+      "id": "3d2a9342121cd965",
+      "type": "file",
+      "width": 400,
+      "x": 1500,
+      "y": 1160
+    },
+    {
+      "file": "Level 1/Basic Odometry+Telemetry.md",
+      "height": 400,
+      "id": "1854c4ac050c5bd0",
+      "type": "file",
+      "width": 400,
+      "x": 240,
+      "y": 640
+    },
+    {
+      "file": "Level 2/Swerve Bringup.md",
+      "height": 400,
+      "id": "a5a7166f22f9198c",
+      "type": "file",
+      "width": 400,
+      "x": 280,
+      "y": -620
+    },
+    {
+      "file": "Level 2/Swerve Odometry.md",
+      "height": 400,
+      "id": "357ebf4119ecc825",
+      "type": "file",
+      "width": 400,
+      "x": 2000,
+      "y": -620
+    },
+    {
+      "file": "Level 2/Inverse Kinematics.md",
+      "height": 400,
+      "id": "59fc9804d564ed46",
+      "type": "file",
+      "width": 400,
+      "x": 2340,
+      "y": -1825
+    },
+    {
+      "file": "Level 2/Forward Kinematics.md",
+      "height": 400,
+      "id": "d639098f45a861a4",
+      "type": "file",
+      "width": 400,
+      "x": 1560,
+      "y": -1825
+    },
+    {
+      "file": "Level 2/Motion Profiles.md",
+      "height": 400,
+      "id": "d3fa835ee207becb",
+      "type": "file",
+      "width": 400,
+      "x": 280,
+      "y": -1915
+    },
+    {
+      "file": "Level 1/FeedForwards.md",
+      "height": 145,
+      "id": "de39acd54457e894",
+      "type": "file",
+      "width": 400,
+      "x": 280,
+      "y": -2127
+    },
+    {
+      "file": "Level 2/SuperStructure Flywheel.md",
+      "height": 400,
+      "id": "cf0c72a1f32c5883",
+      "type": "file",
+      "width": 400,
+      "x": 1160,
+      "y": -2455
+    },
+    {
+      "file": "Level 2/Flight Trajectory Calculations.md",
+      "height": 400,
+      "id": "f55acfded7cee262",
+      "type": "file",
+      "width": 400,
+      "x": 1880,
+      "y": -2455
+    },
+    {
+      "file": "Level 1/PID.md",
+      "height": 140,
+      "id": "04fcd5f84dc2cedf",
+      "type": "file",
+      "width": 400,
+      "x": 280,
+      "y": -2370
+    },
+    {
+      "file": "Level 1/SuperStructure Rollers.md",
+      "height": 140,
+      "id": "0132e41e73fd3635",
+      "type": "file",
+      "width": 400,
+      "x": 280,
+      "y": -2570
+    },
+    {
+      "file": "Level 2/Superstructure Indexer.md",
+      "height": 400,
+      "id": "ccc2084ea7272471",
+      "type": "file",
+      "width": 400,
+      "x": 1160,
+      "y": -3040
+    },
+    {
+      "file": "Level 2/Superstructure Shooter.md",
+      "height": 400,
+      "id": "f88fa501d700ebc3",
+      "type": "file",
+      "width": 400,
+      "x": 1880,
+      "y": -3040
+    },
+    {
+      "file": "Level 1/SuperStructure Intake.md",
+      "height": 150,
+      "id": "5657d366613722e7",
+      "type": "file",
+      "width": 400,
+      "x": 280,
+      "y": -2915
     }
   ]
 }

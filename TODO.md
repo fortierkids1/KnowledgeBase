@@ -6,7 +6,7 @@
 
 [[System Tuning]] -> Cover real world tuning, pull from PID
 
-[[Subsystem Lighting]]
+[[Superstructure Lighting]]
 triggers as state passing, strong and loose coupling.
 Motors: Current, free, stall
 [[Mechanism2d]]

@@ -16,9 +16,9 @@
               "state": {
                 "file": "StormBreakers Tree.canvas",
                 "viewState": {
-                  "x": 401.24322317765734,
-                  "y": -754.2846665756863,
-                  "zoom": -1.3145341173181326
+                  "x": 1514.8941408063554,
+                  "y": -635.6483145258939,
+                  "zoom": -2.0409034001995514
                 }
               },
               "pinned": true,
@@ -47,28 +47,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Level 1/PID.md",
+                "file": "Hardware/Absolute Encoders.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "PID"
-            }
-          },
-          {
-            "id": "6df780ef8a47652e",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Level 2/Motion Profiles.md",
-                "mode": "source",
-                "source": false,
-                "backlinks": false
-              },
-              "icon": "lucide-file",
-              "title": "Motion Profiles"
+              "title": "Absolute Encoders"
             }
           },
           {
@@ -87,37 +72,22 @@
             }
           },
           {
-            "id": "2cb25967e24dea16",
+            "id": "f636c6273930ba70",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Level 1/State Machines.md",
+                "file": "Superstructure Lighting.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "State Machines"
-            }
-          },
-          {
-            "id": "2895b35bd4c999fc",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Level 1/PID.md",
-                "mode": "source",
-                "source": false,
-                "backlinks": false
-              },
-              "icon": "lucide-file",
-              "title": "PID"
+              "title": "Superstructure Lighting"
             }
           }
         ],
-        "currentTab": 3
+        "currentTab": 4
       }
     ],
     "direction": "vertical"
@@ -191,7 +161,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Hardware/NavX.md",
+                "file": "Superstructure Lighting.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -201,7 +171,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for NavX"
+              "title": "Backlinks for Superstructure Lighting"
             }
           },
           {
@@ -353,43 +323,45 @@
       "webpage-html-export:Export Vault to HTML": false
     }
   },
-  "active": "5397393b82d5cad0",
+  "active": "f636c6273930ba70",
   "lastOpenFiles": [
+    "Misc/Robot Radio.md",
+    "Misc/Superstructure Lighting.md",
+    "Hardware/Absolute Encoders.md",
+    "Hardware/Rev Hardware Client.md",
+    "Superstructure Lighting.md",
+    "Level 1/SuperStructure Elevator.md",
+    "Untitled 1.base",
     "Level 1/PID.md",
+    "assets/blinkin.png",
+    "Level 2/SuperStructure Flywheel.md",
     "Level 2/Motion Profiles.md",
+    "Level 1/State Machines.md",
+    "Level 1/Basic Telemetry.md",
+    "Level 0/Deploying Code.md",
+    "Level 0/Coding Basics.md",
+    "Level 0/Coding Basics.canvas",
+    "Stormbots Tree.canvas",
+    "StormBreakers Tree.canvas",
     "Misc/Subsystems.md",
     "Level 1/FeedForwards.md",
-    "Level 1/SuperStructure Elevator.md",
     "Level 2/Superstructure Shooter.md",
     "assets/motion-profile-time-plots.png",
-    "Level 1/State Machines.md",
     "assets/PID Position over time.png",
-    "StormBreakers Tree.canvas",
     "Level 1/Sensing Basics.md",
     "Level 1/Homing Sequences.md",
     "Level 1/Compound Subsystem.md",
     "Level 1/SuperStructure Climber.md",
     "Untitled 2.base",
-    "Untitled 1.base",
     "Untitled.base",
     "Level 2/QuestNav.md",
     "TODO.md",
-    "Stormbots Tree.canvas",
     "README.md",
     "index.md",
     "Level 2/PhotonVision Odometry.md",
     "Level 2/PhotonVision Object Detection.md",
-    "Level 2/PhotonVision Model Training.md",
-    "Level 2/PhotonVision Bringup.md",
-    "Level 1/SuperStructure Intake.md",
     "Pasted image 20250927225025.png",
     "Pasted image 20250926235704.png",
-    "Level 1/Commands.md",
-    "Level 1/SuperStructure Arm.md",
-    "Level 2/SuperStructure Flywheel.md",
-    "Level 1/SuperStructure Rollers.md",
-    "Level 1/Robot Design Analysis.md",
-    "assets/README.md",
     "JavaReferences/ProfiledElevator.java",
     "JavaReferences",
     "assets/driverstation-usb-tab.png",
@@ -399,7 +371,6 @@
     "Misc/controls-engineering-in-frc.pdf",
     "assets/absolute-sensor-rotation-error.svg",
     "assets/Gray-code-table-Gray-coding-to-read-position.gif",
-    "assets/Rev Through Bore Encoder.png",
     "Marketingbot",
     "assets/Command State Machine.canvas",
     "Misc",
